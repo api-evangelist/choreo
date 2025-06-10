@@ -16,7 +16,7 @@ With Choreo, you can connect your Git repos, deploy instantly across any environ
 ## Timestamps
 
 - **Created:** 2025-06-05 
-- **Modified:** 2025-06-09 
+- **Modified:** 2025-06-10 
 
 ## APIs
 
@@ -39,6 +39,8 @@ With Choreo, you can connect your Git repos, deploy instantly across any environ
 - [Blog](https://medium.com/choreo-tech-blog)
 - [Pricing](https://wso2.com/choreo/pricing/)
 - [Discord](https://discord.com/invite/wso2)
+- [Login](https://console.choreo.dev/login)
+- [SignUp](https://console.choreo.dev/signup)
 
 ## Maintainers
 
