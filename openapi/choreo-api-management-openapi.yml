@@ -1,0 +1,807 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management API
+  description: >-
+    The Choreo API Management API provides programmatic access to manage
+    the full lifecycle of APIs on the WSO2 Choreo platform. It allows
+    API creators to create, publish, version, and manage APIs, configure
+    rate limiting policies, and manage API documentation. Choreo is an
+    AI-native internal developer platform that simplifies building,
+    deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+  - url: https://console.choreo.dev/api/v1
+    description: Choreo Console API
+paths:
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List organizations
+      description: Retrieve a list of organizations the authenticated user belongs to.
+      tags:
+        - Organizations
+      responses:
+        '200':
+          description: Successful response with list of organizations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized.
+  /organizations/{orgId}/projects:
+    get:
+      operationId: listProjects
+      summary: List projects
+      description: Retrieve a list of projects within an organization.
+      tags:
+        - Projects
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+      responses:
+        '200':
+          description: Successful response with list of projects.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Project'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Organization not found.
+    post:
+      operationId: createProject
+      summary: Create a project
+      description: Create a new project within an organization.
+      tags:
+        - Projects
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+      responses:
+        '201':
+          description: Project created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /organizations/{orgId}/projects/{projectId}/components:
+    get:
+      operationId: listComponents
+      summary: List components
+      description: >-
+        Retrieve a list of components within a project. Components represent
+        services, APIs, web apps, jobs, and other deployable units.
+      tags:
+        - Components
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Project identifier.
+      responses:
+        '200':
+          description: Successful response with list of components.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Component'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Project not found.
+    post:
+      operationId: createComponent
+      summary: Create a component
+      description: >-
+        Create a new component within a project. A component can be a
+        service, API proxy, web application, scheduled job, manual trigger,
+        or event handler.
+      tags:
+        - Components
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Project identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ComponentCreate'
+      responses:
+        '201':
+          description: Component created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Component'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /organizations/{orgId}/projects/{projectId}/components/{componentId}:
+    get:
+      operationId: getComponent
+      summary: Get a component
+      description: Retrieve details of a specific component.
+      tags:
+        - Components
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: componentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with component details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Component'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Component not found.
+    delete:
+      operationId: deleteComponent
+      summary: Delete a component
+      description: Delete a specific component from a project.
+      tags:
+        - Components
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: componentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Component deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Component not found.
+  /organizations/{orgId}/projects/{projectId}/components/{componentId}/builds:
+    get:
+      operationId: listBuilds
+      summary: List builds
+      description: Retrieve a list of builds for a component.
+      tags:
+        - Builds
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: componentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of builds.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Build'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createBuild
+      summary: Trigger a build
+      description: Trigger a new build for a component.
+      tags:
+        - Builds
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: componentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuildCreate'
+      responses:
+        '201':
+          description: Build triggered successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Build'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /organizations/{orgId}/projects/{projectId}/components/{componentId}/deployments:
+    get:
+      operationId: listDeployments
+      summary: List deployments
+      description: Retrieve a list of deployments for a component.
+      tags:
+        - Deployments
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: componentId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with list of deployments.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Deployment'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createDeployment
+      summary: Promote a build to an environment
+      description: >-
+        Deploy a build to a specific environment. This promotes the built
+        artifact to the target environment.
+      tags:
+        - Deployments
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: componentId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentCreate'
+      responses:
+        '201':
+          description: Deployment created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deployment'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /organizations/{orgId}/apis:
+    get:
+      operationId: listAPIs
+      summary: List APIs
+      description: >-
+        Retrieve a list of managed APIs within an organization. These are
+        APIs published and managed through the Choreo API gateway.
+      tags:
+        - APIs
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+          description: Maximum number of results to return.
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Number of results to skip.
+      responses:
+        '200':
+          description: Successful response with list of APIs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/API'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized.
+  /organizations/{orgId}/apis/{apiId}:
+    get:
+      operationId: getAPI
+      summary: Get API details
+      description: Retrieve details of a specific managed API.
+      tags:
+        - APIs
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: apiId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with API details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/API'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: API not found.
+  /organizations/{orgId}/environments:
+    get:
+      operationId: listEnvironments
+      summary: List environments
+      description: >-
+        Retrieve a list of environments configured for the organization
+        (e.g., Development, Staging, Production).
+      tags:
+        - Environments
+      parameters:
+        - name: orgId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+      responses:
+        '200':
+          description: Successful response with list of environments.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Environment'
+        '401':
+          description: Unauthorized.
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the organization.
+        name:
+          type: string
+          description: Name of the organization.
+        handle:
+          type: string
+          description: URL-friendly handle for the organization.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the organization was created.
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the project.
+        name:
+          type: string
+          description: Name of the project.
+        description:
+          type: string
+          description: Description of the project.
+        orgId:
+          type: string
+          description: Organization identifier.
+        createdAt:
+          type: string
+          format: date-time
+    ProjectCreate:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Name of the project.
+        description:
+          type: string
+          description: Description of the project.
+    Component:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the component.
+        name:
+          type: string
+          description: Name of the component.
+        type:
+          type: string
+          enum:
+            - Service
+            - REST API Proxy
+            - GraphQL API Proxy
+            - Web Application
+            - Scheduled Job
+            - Manual Trigger
+            - Event Handler
+            - Webhook
+          description: Type of the component.
+        description:
+          type: string
+          description: Description of the component.
+        repoUrl:
+          type: string
+          description: Git repository URL.
+        branch:
+          type: string
+          description: Git branch.
+        buildpackId:
+          type: string
+          description: Buildpack used for the component.
+        projectId:
+          type: string
+        orgId:
+          type: string
+        status:
+          type: string
+          enum:
+            - Active
+            - Inactive
+        createdAt:
+          type: string
+          format: date-time
+    ComponentCreate:
+      type: object
+      required:
+        - name
+        - type
+        - repoUrl
+      properties:
+        name:
+          type: string
+          description: Name of the component.
+        type:
+          type: string
+          enum:
+            - Service
+            - REST API Proxy
+            - GraphQL API Proxy
+            - Web Application
+            - Scheduled Job
+            - Manual Trigger
+            - Event Handler
+            - Webhook
+          description: Type of the component.
+        description:
+          type: string
+        repoUrl:
+          type: string
+          description: Git repository URL.
+        branch:
+          type: string
+          description: Git branch.
+          default: main
+        buildpackId:
+          type: string
+          description: Buildpack identifier.
+        subPath:
+          type: string
+          description: Sub-path within the repository.
+    Build:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the build.
+        componentId:
+          type: string
+        status:
+          type: string
+          enum:
+            - Pending
+            - InProgress
+            - Success
+            - Failed
+            - Cancelled
+        commitHash:
+          type: string
+          description: Git commit hash.
+        branch:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+    BuildCreate:
+      type: object
+      properties:
+        branch:
+          type: string
+          description: Git branch to build from.
+        commitHash:
+          type: string
+          description: Specific commit hash to build.
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the deployment.
+        componentId:
+          type: string
+        buildId:
+          type: string
+        environmentId:
+          type: string
+        status:
+          type: string
+          enum:
+            - Pending
+            - Active
+            - Failed
+            - Inactive
+        createdAt:
+          type: string
+          format: date-time
+    DeploymentCreate:
+      type: object
+      required:
+        - buildId
+        - environmentId
+      properties:
+        buildId:
+          type: string
+          description: Build identifier to deploy.
+        environmentId:
+          type: string
+          description: Target environment identifier.
+    API:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the API.
+        name:
+          type: string
+          description: Name of the API.
+        version:
+          type: string
+          description: Version of the API.
+        context:
+          type: string
+          description: Context path of the API.
+        type:
+          type: string
+          enum:
+            - REST
+            - GraphQL
+            - gRPC
+            - WebSocket
+          description: Type of the API.
+        status:
+          type: string
+          enum:
+            - Created
+            - Published
+            - Deprecated
+            - Retired
+        visibility:
+          type: string
+          enum:
+            - Public
+            - Organization
+            - Project
+          description: Visibility of the API.
+        componentId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Environment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the environment.
+        name:
+          type: string
+          description: Name of the environment.
+        type:
+          type: string
+          enum:
+            - Development
+            - Staging
+            - Production
+          description: Type of environment.
+        isDefault:
+          type: boolean
+        orgId:
+          type: string
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
+security:
+  - bearerAuth: []
+  - oauth2:
+      - read
+      - write
+tags:
+  - name: Organizations
+    description: Manage organizations.
+  - name: Projects
+    description: Manage projects within organizations.
+  - name: Components
+    description: >-
+      Manage components (services, APIs, web apps, jobs) within projects.
+  - name: Builds
+    description: Manage builds for components.
+  - name: Deployments
+    description: Manage deployments to environments.
+  - name: APIs
+    description: Manage published APIs.
+  - name: Environments
+    description: Manage deployment environments.

@@ -1,0 +1,525 @@
+openapi: 3.1.0
+info:
+  title: Choreo Insights API
+  description: >-
+    The Choreo Insights API provides access to observability, monitoring,
+    and analytics data for APIs and components deployed on the WSO2 Choreo
+    platform. It enables users to programmatically retrieve usage statistics,
+    latency metrics, error analytics, and operational insights for their
+    managed APIs and services.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: insights
+servers:
+  - url: https://console.choreo.dev/insights/api/v1
+    description: Choreo Insights API
+paths:
+  /usage:
+    get:
+      operationId: getAPIUsage
+      summary: Get API usage statistics
+      description: >-
+        Retrieve API usage statistics including request counts, success
+        rates, and error rates for a given time range.
+      tags:
+        - Usage
+      parameters:
+        - name: orgId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: apiId
+          in: query
+          schema:
+            type: string
+          description: Filter by specific API identifier.
+        - name: componentId
+          in: query
+          schema:
+            type: string
+          description: Filter by specific component identifier.
+        - name: environmentId
+          in: query
+          schema:
+            type: string
+          description: Filter by environment identifier.
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: Start time for the query range.
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+          description: End time for the query range.
+        - name: granularity
+          in: query
+          schema:
+            type: string
+            enum:
+              - 1m
+              - 5m
+              - 1h
+              - 1d
+            default: 1h
+          description: Time granularity for aggregation.
+      responses:
+        '200':
+          description: Successful response with usage statistics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageResponse'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /latency:
+    get:
+      operationId: getAPILatency
+      summary: Get API latency metrics
+      description: >-
+        Retrieve latency metrics for APIs including average, median,
+        P95, and P99 latencies over a given time range.
+      tags:
+        - Latency
+      parameters:
+        - name: orgId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: apiId
+          in: query
+          schema:
+            type: string
+          description: Filter by specific API identifier.
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: granularity
+          in: query
+          schema:
+            type: string
+            enum:
+              - 1m
+              - 5m
+              - 1h
+              - 1d
+            default: 1h
+      responses:
+        '200':
+          description: Successful response with latency metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatencyResponse'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /errors:
+    get:
+      operationId: getAPIErrors
+      summary: Get API error analytics
+      description: >-
+        Retrieve error analytics including error counts by status code,
+        error categories, and error trends over time.
+      tags:
+        - Errors
+      parameters:
+        - name: orgId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: apiId
+          in: query
+          schema:
+            type: string
+          description: Filter by specific API identifier.
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: granularity
+          in: query
+          schema:
+            type: string
+            enum:
+              - 1m
+              - 5m
+              - 1h
+              - 1d
+            default: 1h
+      responses:
+        '200':
+          description: Successful response with error analytics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /alerts:
+    get:
+      operationId: listAlerts
+      summary: List alerts
+      description: Retrieve a list of alerts triggered for APIs and components.
+      tags:
+        - Alerts
+      parameters:
+        - name: orgId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - Active
+              - Resolved
+              - Acknowledged
+          description: Filter by alert status.
+        - name: severity
+          in: query
+          schema:
+            type: string
+            enum:
+              - Critical
+              - Warning
+              - Info
+          description: Filter by severity.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Successful response with list of alerts.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized.
+  /logs:
+    get:
+      operationId: queryLogs
+      summary: Query component logs
+      description: >-
+        Query logs for a specific component, useful for debugging and
+        monitoring component behavior.
+      tags:
+        - Logs
+      parameters:
+        - name: orgId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Organization identifier.
+        - name: componentId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Component identifier.
+        - name: environmentId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Environment identifier.
+        - name: from
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: query
+          in: query
+          schema:
+            type: string
+          description: Log search query.
+        - name: level
+          in: query
+          schema:
+            type: string
+            enum:
+              - ERROR
+              - WARN
+              - INFO
+              - DEBUG
+          description: Filter by log level.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+      responses:
+        '200':
+          description: Successful response with log entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogEntry'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    UsageResponse:
+      type: object
+      properties:
+        totalRequests:
+          type: integer
+          description: Total number of requests in the time range.
+        successCount:
+          type: integer
+          description: Number of successful requests.
+        errorCount:
+          type: integer
+          description: Number of failed requests.
+        successRate:
+          type: number
+          format: float
+          description: Success rate as a percentage.
+        timeSeries:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              requests:
+                type: integer
+              successes:
+                type: integer
+              errors:
+                type: integer
+    LatencyResponse:
+      type: object
+      properties:
+        averageLatency:
+          type: number
+          format: float
+          description: Average latency in milliseconds.
+        medianLatency:
+          type: number
+          format: float
+          description: Median (P50) latency in milliseconds.
+        p95Latency:
+          type: number
+          format: float
+          description: 95th percentile latency in milliseconds.
+        p99Latency:
+          type: number
+          format: float
+          description: 99th percentile latency in milliseconds.
+        timeSeries:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              averageLatency:
+                type: number
+                format: float
+              p95Latency:
+                type: number
+                format: float
+              p99Latency:
+                type: number
+                format: float
+    ErrorResponse:
+      type: object
+      properties:
+        totalErrors:
+          type: integer
+          description: Total number of errors.
+        errorsByStatusCode:
+          type: array
+          items:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+              count:
+                type: integer
+          description: Error breakdown by HTTP status code.
+        errorsByCategory:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+                enum:
+                  - Authentication
+                  - Throttling
+                  - Backend
+                  - Gateway
+                  - Other
+              count:
+                type: integer
+          description: Error breakdown by category.
+        timeSeries:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              errors:
+                type: integer
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the alert.
+        name:
+          type: string
+          description: Alert name.
+        description:
+          type: string
+          description: Alert description.
+        severity:
+          type: string
+          enum:
+            - Critical
+            - Warning
+            - Info
+        status:
+          type: string
+          enum:
+            - Active
+            - Resolved
+            - Acknowledged
+        apiId:
+          type: string
+        componentId:
+          type: string
+        triggeredAt:
+          type: string
+          format: date-time
+        resolvedAt:
+          type: string
+          format: date-time
+    LogEntry:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        level:
+          type: string
+          enum:
+            - ERROR
+            - WARN
+            - INFO
+            - DEBUG
+        message:
+          type: string
+        componentId:
+          type: string
+        environmentId:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+security:
+  - bearerAuth: []
+tags:
+  - name: Usage
+    description: API usage statistics and request metrics.
+  - name: Latency
+    description: API latency and performance metrics.
+  - name: Errors
+    description: API error analytics and diagnostics.
+  - name: Alerts
+    description: Monitoring alerts for APIs and components.
+  - name: Logs
+    description: Component log querying and monitoring.

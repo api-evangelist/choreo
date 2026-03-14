@@ -2,24 +2,68 @@ aid: choreo
 url: >-
   https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/apis.yml
 apis:
-  - aid: choreo:choreo
-    name: Choreo
+  - aid: choreo:api-management
+    name: Choreo API Management API
     tags:
-      - Orchestration
+      - API Management
       - Lifecycle
-      - IDE
-      - Workflows
-      - CI/CD
-      - DevOps
-      - Unified
-    humanURL: ' https://choreo.dev/'
+      - Organizations
+      - Projects
+      - Components
+      - Builds
+      - Deployments
+    humanURL: https://wso2.com/choreo/docs/
     properties:
-      - url: ' https://choreo.dev/'
+      - url: https://wso2.com/choreo/docs/
         type: Documentation
+      - url: openapi/choreo-api-management-openapi.yml
+        type: OpenAPI
     description: >-
-      With Choreo, you can connect your Git repos, deploy instantly across any
-      environment, ship securely by default, and monitor everything in real
-      timewith AI guiding you every step of the way. 
+      The Choreo API Management API provides programmatic access to manage
+      the full lifecycle of APIs on the WSO2 Choreo platform. It allows
+      API creators to create, publish, version, and manage APIs, manage
+      organizations, projects, components, builds, and deployments.
+  - aid: choreo:developer-portal
+    name: Choreo Developer Portal API
+    tags:
+      - Developer Portal
+      - API Marketplace
+      - Subscriptions
+      - Applications
+      - OAuth
+      - API Keys
+    humanURL: https://devportal.choreo.dev/
+    properties:
+      - url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+        type: Documentation
+      - url: openapi/choreo-developer-portal-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Choreo Developer Portal API enables API consumers to discover,
+      evaluate, subscribe to, and consume APIs hosted on the Choreo platform.
+      It provides access to the API marketplace, application management,
+      subscription management, and credential generation for OAuth 2.0 and
+      API key based authentication.
+  - aid: choreo:insights
+    name: Choreo Insights API
+    tags:
+      - Analytics
+      - Monitoring
+      - Observability
+      - Logs
+      - Alerts
+      - Metrics
+    humanURL: https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+    properties:
+      - url: https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+        type: Documentation
+      - url: openapi/choreo-insights-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Choreo Insights API provides access to observability, monitoring,
+      and analytics data for APIs and components deployed on the Choreo
+      platform. It enables users to programmatically retrieve usage statistics,
+      latency metrics, error analytics, and operational insights.
 name: Choreo
 tags:
   - Orchestration
@@ -52,7 +96,7 @@ common:
     type: SignUp
     description: 'null'
 created: '2025-06-05T00:00:00.000Z'
-modified: '2026-01-02'
+modified: '2026-03-14'
 position: Consumer
 description: >-
   With Choreo, you can connect your Git repos, deploy instantly across any

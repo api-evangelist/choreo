@@ -1,0 +1,752 @@
+openapi: 3.1.0
+info:
+  title: Choreo Developer Portal API
+  description: >-
+    The Choreo Developer Portal API enables API consumers to discover,
+    evaluate, subscribe to, and consume APIs hosted on the WSO2 Choreo
+    platform. It provides access to the API marketplace, application
+    management, subscription management, and credential generation for
+    OAuth 2.0 and API key based authentication.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: developer-portal
+servers:
+  - url: https://devportal.choreo.dev/api/v1
+    description: Choreo Developer Portal API
+paths:
+  /apis:
+    get:
+      operationId: listPublishedAPIs
+      summary: List published APIs
+      description: >-
+        Retrieve a list of published APIs available in the developer portal.
+        Supports filtering by name, tags, and type.
+      tags:
+        - APIs
+      parameters:
+        - name: query
+          in: query
+          schema:
+            type: string
+          description: Search query to filter APIs by name or description.
+        - name: tag
+          in: query
+          schema:
+            type: string
+          description: Filter APIs by tag.
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum:
+              - REST
+              - GraphQL
+              - gRPC
+              - WebSocket
+          description: Filter APIs by type.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+          description: Maximum number of results.
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+          description: Number of results to skip.
+      responses:
+        '200':
+          description: Successful response with list of published APIs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PublishedAPI'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+  /apis/{apiId}:
+    get:
+      operationId: getPublishedAPI
+      summary: Get a published API
+      description: Retrieve details of a specific published API including its documentation and endpoints.
+      tags:
+        - APIs
+      parameters:
+        - name: apiId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: API identifier.
+      responses:
+        '200':
+          description: Successful response with API details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishedAPI'
+        '404':
+          description: API not found.
+  /apis/{apiId}/definition:
+    get:
+      operationId: getAPIDefinition
+      summary: Get API definition
+      description: >-
+        Retrieve the OpenAPI or other specification definition for a
+        published API.
+      tags:
+        - APIs
+      parameters:
+        - name: apiId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: API identifier.
+      responses:
+        '200':
+          description: Successful response with API definition.
+          content:
+            application/json:
+              schema:
+                type: object
+            application/yaml:
+              schema:
+                type: string
+        '404':
+          description: API not found.
+  /apis/{apiId}/documents:
+    get:
+      operationId: listAPIDocuments
+      summary: List API documents
+      description: Retrieve documentation associated with a published API.
+      tags:
+        - APIs
+      parameters:
+        - name: apiId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: API identifier.
+      responses:
+        '200':
+          description: Successful response with list of documents.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Document'
+  /applications:
+    get:
+      operationId: listApplications
+      summary: List applications
+      description: >-
+        Retrieve a list of applications owned by the authenticated user.
+        An application in Choreo is a logical representation of a physical
+        application such as a mobile app, web app, or device.
+      tags:
+        - Applications
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Successful response with list of applications.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Application'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createApplication
+      summary: Create an application
+      description: >-
+        Create a new application to subscribe to APIs and generate
+        credentials.
+      tags:
+        - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationCreate'
+      responses:
+        '201':
+          description: Application created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /applications/{applicationId}:
+    get:
+      operationId: getApplication
+      summary: Get an application
+      description: Retrieve details of a specific application.
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with application details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Application not found.
+    put:
+      operationId: updateApplication
+      summary: Update an application
+      description: Update details of an existing application.
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationCreate'
+      responses:
+        '200':
+          description: Application updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Application'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+    delete:
+      operationId: deleteApplication
+      summary: Delete an application
+      description: Delete an application and all its subscriptions.
+      tags:
+        - Applications
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Application deleted successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Application not found.
+  /applications/{applicationId}/keys:
+    post:
+      operationId: generateKeys
+      summary: Generate application keys
+      description: >-
+        Generate OAuth 2.0 consumer key and consumer secret for an
+        application. The consumer key acts as the unique identifier
+        for the application and is used for authentication.
+      tags:
+        - Application Keys
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyGenerateRequest'
+      responses:
+        '200':
+          description: Keys generated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationKeys'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /applications/{applicationId}/api-keys:
+    post:
+      operationId: generateAPIKey
+      summary: Generate an API key
+      description: Generate an API key for an application to access subscribed APIs.
+      tags:
+        - Application Keys
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIKeyGenerateRequest'
+      responses:
+        '200':
+          description: API key generated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKey'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: List subscriptions
+      description: >-
+        Retrieve a list of subscriptions. Can be filtered by application
+        or API.
+      tags:
+        - Subscriptions
+      parameters:
+        - name: applicationId
+          in: query
+          schema:
+            type: string
+          description: Filter by application identifier.
+        - name: apiId
+          in: query
+          schema:
+            type: string
+          description: Filter by API identifier.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 25
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Successful response with list of subscriptions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createSubscription
+      summary: Subscribe to an API
+      description: >-
+        Create a new subscription to an API through an application. A
+        business plan must be selected which determines the rate limit.
+      tags:
+        - Subscriptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionCreate'
+      responses:
+        '201':
+          description: Subscription created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /subscriptions/{subscriptionId}:
+    delete:
+      operationId: deleteSubscription
+      summary: Unsubscribe from an API
+      description: Remove a subscription to an API.
+      tags:
+        - Subscriptions
+      parameters:
+        - name: subscriptionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Subscription removed successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Subscription not found.
+  /business-plans:
+    get:
+      operationId: listBusinessPlans
+      summary: List business plans
+      description: >-
+        Retrieve a list of available business plans that determine
+        rate limits for API subscriptions.
+      tags:
+        - Business Plans
+      parameters:
+        - name: apiId
+          in: query
+          schema:
+            type: string
+          description: Filter business plans available for a specific API.
+      responses:
+        '200':
+          description: Successful response with list of business plans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BusinessPlan'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://devportal.choreo.dev/oauth2/authorize
+          tokenUrl: https://devportal.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    PublishedAPI:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the API.
+        name:
+          type: string
+          description: Name of the API.
+        description:
+          type: string
+          description: Description of the API.
+        version:
+          type: string
+          description: Version of the API.
+        context:
+          type: string
+          description: Context path of the API.
+        type:
+          type: string
+          enum:
+            - REST
+            - GraphQL
+            - gRPC
+            - WebSocket
+          description: Type of the API.
+        provider:
+          type: string
+          description: Provider of the API.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags associated with the API.
+        endpointUrl:
+          type: string
+          description: Gateway endpoint URL for the API.
+        authType:
+          type: string
+          enum:
+            - OAuth2
+            - APIKey
+            - None
+          description: Authentication type.
+        businessPlans:
+          type: array
+          items:
+            type: string
+          description: Available business plans.
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Document identifier.
+        name:
+          type: string
+          description: Document name.
+        type:
+          type: string
+          enum:
+            - HOWTO
+            - SAMPLES
+            - PUBLIC_FORUM
+            - SUPPORT_FORUM
+            - API_MESSAGE_FORMAT
+            - OTHER
+          description: Document type.
+        summary:
+          type: string
+          description: Brief summary of the document.
+        sourceType:
+          type: string
+          enum:
+            - INLINE
+            - URL
+            - FILE
+    Application:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the application.
+        name:
+          type: string
+          description: Name of the application.
+        description:
+          type: string
+          description: Description of the application.
+        throttlingPolicy:
+          type: string
+          description: Throttling policy applied to the application.
+        status:
+          type: string
+          enum:
+            - APPROVED
+            - CREATED
+            - REJECTED
+          description: Current status of the application.
+        createdAt:
+          type: string
+          format: date-time
+    ApplicationCreate:
+      type: object
+      required:
+        - name
+        - throttlingPolicy
+      properties:
+        name:
+          type: string
+          description: Name of the application.
+        description:
+          type: string
+          description: Description of the application.
+        throttlingPolicy:
+          type: string
+          description: Throttling policy for the application.
+    KeyGenerateRequest:
+      type: object
+      required:
+        - keyType
+        - grantTypes
+      properties:
+        keyType:
+          type: string
+          enum:
+            - PRODUCTION
+            - SANDBOX
+          description: The type of key.
+        grantTypes:
+          type: array
+          items:
+            type: string
+            enum:
+              - client_credentials
+              - authorization_code
+              - refresh_token
+              - password
+          description: Supported grant types.
+        callbackUrl:
+          type: string
+          description: Callback URL for authorization code grant.
+        validityTime:
+          type: integer
+          description: Validity time of the access token in seconds.
+    ApplicationKeys:
+      type: object
+      properties:
+        consumerKey:
+          type: string
+          description: Consumer key (client ID).
+        consumerSecret:
+          type: string
+          description: Consumer secret (client secret).
+        keyType:
+          type: string
+          enum:
+            - PRODUCTION
+            - SANDBOX
+        supportedGrantTypes:
+          type: array
+          items:
+            type: string
+    APIKeyGenerateRequest:
+      type: object
+      properties:
+        validityPeriod:
+          type: integer
+          description: Validity period of the API key in seconds.
+          default: 3600
+    APIKey:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: Generated API key value.
+        validityTime:
+          type: integer
+          description: Validity time in seconds.
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the subscription.
+        applicationId:
+          type: string
+          description: Application identifier.
+        apiId:
+          type: string
+          description: API identifier.
+        businessPlan:
+          type: string
+          description: Business plan for the subscription.
+        status:
+          type: string
+          enum:
+            - UNBLOCKED
+            - BLOCKED
+            - PROD_ONLY_BLOCKED
+          description: Status of the subscription.
+        createdAt:
+          type: string
+          format: date-time
+    SubscriptionCreate:
+      type: object
+      required:
+        - applicationId
+        - apiId
+        - businessPlan
+      properties:
+        applicationId:
+          type: string
+          description: Application identifier.
+        apiId:
+          type: string
+          description: API identifier.
+        businessPlan:
+          type: string
+          description: >-
+            Business plan to subscribe under. Determines rate limit
+            for the subscription.
+    BusinessPlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Plan identifier.
+        name:
+          type: string
+          description: Name of the business plan.
+        description:
+          type: string
+          description: Description of the plan.
+        requestsPerMinute:
+          type: integer
+          description: Number of requests allowed per minute.
+        isDefault:
+          type: boolean
+          description: Whether this is the default plan.
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
+security:
+  - bearerAuth: []
+  - oauth2:
+      - read
+      - write
+tags:
+  - name: APIs
+    description: Discover and browse published APIs.
+  - name: Applications
+    description: Manage applications for API consumption.
+  - name: Application Keys
+    description: Generate OAuth 2.0 and API key credentials.
+  - name: Subscriptions
+    description: Manage API subscriptions.
+  - name: Business Plans
+    description: View available business plans for API subscriptions.
