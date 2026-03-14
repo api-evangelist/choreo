@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-build.json",
+  "title": "Choreo Build",
+  "description": "A build triggered for a Choreo component, representing the CI process of compiling and packaging component source code.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the build."
+    },
+    "componentId": {
+      "type": "string",
+      "description": "Component identifier this build belongs to."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Pending", "InProgress", "Success", "Failed", "Cancelled"],
+      "description": "Current status of the build."
+    },
+    "commitHash": {
+      "type": "string",
+      "description": "Git commit hash the build was triggered from."
+    },
+    "branch": {
+      "type": "string",
+      "description": "Git branch the build was triggered from."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the build was created."
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the build completed."
+    }
+  },
+  "required": ["id", "componentId", "status"]
+}

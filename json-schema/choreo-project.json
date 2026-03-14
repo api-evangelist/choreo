@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-project.json",
+  "title": "Choreo Project",
+  "description": "A project within a Choreo organization, used to group related components, services, and APIs.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the project."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the project."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the project."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "Organization identifier the project belongs to."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the project was created."
+    }
+  },
+  "required": ["id", "name", "orgId"]
+}

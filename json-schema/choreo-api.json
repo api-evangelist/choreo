@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-api.json",
+  "title": "Choreo API",
+  "description": "A managed API published through the Choreo API gateway, supporting REST, GraphQL, gRPC, and WebSocket types with lifecycle management.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the API."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the API."
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of the API."
+    },
+    "context": {
+      "type": "string",
+      "description": "Context path of the API."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["REST", "GraphQL", "gRPC", "WebSocket"],
+      "description": "Type of the API."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Created", "Published", "Deprecated", "Retired"],
+      "description": "Lifecycle status of the API."
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["Public", "Organization", "Project"],
+      "description": "Visibility scope of the API."
+    },
+    "componentId": {
+      "type": "string",
+      "description": "Component identifier the API is associated with."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the API was created."
+    }
+  },
+  "required": ["id", "name", "type"]
+}

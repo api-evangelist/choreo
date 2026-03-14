@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-application.json",
+  "title": "Choreo Application",
+  "description": "An application in the Choreo developer portal, representing a logical consumer of APIs such as a mobile app, web app, or device.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the application."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the application."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the application."
+    },
+    "throttlingPolicy": {
+      "type": "string",
+      "description": "Throttling policy applied to the application."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["APPROVED", "CREATED", "REJECTED"],
+      "description": "Current status of the application."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the application was created."
+    }
+  },
+  "required": ["id", "name", "throttlingPolicy"]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-deployment.json",
+  "title": "Choreo Deployment",
+  "description": "A deployment of a built component artifact to a target environment on the Choreo platform.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the deployment."
+    },
+    "componentId": {
+      "type": "string",
+      "description": "Component identifier being deployed."
+    },
+    "buildId": {
+      "type": "string",
+      "description": "Build identifier being deployed."
+    },
+    "environmentId": {
+      "type": "string",
+      "description": "Target environment identifier."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Pending", "Active", "Failed", "Inactive"],
+      "description": "Current status of the deployment."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the deployment was created."
+    }
+  },
+  "required": ["id", "buildId", "environmentId", "status"]
+}

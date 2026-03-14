@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-organization.json",
+  "title": "Choreo Organization",
+  "description": "An organization on the WSO2 Choreo platform, serving as the top-level grouping for projects, components, APIs, and environments.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the organization."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the organization."
+    },
+    "handle": {
+      "type": "string",
+      "description": "URL-friendly handle for the organization."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the organization was created."
+    }
+  },
+  "required": ["id", "name"]
+}

@@ -1,0 +1,84 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "choreo": "https://wso2.com/choreo/ns#",
+    "id": "@id",
+    "type": "@type",
+    "Organization": "choreo:Organization",
+    "Project": "choreo:Project",
+    "Component": "choreo:Component",
+    "API": "choreo:API",
+    "Build": "choreo:Build",
+    "Deployment": "choreo:Deployment",
+    "Environment": "choreo:Environment",
+    "Application": "choreo:Application",
+    "Subscription": "choreo:Subscription",
+    "name": "schema:name",
+    "description": "schema:description",
+    "handle": "choreo:handle",
+    "orgId": {
+      "@id": "choreo:orgId",
+      "@type": "@id"
+    },
+    "projectId": {
+      "@id": "choreo:projectId",
+      "@type": "@id"
+    },
+    "componentId": {
+      "@id": "choreo:componentId",
+      "@type": "@id"
+    },
+    "buildId": {
+      "@id": "choreo:buildId",
+      "@type": "@id"
+    },
+    "environmentId": {
+      "@id": "choreo:environmentId",
+      "@type": "@id"
+    },
+    "applicationId": {
+      "@id": "choreo:applicationId",
+      "@type": "@id"
+    },
+    "apiId": {
+      "@id": "choreo:apiId",
+      "@type": "@id"
+    },
+    "repoUrl": {
+      "@id": "schema:codeRepository",
+      "@type": "@id"
+    },
+    "branch": "choreo:branch",
+    "commitHash": "choreo:commitHash",
+    "buildpackId": "choreo:buildpackId",
+    "version": "schema:version",
+    "context": "choreo:contextPath",
+    "visibility": "choreo:visibility",
+    "status": "choreo:status",
+    "severity": "choreo:severity",
+    "businessPlan": "choreo:businessPlan",
+    "throttlingPolicy": "choreo:throttlingPolicy",
+    "endpointUrl": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "authType": "choreo:authType",
+    "isDefault": "choreo:isDefault",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "schema:DateTime"
+    },
+    "completedAt": {
+      "@id": "choreo:dateCompleted",
+      "@type": "schema:DateTime"
+    },
+    "triggeredAt": {
+      "@id": "choreo:dateTriggered",
+      "@type": "schema:DateTime"
+    },
+    "resolvedAt": {
+      "@id": "choreo:dateResolved",
+      "@type": "schema:DateTime"
+    }
+  }
+}

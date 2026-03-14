@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-environment.json",
+  "title": "Choreo Environment",
+  "description": "A deployment environment within a Choreo organization, such as Development, Staging, or Production.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the environment."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the environment."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["Development", "Staging", "Production"],
+      "description": "Type of the environment."
+    },
+    "isDefault": {
+      "type": "boolean",
+      "description": "Whether this is the default environment."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "Organization identifier this environment belongs to."
+    }
+  },
+  "required": ["id", "name", "type"]
+}

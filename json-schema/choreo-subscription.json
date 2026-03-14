@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-subscription.json",
+  "title": "Choreo Subscription",
+  "description": "A subscription linking a Choreo developer portal application to a published API under a specific business plan.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the subscription."
+    },
+    "applicationId": {
+      "type": "string",
+      "description": "Application identifier."
+    },
+    "apiId": {
+      "type": "string",
+      "description": "API identifier."
+    },
+    "businessPlan": {
+      "type": "string",
+      "description": "Business plan governing the rate limit for this subscription."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["UNBLOCKED", "BLOCKED", "PROD_ONLY_BLOCKED"],
+      "description": "Status of the subscription."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the subscription was created."
+    }
+  },
+  "required": ["id", "applicationId", "apiId", "businessPlan"]
+}

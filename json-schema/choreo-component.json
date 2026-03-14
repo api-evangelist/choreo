@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/json-schema/choreo-component.json",
+  "title": "Choreo Component",
+  "description": "A deployable component within a Choreo project. Components represent services, API proxies, web applications, scheduled jobs, manual triggers, event handlers, or webhooks.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the component."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the component."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Service",
+        "REST API Proxy",
+        "GraphQL API Proxy",
+        "Web Application",
+        "Scheduled Job",
+        "Manual Trigger",
+        "Event Handler",
+        "Webhook"
+      ],
+      "description": "Type of the component."
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the component."
+    },
+    "repoUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Git repository URL for the component source code."
+    },
+    "branch": {
+      "type": "string",
+      "description": "Git branch used for builds."
+    },
+    "buildpackId": {
+      "type": "string",
+      "description": "Buildpack used for the component."
+    },
+    "projectId": {
+      "type": "string",
+      "description": "Project identifier the component belongs to."
+    },
+    "orgId": {
+      "type": "string",
+      "description": "Organization identifier."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Active", "Inactive"],
+      "description": "Current status of the component."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the component was created."
+    }
+  },
+  "required": ["id", "name", "type"]
+}
