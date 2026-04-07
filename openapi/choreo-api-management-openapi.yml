@@ -403,8 +403,7 @@ paths:
       description: >-
         Retrieve a list of managed APIs within an organization. These are
         APIs published and managed through the Choreo API gateway.
-      tags:
-        - APIs
+      tags: []
       parameters:
         - name: orgId
           in: path
@@ -445,8 +444,7 @@ paths:
       operationId: getAPI
       summary: Choreo Get API details
       description: Retrieve details of a specific managed API.
-      tags:
-        - APIs
+      tags: []
       parameters:
         - name: orgId
           in: path
@@ -790,18 +788,16 @@ security:
       - read
       - write
 tags:
+  - name: Builds
+    description: Manage builds for components.
+  - name: Components
+    description: >-
+      Manage components (services, APIs, web apps, jobs) within projects.
+  - name: Deployments
+    description: Manage deployments to environments.
+  - name: Environments
+    description: Manage deployment environments.
   - name: Organizations
     description: Manage organizations.
   - name: Projects
     description: Manage projects within organizations.
-  - name: Components
-    description: >-
-      Manage components (services, APIs, web apps, jobs) within projects.
-  - name: Builds
-    description: Manage builds for components.
-  - name: Deployments
-    description: Manage deployments to environments.
-  - name: APIs
-    description: Manage published APIs.
-  - name: Environments
-    description: Manage deployment environments.

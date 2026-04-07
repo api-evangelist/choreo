@@ -513,13 +513,13 @@ components:
 security:
   - bearerAuth: []
 tags:
-  - name: Usage
-    description: API usage statistics and request metrics.
-  - name: Latency
-    description: API latency and performance metrics.
-  - name: Errors
-    description: API error analytics and diagnostics.
   - name: Alerts
     description: Monitoring alerts for APIs and components.
+  - name: Errors
+    description: API error analytics and diagnostics.
+  - name: Latency
+    description: API latency and performance metrics.
   - name: Logs
     description: Component log querying and monitoring.
+  - name: Usage
+    description: API usage statistics and request metrics.

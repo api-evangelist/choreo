@@ -27,8 +27,7 @@ paths:
       description: >-
         Retrieve a list of published APIs available in the developer portal.
         Supports filtering by name, tags, and type.
-      tags:
-        - APIs
+      tags: []
       parameters:
         - name: query
           in: query
@@ -81,8 +80,7 @@ paths:
       operationId: getPublishedAPI
       summary: Choreo Get a published API
       description: Retrieve details of a specific published API including its documentation and endpoints.
-      tags:
-        - APIs
+      tags: []
       parameters:
         - name: apiId
           in: path
@@ -106,8 +104,7 @@ paths:
       description: >-
         Retrieve the OpenAPI or other specification definition for a
         published API.
-      tags:
-        - APIs
+      tags: []
       parameters:
         - name: apiId
           in: path
@@ -132,8 +129,7 @@ paths:
       operationId: listAPIDocuments
       summary: Choreo List API documents
       description: Retrieve documentation associated with a published API.
-      tags:
-        - APIs
+      tags: []
       parameters:
         - name: apiId
           in: path
@@ -740,13 +736,11 @@ security:
       - read
       - write
 tags:
-  - name: APIs
-    description: Discover and browse published APIs.
-  - name: Applications
-    description: Manage applications for API consumption.
   - name: Application Keys
     description: Generate OAuth 2.0 and API key credentials.
-  - name: Subscriptions
-    description: Manage API subscriptions.
+  - name: Applications
+    description: Manage applications for API consumption.
   - name: Business Plans
     description: View available business plans for API subscriptions.
+  - name: Subscriptions
+    description: Manage API subscriptions.

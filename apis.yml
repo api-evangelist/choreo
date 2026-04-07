@@ -6,12 +6,12 @@ apis:
     name: Choreo API Management API
     tags:
       - API Management
+      - Builds
+      - Components
+      - Deployments
       - Lifecycle
       - Organizations
       - Projects
-      - Components
-      - Builds
-      - Deployments
     humanURL: https://wso2.com/choreo/docs/
     properties:
       - url: https://wso2.com/choreo/docs/
@@ -40,12 +40,12 @@ apis:
   - aid: choreo:developer-portal
     name: Choreo Developer Portal API
     tags:
-      - Developer Portal
-      - API Marketplace
-      - Subscriptions
-      - Applications
-      - OAuth
       - API Keys
+      - API Marketplace
+      - Applications
+      - Developer Portal
+      - OAuth
+      - Subscriptions
     humanURL: https://devportal.choreo.dev/
     properties:
       - url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
@@ -65,12 +65,12 @@ apis:
   - aid: choreo:insights
     name: Choreo Insights API
     tags:
+      - Alerts
       - Analytics
+      - Logs
+      - Metrics
       - Monitoring
       - Observability
-      - Logs
-      - Alerts
-      - Metrics
     humanURL: https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
     properties:
       - url: https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
@@ -84,14 +84,14 @@ apis:
       latency metrics, error analytics, and operational insights.
 name: Choreo
 tags:
-  - Orchestration
-  - Lifecycle
-  - IDE
-  - Workflows
   - CI/CD
   - DevOps
-  - Unified
+  - IDE
+  - Lifecycle
+  - Orchestration
   - Pro-Code API Composition
+  - Unified
+  - Workflows
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
