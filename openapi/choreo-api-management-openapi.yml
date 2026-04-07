@@ -24,7 +24,7 @@ paths:
   /organizations:
     get:
       operationId: listOrganizations
-      summary: List organizations
+      summary: Choreo List organizations
       description: Retrieve a list of organizations the authenticated user belongs to.
       tags:
         - Organizations
@@ -45,7 +45,7 @@ paths:
   /organizations/{orgId}/projects:
     get:
       operationId: listProjects
-      summary: List projects
+      summary: Choreo List projects
       description: Retrieve a list of projects within an organization.
       tags:
         - Projects
@@ -74,7 +74,7 @@ paths:
           description: Organization not found.
     post:
       operationId: createProject
-      summary: Create a project
+      summary: Choreo Create a project
       description: Create a new project within an organization.
       tags:
         - Projects
@@ -105,7 +105,7 @@ paths:
   /organizations/{orgId}/projects/{projectId}/components:
     get:
       operationId: listComponents
-      summary: List components
+      summary: Choreo List components
       description: >-
         Retrieve a list of components within a project. Components represent
         services, APIs, web apps, jobs, and other deployable units.
@@ -142,7 +142,7 @@ paths:
           description: Project not found.
     post:
       operationId: createComponent
-      summary: Create a component
+      summary: Choreo Create a component
       description: >-
         Create a new component within a project. A component can be a
         service, API proxy, web application, scheduled job, manual trigger,
@@ -182,7 +182,7 @@ paths:
   /organizations/{orgId}/projects/{projectId}/components/{componentId}:
     get:
       operationId: getComponent
-      summary: Get a component
+      summary: Choreo Get a component
       description: Retrieve details of a specific component.
       tags:
         - Components
@@ -215,7 +215,7 @@ paths:
           description: Component not found.
     delete:
       operationId: deleteComponent
-      summary: Delete a component
+      summary: Choreo Delete a component
       description: Delete a specific component from a project.
       tags:
         - Components
@@ -245,7 +245,7 @@ paths:
   /organizations/{orgId}/projects/{projectId}/components/{componentId}/builds:
     get:
       operationId: listBuilds
-      summary: List builds
+      summary: Choreo List builds
       description: Retrieve a list of builds for a component.
       tags:
         - Builds
@@ -281,7 +281,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createBuild
-      summary: Trigger a build
+      summary: Choreo Trigger a build
       description: Trigger a new build for a component.
       tags:
         - Builds
@@ -321,7 +321,7 @@ paths:
   /organizations/{orgId}/projects/{projectId}/components/{componentId}/deployments:
     get:
       operationId: listDeployments
-      summary: List deployments
+      summary: Choreo List deployments
       description: Retrieve a list of deployments for a component.
       tags:
         - Deployments
@@ -357,7 +357,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createDeployment
-      summary: Promote a build to an environment
+      summary: Choreo Promote a build to an environment
       description: >-
         Deploy a build to a specific environment. This promotes the built
         artifact to the target environment.
@@ -399,7 +399,7 @@ paths:
   /organizations/{orgId}/apis:
     get:
       operationId: listAPIs
-      summary: List APIs
+      summary: Choreo List APIs
       description: >-
         Retrieve a list of managed APIs within an organization. These are
         APIs published and managed through the Choreo API gateway.
@@ -443,7 +443,7 @@ paths:
   /organizations/{orgId}/apis/{apiId}:
     get:
       operationId: getAPI
-      summary: Get API details
+      summary: Choreo Get API details
       description: Retrieve details of a specific managed API.
       tags:
         - APIs
@@ -472,7 +472,7 @@ paths:
   /organizations/{orgId}/environments:
     get:
       operationId: listEnvironments
-      summary: List environments
+      summary: Choreo List environments
       description: >-
         Retrieve a list of environments configured for the organization
         (e.g., Development, Staging, Production).

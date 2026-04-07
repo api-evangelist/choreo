@@ -23,7 +23,7 @@ paths:
   /usage:
     get:
       operationId: getAPIUsage
-      summary: Get API usage statistics
+      summary: Choreo Get API usage statistics
       description: >-
         Retrieve API usage statistics including request counts, success
         rates, and error rates for a given time range.
@@ -90,7 +90,7 @@ paths:
   /latency:
     get:
       operationId: getAPILatency
-      summary: Get API latency metrics
+      summary: Choreo Get API latency metrics
       description: >-
         Retrieve latency metrics for APIs including average, median,
         P95, and P99 latencies over a given time range.
@@ -144,7 +144,7 @@ paths:
   /errors:
     get:
       operationId: getAPIErrors
-      summary: Get API error analytics
+      summary: Choreo Get API error analytics
       description: >-
         Retrieve error analytics including error counts by status code,
         error categories, and error trends over time.
@@ -198,7 +198,7 @@ paths:
   /alerts:
     get:
       operationId: listAlerts
-      summary: List alerts
+      summary: Choreo List alerts
       description: Retrieve a list of alerts triggered for APIs and components.
       tags:
         - Alerts
@@ -256,7 +256,7 @@ paths:
   /logs:
     get:
       operationId: queryLogs
-      summary: Query component logs
+      summary: Choreo Query component logs
       description: >-
         Query logs for a specific component, useful for debugging and
         monitoring component behavior.

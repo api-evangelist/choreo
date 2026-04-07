@@ -23,7 +23,7 @@ paths:
   /apis:
     get:
       operationId: listPublishedAPIs
-      summary: List published APIs
+      summary: Choreo List published APIs
       description: >-
         Retrieve a list of published APIs available in the developer portal.
         Supports filtering by name, tags, and type.
@@ -79,7 +79,7 @@ paths:
   /apis/{apiId}:
     get:
       operationId: getPublishedAPI
-      summary: Get a published API
+      summary: Choreo Get a published API
       description: Retrieve details of a specific published API including its documentation and endpoints.
       tags:
         - APIs
@@ -102,7 +102,7 @@ paths:
   /apis/{apiId}/definition:
     get:
       operationId: getAPIDefinition
-      summary: Get API definition
+      summary: Choreo Get API definition
       description: >-
         Retrieve the OpenAPI or other specification definition for a
         published API.
@@ -130,7 +130,7 @@ paths:
   /apis/{apiId}/documents:
     get:
       operationId: listAPIDocuments
-      summary: List API documents
+      summary: Choreo List API documents
       description: Retrieve documentation associated with a published API.
       tags:
         - APIs
@@ -156,7 +156,7 @@ paths:
   /applications:
     get:
       operationId: listApplications
-      summary: List applications
+      summary: Choreo List applications
       description: >-
         Retrieve a list of applications owned by the authenticated user.
         An application in Choreo is a logical representation of a physical
@@ -192,7 +192,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createApplication
-      summary: Create an application
+      summary: Choreo Create an application
       description: >-
         Create a new application to subscribe to APIs and generate
         credentials.
@@ -218,7 +218,7 @@ paths:
   /applications/{applicationId}:
     get:
       operationId: getApplication
-      summary: Get an application
+      summary: Choreo Get an application
       description: Retrieve details of a specific application.
       tags:
         - Applications
@@ -241,7 +241,7 @@ paths:
           description: Application not found.
     put:
       operationId: updateApplication
-      summary: Update an application
+      summary: Choreo Update an application
       description: Update details of an existing application.
       tags:
         - Applications
@@ -270,7 +270,7 @@ paths:
           description: Unauthorized.
     delete:
       operationId: deleteApplication
-      summary: Delete an application
+      summary: Choreo Delete an application
       description: Delete an application and all its subscriptions.
       tags:
         - Applications
@@ -290,7 +290,7 @@ paths:
   /applications/{applicationId}/keys:
     post:
       operationId: generateKeys
-      summary: Generate application keys
+      summary: Choreo Generate application keys
       description: >-
         Generate OAuth 2.0 consumer key and consumer secret for an
         application. The consumer key acts as the unique identifier
@@ -323,7 +323,7 @@ paths:
   /applications/{applicationId}/api-keys:
     post:
       operationId: generateAPIKey
-      summary: Generate an API key
+      summary: Choreo Generate an API key
       description: Generate an API key for an application to access subscribed APIs.
       tags:
         - Application Keys
@@ -353,7 +353,7 @@ paths:
   /subscriptions:
     get:
       operationId: listSubscriptions
-      summary: List subscriptions
+      summary: Choreo List subscriptions
       description: >-
         Retrieve a list of subscriptions. Can be filtered by application
         or API.
@@ -398,7 +398,7 @@ paths:
           description: Unauthorized.
     post:
       operationId: createSubscription
-      summary: Subscribe to an API
+      summary: Choreo Subscribe to an API
       description: >-
         Create a new subscription to an API through an application. A
         business plan must be selected which determines the rate limit.
@@ -424,7 +424,7 @@ paths:
   /subscriptions/{subscriptionId}:
     delete:
       operationId: deleteSubscription
-      summary: Unsubscribe from an API
+      summary: Choreo Unsubscribe from an API
       description: Remove a subscription to an API.
       tags:
         - Subscriptions
@@ -444,7 +444,7 @@ paths:
   /business-plans:
     get:
       operationId: listBusinessPlans
-      summary: List business plans
+      summary: Choreo List business plans
       description: >-
         Retrieve a list of available business plans that determine
         rate limits for API subscriptions.
