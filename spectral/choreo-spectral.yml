@@ -1,0 +1,48 @@
+extends:
+  - spectral:oas
+rules:
+  choreo-https-only:
+    description: Choreo APIs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+  choreo-info-contact:
+    description: Definitions must declare contact information.
+    severity: error
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+  choreo-oauth2-required:
+    description: All Choreo APIs must declare OAuth 2.0 security.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      field: oauth2
+      function: truthy
+  choreo-org-scoped-paths:
+    description: API operations should be scoped under an organization or project context.
+    severity: warn
+    given: $.paths[*]
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '/(orgs|organizations|projects|components|apis|applications|deployments|environments|builds|insights|subscriptions)'
+  choreo-operation-tags:
+    description: Operations should declare a tag (Organizations, Projects, Components, APIs, Builds, Deployments, etc.).
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: tags
+      function: truthy
+  choreo-operation-summary:
+    description: Operations must declare a summary.
+    severity: warn
+    given: $.paths[*][get,post,put,delete,patch]
+    then:
+      field: summary
+      function: truthy

@@ -1,0 +1,216 @@
+name: choreo-capabilities
+description: >-
+  Naftiko sandbox capabilities for the WSO2 Choreo internal developer
+  platform, covering API management (organizations, projects, components,
+  APIs, builds, deployments), the developer portal (applications,
+  subscriptions, credentials), and observability via the Insights API.
+provider: choreo
+version: '1.0'
+capabilities:
+  - id: choreo.organizations.list
+    name: List organizations
+    description: List Choreo organizations the user has access to.
+    operationId: listOrganizations
+    inputs: []
+    outputs:
+      - name: organizations
+        type: array
+    tags: [api-management, organizations]
+  - id: choreo.projects.list
+    name: List projects
+    description: List Choreo projects in an organization.
+    operationId: listProjects
+    inputs:
+      - name: orgId
+        type: string
+        required: true
+    outputs:
+      - name: projects
+        type: array
+    tags: [api-management, projects]
+  - id: choreo.projects.create
+    name: Create project
+    description: Create a new project in an organization.
+    operationId: createProject
+    inputs:
+      - name: orgId
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: description
+        type: string
+        required: false
+    outputs:
+      - name: project
+        type: object
+    tags: [api-management, projects]
+  - id: choreo.components.list
+    name: List components
+    description: List components within a project.
+    operationId: listComponents
+    inputs:
+      - name: projectId
+        type: string
+        required: true
+    outputs:
+      - name: components
+        type: array
+    tags: [api-management, components]
+  - id: choreo.components.create
+    name: Create component
+    description: Create a new component (service, web app, integration, etc.) in a project.
+    operationId: createComponent
+    inputs:
+      - name: projectId
+        type: string
+        required: true
+      - name: name
+        type: string
+        required: true
+      - name: repoUrl
+        type: string
+        required: true
+      - name: branch
+        type: string
+        required: false
+      - name: buildpackId
+        type: string
+        required: false
+    outputs:
+      - name: component
+        type: object
+    tags: [api-management, components]
+  - id: choreo.builds.trigger
+    name: Trigger build
+    description: Trigger a new build of a component.
+    operationId: triggerBuild
+    inputs:
+      - name: componentId
+        type: string
+        required: true
+      - name: commitHash
+        type: string
+        required: false
+    outputs:
+      - name: build
+        type: object
+    tags: [api-management, builds]
+  - id: choreo.deployments.deploy
+    name: Deploy component
+    description: Deploy a component to an environment.
+    operationId: deployComponent
+    inputs:
+      - name: componentId
+        type: string
+        required: true
+      - name: environmentId
+        type: string
+        required: true
+      - name: buildId
+        type: string
+        required: false
+    outputs:
+      - name: deployment
+        type: object
+    tags: [api-management, deployments]
+  - id: choreo.apis.publish
+    name: Publish API
+    description: Publish a managed API to the Choreo Developer Portal.
+    operationId: publishApi
+    inputs:
+      - name: componentId
+        type: string
+        required: true
+      - name: version
+        type: string
+        required: true
+      - name: visibility
+        type: string
+        required: false
+    outputs:
+      - name: api
+        type: object
+    tags: [api-management, apis, lifecycle]
+  - id: choreo.applications.create
+    name: Create application
+    description: Create a developer application in the Developer Portal for consuming APIs.
+    operationId: createApplication
+    inputs:
+      - name: name
+        type: string
+        required: true
+      - name: throttlingPolicy
+        type: string
+        required: false
+    outputs:
+      - name: application
+        type: object
+    tags: [developer-portal, applications]
+  - id: choreo.subscriptions.create
+    name: Subscribe to API
+    description: Subscribe an application to a published API.
+    operationId: createSubscription
+    inputs:
+      - name: applicationId
+        type: string
+        required: true
+      - name: apiId
+        type: string
+        required: true
+      - name: businessPlan
+        type: string
+        required: true
+    outputs:
+      - name: subscription
+        type: object
+    tags: [developer-portal, subscriptions]
+  - id: choreo.subscriptions.credentials
+    name: Generate credentials
+    description: Generate or rotate OAuth 2.0 client credentials for a subscription.
+    operationId: generateCredentials
+    inputs:
+      - name: applicationId
+        type: string
+        required: true
+      - name: keyType
+        type: string
+        required: true
+    outputs:
+      - name: credentials
+        type: object
+    tags: [developer-portal, oauth, credentials]
+  - id: choreo.insights.metrics
+    name: Get API metrics
+    description: Retrieve API usage and latency metrics from Choreo Insights.
+    operationId: getApiMetrics
+    inputs:
+      - name: apiId
+        type: string
+        required: true
+      - name: startTime
+        type: string
+        required: false
+      - name: endTime
+        type: string
+        required: false
+    outputs:
+      - name: metrics
+        type: object
+    tags: [insights, observability, metrics]
+  - id: choreo.insights.logs
+    name: Get API logs
+    description: Retrieve runtime logs for a deployed API or component.
+    operationId: getApiLogs
+    inputs:
+      - name: componentId
+        type: string
+        required: true
+      - name: environmentId
+        type: string
+        required: true
+    outputs:
+      - name: logs
+        type: array
+    tags: [insights, observability, logs]
