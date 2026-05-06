@@ -4,157 +4,227 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Choreo
 providerId: choreo
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - AI Apps
   - API Management
-  - CI/CD
   - Cloud Native
-  - DevOps
-  - Developer Portal
-  - FinOps
-  - IDE
   - Internal Developer Platform
   - Kubernetes
-  - Lifecycle
-  - Observability
-  - Orchestration
   - Platform Engineering
-  - Pro-Code API Composition
-  - Unified
   - WSO2
-  - Workflows
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: Choreo (WSO2) is a tiered Internal Developer Platform with Developer (free), Team (per-component
+  subscription), and Enterprise (custom) plans. The Developer and Team tiers include fixed per-month
+  build, deployment, request, log-volume, and infrastructure quotas; Enterprise is custom-priced and
+  passes infrastructure costs through. Free credits are available on Developer and during the first
+  six months of Team for users who sign up with a business email.
+sources:
+  - https://wso2.com/choreo/pricing/
 plans:
-  - id: choreo-free
-    name: Free
+  - id: choreo-developer
+    name: Developer
     type: freemium
-    description: Free entry tier for the Choreo API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Free entry tier — first five components free, with $100/month resource credits and
+      caps on builds, deployments, requests, and infrastructure.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: Components
+        name: components
         type: quota
-        metric: requests
-        limit: 1000
+        metric: component
+        limit: 5
         timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
+        price: '0'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Choreo API Management API
-      - name: Choreo Developer Portal API
-      - name: Choreo Insights API
-  - id: choreo-pro
-    name: Professional
-    type: paid
-    description: Production tier for Choreo. Provides higher quotas, priority support, and access to the
-      broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+      - label: Monthly resource credit
+        name: resource_credit
+        type: flat
+        metric: month
+        limit: 1
         timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: TBD
+        price: '$100 included credits'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
+      - label: Builds
+        name: builds
+        type: quota
+        metric: build
         limit: 100
-        timeFrame: minute
+        timeFrame: month
         geo: global
-        domains: []
         unit: 1
-        price: '0.00'
+        price: '0'
         userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Deployments
+        name: deployments
+        type: quota
+        metric: deployment
+        limit: 100
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+      - label: API requests
+        name: api_requests
+        type: quota
+        metric: request
+        limit: 2000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0'
+        userMultiplied: false
+      - label: Logs
+        name: logs
+        type: quota
+        metric: MB
+        limit: 50
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: 7-day retention
+        userMultiplied: false
+      - label: Infrastructure quota
+        name: infra_quota
+        type: quota
+        metric: varies
         limit: -1
         timeFrame: month
         geo: global
-        domains: []
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '5 vCPU / 16 GB RAM / 100 GB storage / 100 GB network'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Choreo API Management API
-      - name: Choreo Developer Portal API
-      - name: Choreo Insights API
+      - name: First 5 components free
+      - name: Public Choreo data plane
+      - name: Community support
+      - name: Configurable alerts (25)
+      - name: API tests (100)
+  - id: choreo-team
+    name: Team
+    type: subscription
+    description: Per-component subscription for production workloads. Higher build, deployment, and
+      request quotas; longer log retention; pass-through infrastructure once free credits are exhausted.
+    entries:
+      - label: Per component
+        name: component_subscription
+        type: subscription
+        metric: component
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '$150/component/month'
+        userMultiplied: false
+      - label: Six-month onboarding credit (business email)
+        name: onboarding_credit
+        type: flat
+        metric: usage
+        limit: 1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '5 components free for 6 months + $1,000 in credits'
+        userMultiplied: false
+      - label: Builds
+        name: builds
+        type: quota
+        metric: build
+        limit: 500
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Deployments
+        name: deployments
+        type: quota
+        metric: deployment
+        limit: 500
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: API requests
+        name: api_requests
+        type: quota
+        metric: request
+        limit: 5000000
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+      - label: Logs
+        name: logs
+        type: quota
+        metric: MB
+        limit: 500
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: 30-day retention
+        userMultiplied: false
+      - label: Infrastructure quota
+        name: infra_quota
+        type: quota
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '25 vCPU / 128 GB RAM / 500 GB storage / 500 GB network'
+        userMultiplied: false
+    elements:
+      - name: Unlimited developers, projects, and deployment tracks
+      - name: API tests (500)
+      - name: Configurable alerts (100)
+      - name: Standard support
   - id: choreo-enterprise
     name: Enterprise
     type: enterprise
-    description: Custom-negotiated tier for Choreo. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
+    description: Custom-priced plan with unlimited builds, deployments, and API requests, pass-through
+      infrastructure billing, support for Private Data Planes, and annual-commitment discounts.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
+      - label: Subscription
+        name: subscription
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: custom — discounts based on annual commitments
+        userMultiplied: false
+      - label: Builds, deployments, requests
+        name: usage
         type: quota
-        metric: requests
+        metric: varies
         limit: -1
         timeFrame: month
-        geo: configurable
-        domains: []
+        geo: global
         unit: 1
-        price: custom
+        price: unlimited
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
+      - label: Infrastructure
+        name: infrastructure
+        type: metered
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: global
         unit: 1
-        price: custom
+        price: pass-through
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Choreo API Management API
-      - name: Choreo Developer Portal API
-      - name: Choreo Insights API
+      - name: Private Data Planes
+      - name: Unlimited storage, logs, and alerts
+      - name: Premium support and SLAs
+      - name: Annual-commitment discounts
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -4,109 +4,64 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Choreo
 providerId: choreo
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - AI Apps
   - API Management
-  - CI/CD
   - Cloud Native
-  - DevOps
-  - Developer Portal
-  - FinOps
-  - IDE
-  - Internal Developer Platform
-  - Kubernetes
-  - Lifecycle
-  - Observability
-  - Orchestration
   - Platform Engineering
-  - Pro-Code API Composition
-  - Unified
-  - WSO2
-  - Workflows
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Choreo API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Choreo applies plan-level monthly request quotas (2M on Developer, up to 5M on Team,
+  unlimited on Enterprise) at the platform edge. In addition, customers configure per-API rate-limit
+  policies through Choreo API Management — these are user-defined throttling tiers (Bronze / Silver
+  / Gold or custom) attached to individual APIs and subscriptions, not global platform numbers. WSO2
+  does not publish a single per-second platform throttle; the practical RPS depends on the policy
+  attached to each API and the underlying gateway sizing.
+notes: Choreo does not publish a single per-second/per-minute platform-wide rate-limit number. Limits
+  are split between (a) the published monthly request quotas in the pricing page (captured here) and
+  (b) per-API throttling policies that customers configure inside Choreo API Management.
+sources:
+  - https://wso2.com/choreo/pricing/
+  - https://wso2.com/choreo/docs/
 responseCodes:
   throttled: 429
   quotaExceeded: 429
+  serverError: 500
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Choreo API Management API
-      - Choreo Developer Portal API
-      - Choreo Insights API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
+  - name: Developer plan monthly request cap
+    scope: organization
     metric: requests_per_month
-    limit: 1000
+    limit: 2000000
     timeFrame: month
-    applies:
-      - Choreo API Management API
-      - Choreo Developer Portal API
-      - Choreo Insights API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Choreo API Management API
-      - Choreo Developer Portal API
-      - Choreo Insights API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
+    notes: Hard cap on the free tier; further requests are throttled until the next billing cycle.
+  - name: Team plan monthly request cap
+    scope: organization
     metric: requests_per_month
-    limit: 100000
+    limit: 5000000
     timeFrame: month
-    applies:
-      - Choreo API Management API
-      - Choreo Developer Portal API
-      - Choreo Insights API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Choreo API Management API
-      - Choreo Developer Portal API
-      - Choreo Insights API
+    notes: Maximum included in the Team plan; pass-through pricing once exceeded.
+  - name: Enterprise plan
+    scope: organization
+    metric: requests_per_month
+    limit: -1
+    timeFrame: month
+    notes: Unlimited on Enterprise — bounded by the customer's negotiated infrastructure footprint.
+  - name: Per-API throttling policy
+    scope: api/subscription
+    metric: varies
+    limit: 'configurable per-API throttling tier (Bronze / Silver / Gold or custom)'
+    notes: Customers attach throttle policies to APIs and subscriptions; the policy defines requests
+      per minute / hour / day and is enforced at the Choreo gateway.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: On 429, retry with exponential backoff and jitter; honor Retry-After when present.
+  - name: Configurable Throttling
+    description: Use Choreo API Management throttling policies to set per-subscription and per-API
+      request ceilings rather than relying solely on the plan-level monthly cap.
+  - name: Soft vs Hard Caps
+    description: The plan-level monthly request quota is a hard cap on Developer / Team; per-API
+      throttling policies can be tuned without changing plan tier.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
