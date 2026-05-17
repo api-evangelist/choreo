@@ -1,6 +1,6 @@
 aid: choreo
 name: Choreo
-x-type: company
+kind: company
 description: >-
   WSO2 Choreo is an enterprise-grade Internal Developer Platform (IDP) and
   application orchestration platform that helps organizations build, deploy,
