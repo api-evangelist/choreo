@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Choreo API Management API — Environments
+  description: 'Choreo API Management API — Environments. 1 operations. Lead operation: Choreo List environments. Self-contained
+    Naftiko capability covering one Choreo business surface.'
+  tags:
+  - Choreo
+  - Environments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHOREO_API_KEY: CHOREO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: api-management-environments
+    baseUri: https://console.choreo.dev/api/v1
+    description: Choreo API Management API — Environments business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-orgId-environments
+      path: /organizations/{orgId}/environments
+      operations:
+      - name: listenvironments
+        method: GET
+        description: Choreo List environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization identifier.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CHOREO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: api-management-environments-rest
+    port: 8080
+    description: REST adapter for Choreo API Management API — Environments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/organizations/{orgid}/environments
+      name: organizations-orgid-environments
+      description: REST surface for organizations-orgId-environments.
+      operations:
+      - method: GET
+        name: listenvironments
+        description: Choreo List environments
+        call: api-management-environments.listenvironments
+        with:
+          orgId: rest.orgId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-management-environments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Choreo API Management API — Environments. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: choreo-list-environments
+      description: Choreo List environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-management-environments.listenvironments
+      with:
+        orgId: tools.orgId
+      outputParameters:
+      - type: object
+        mapping: $.

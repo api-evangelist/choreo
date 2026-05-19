@@ -1,0 +1,118 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Choreo Insights API — Usage
+  description: 'Choreo Insights API — Usage. 1 operations. Lead operation: Choreo Get API usage statistics. Self-contained
+    Naftiko capability covering one Choreo business surface.'
+  tags:
+  - Choreo
+  - Usage
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHOREO_API_KEY: CHOREO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: insights-usage
+    baseUri: https://console.choreo.dev/insights/api/v1
+    description: Choreo Insights API — Usage business capability. Self-contained, no shared references.
+    resources:
+    - name: usage
+      path: /usage
+      operations:
+      - name: getapiusage
+        method: GET
+        description: Choreo Get API usage statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: query
+          type: string
+          description: Organization identifier.
+          required: true
+        - name: apiId
+          in: query
+          type: string
+          description: Filter by specific API identifier.
+        - name: componentId
+          in: query
+          type: string
+          description: Filter by specific component identifier.
+        - name: environmentId
+          in: query
+          type: string
+          description: Filter by environment identifier.
+        - name: from
+          in: query
+          type: string
+          description: Start time for the query range.
+          required: true
+        - name: to
+          in: query
+          type: string
+          description: End time for the query range.
+          required: true
+        - name: granularity
+          in: query
+          type: string
+          description: Time granularity for aggregation.
+    authentication:
+      type: bearer
+      token: '{{env.CHOREO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: insights-usage-rest
+    port: 8080
+    description: REST adapter for Choreo Insights API — Usage. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/usage
+      name: usage
+      description: REST surface for usage.
+      operations:
+      - method: GET
+        name: getapiusage
+        description: Choreo Get API usage statistics
+        call: insights-usage.getapiusage
+        with:
+          orgId: rest.orgId
+          apiId: rest.apiId
+          componentId: rest.componentId
+          environmentId: rest.environmentId
+          from: rest.from
+          to: rest.to
+          granularity: rest.granularity
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: insights-usage-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Choreo Insights API — Usage. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: choreo-get-api-usage-statistics
+      description: Choreo Get API usage statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-usage.getapiusage
+      with:
+        orgId: tools.orgId
+        apiId: tools.apiId
+        componentId: tools.componentId
+        environmentId: tools.environmentId
+        from: tools.from
+        to: tools.to
+        granularity: tools.granularity
+      outputParameters:
+      - type: object
+        mapping: $.

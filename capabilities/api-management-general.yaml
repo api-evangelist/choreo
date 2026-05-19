@@ -1,0 +1,138 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Choreo API Management API
+  description: 'Choreo API Management API. 2 operations. Lead operation: Choreo List APIs. Self-contained Naftiko capability
+    covering one Choreo business surface.'
+  tags:
+  - Choreo
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHOREO_API_KEY: CHOREO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: api-management-general
+    baseUri: https://console.choreo.dev/api/v1
+    description: Choreo API Management API business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations-orgId-apis
+      path: /organizations/{orgId}/apis
+      operations:
+      - name: listapis
+        method: GET
+        description: Choreo List APIs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          description: Organization identifier.
+          required: true
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Number of results to skip.
+    - name: organizations-orgId-apis-apiId
+      path: /organizations/{orgId}/apis/{apiId}
+      operations:
+      - name: getapi
+        method: GET
+        description: Choreo Get API details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: path
+          type: string
+          required: true
+        - name: apiId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CHOREO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: api-management-general-rest
+    port: 8080
+    description: REST adapter for Choreo API Management API. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/organizations/{orgid}/apis
+      name: organizations-orgid-apis
+      description: REST surface for organizations-orgId-apis.
+      operations:
+      - method: GET
+        name: listapis
+        description: Choreo List APIs
+        call: api-management-general.listapis
+        with:
+          orgId: rest.orgId
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/{orgid}/apis/{apiid}
+      name: organizations-orgid-apis-apiid
+      description: REST surface for organizations-orgId-apis-apiId.
+      operations:
+      - method: GET
+        name: getapi
+        description: Choreo Get API details
+        call: api-management-general.getapi
+        with:
+          orgId: rest.orgId
+          apiId: rest.apiId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-management-general-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Choreo API Management API. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: choreo-list-apis
+      description: Choreo List APIs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-management-general.listapis
+      with:
+        orgId: tools.orgId
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: choreo-get-api-details
+      description: Choreo Get API details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-management-general.getapi
+      with:
+        orgId: tools.orgId
+        apiId: tools.apiId
+      outputParameters:
+      - type: object
+        mapping: $.

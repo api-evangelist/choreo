@@ -1,0 +1,103 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Choreo Insights API — Errors
+  description: 'Choreo Insights API — Errors. 1 operations. Lead operation: Choreo Get API error analytics. Self-contained
+    Naftiko capability covering one Choreo business surface.'
+  tags:
+  - Choreo
+  - Errors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHOREO_API_KEY: CHOREO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: insights-errors
+    baseUri: https://console.choreo.dev/insights/api/v1
+    description: Choreo Insights API — Errors business capability. Self-contained, no shared references.
+    resources:
+    - name: errors
+      path: /errors
+      operations:
+      - name: getapierrors
+        method: GET
+        description: Choreo Get API error analytics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: query
+          type: string
+          description: Organization identifier.
+          required: true
+        - name: apiId
+          in: query
+          type: string
+          description: Filter by specific API identifier.
+        - name: from
+          in: query
+          type: string
+          required: true
+        - name: to
+          in: query
+          type: string
+          required: true
+        - name: granularity
+          in: query
+          type: string
+    authentication:
+      type: bearer
+      token: '{{env.CHOREO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: insights-errors-rest
+    port: 8080
+    description: REST adapter for Choreo Insights API — Errors. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/errors
+      name: errors
+      description: REST surface for errors.
+      operations:
+      - method: GET
+        name: getapierrors
+        description: Choreo Get API error analytics
+        call: insights-errors.getapierrors
+        with:
+          orgId: rest.orgId
+          apiId: rest.apiId
+          from: rest.from
+          to: rest.to
+          granularity: rest.granularity
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: insights-errors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Choreo Insights API — Errors. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: choreo-get-api-error-analytics
+      description: Choreo Get API error analytics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-errors.getapierrors
+      with:
+        orgId: tools.orgId
+        apiId: tools.apiId
+        from: tools.from
+        to: tools.to
+        granularity: tools.granularity
+      outputParameters:
+      - type: object
+        mapping: $.

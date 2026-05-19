@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Choreo Insights API — Logs
+  description: 'Choreo Insights API — Logs. 1 operations. Lead operation: Choreo Query component logs. Self-contained Naftiko
+    capability covering one Choreo business surface.'
+  tags:
+  - Choreo
+  - Logs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CHOREO_API_KEY: CHOREO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: insights-logs
+    baseUri: https://console.choreo.dev/insights/api/v1
+    description: Choreo Insights API — Logs business capability. Self-contained, no shared references.
+    resources:
+    - name: logs
+      path: /logs
+      operations:
+      - name: querylogs
+        method: GET
+        description: Choreo Query component logs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: orgId
+          in: query
+          type: string
+          description: Organization identifier.
+          required: true
+        - name: componentId
+          in: query
+          type: string
+          description: Component identifier.
+          required: true
+        - name: environmentId
+          in: query
+          type: string
+          description: Environment identifier.
+          required: true
+        - name: from
+          in: query
+          type: string
+          required: true
+        - name: to
+          in: query
+          type: string
+          required: true
+        - name: query
+          in: query
+          type: string
+          description: Log search query.
+        - name: level
+          in: query
+          type: string
+          description: Filter by log level.
+        - name: limit
+          in: query
+          type: integer
+    authentication:
+      type: bearer
+      token: '{{env.CHOREO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: insights-logs-rest
+    port: 8080
+    description: REST adapter for Choreo Insights API — Logs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/logs
+      name: logs
+      description: REST surface for logs.
+      operations:
+      - method: GET
+        name: querylogs
+        description: Choreo Query component logs
+        call: insights-logs.querylogs
+        with:
+          orgId: rest.orgId
+          componentId: rest.componentId
+          environmentId: rest.environmentId
+          from: rest.from
+          to: rest.to
+          query: rest.query
+          level: rest.level
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: insights-logs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Choreo Insights API — Logs. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: choreo-query-component-logs
+      description: Choreo Query component logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: insights-logs.querylogs
+      with:
+        orgId: tools.orgId
+        componentId: tools.componentId
+        environmentId: tools.environmentId
+        from: tools.from
+        to: tools.to
+        query: tools.query
+        level: tools.level
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
