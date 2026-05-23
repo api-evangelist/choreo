@@ -168,6 +168,9 @@ common:
   url: https://wso2.com/choreo/pricing/
 - type: Blog
   url: https://medium.com/choreo-tech-blog
+- url: https://medium.com/feed/choreo-tech-blog
+  type: BlogRSS
+  description: Discovered RSS/Atom feed for https://medium.com/choreo-tech-blog
 - type: Discord
   url: https://discord.com/invite/wso2
 - type: ParentCompany
