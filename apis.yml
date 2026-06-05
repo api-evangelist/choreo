@@ -1,13 +1,15 @@
 aid: choreo
 name: Choreo
 kind: company
-description: WSO2 Choreo is an enterprise-grade Internal Developer Platform (IDP) and application orchestration platform that
-  helps organizations build, deploy, manage, and observe APIs, microservices, integrations, and AI applications across multi-cloud
-  Kubernetes infrastructure (AWS, Azure, GCP, Vultr, or upstream Kubernetes). Choreo combines API management, CI/CD, GitOps,
-  observability, FinOps, and platform engineering into a single AI-guided experience. Developers connect Git repos and deploy
-  instantly, while platform teams use Choreo to enforce security, governance, and compliance with PCI DSS and SOC 2 Type 2
-  certifications. The platform orchestrates CNCF tools including Kubernetes, Argo CD, Cilium, Envoy, Helm, Prometheus, OpenSearch,
-  Flux, and KEDA, and exposes APIs for API management, developer portal/marketplace consumption, and observability insights.
+description: >-
+  WSO2 Choreo is an enterprise-grade Internal Developer Platform (IDP) and application orchestration platform that helps
+  organizations build, deploy, manage, and observe APIs, microservices, integrations, and AI applications across
+  multi-cloud Kubernetes infrastructure (AWS, Azure, GCP, Vultr, or upstream Kubernetes). Choreo combines API
+  management, CI/CD, GitOps, observability, FinOps, and platform engineering into a single AI-guided experience.
+  Developers connect Git repos and deploy instantly, while platform teams use Choreo to enforce security, governance,
+  and compliance with PCI DSS and SOC 2 Type 2 certifications. The platform orchestrates CNCF tools including
+  Kubernetes, Argo CD, Cilium, Envoy, Helm, Prometheus, OpenSearch, Flux, and KEDA, and exposes APIs for API management,
+  developer portal/marketplace consumption, and observability insights.
 url: https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/apis.yml
 type: Index
 position: Consumer
@@ -38,8 +40,9 @@ specificationVersion: '0.20'
 apis:
 - aid: choreo:api-management
   name: Choreo API Management API
-  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2
-    Choreo platform. It allows API creators to create, publish, version, and manage APIs, manage organizations, projects,
+  description: >-
+    The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo
+    platform. It allows API creators to create, publish, version, and manage APIs, manage organizations, projects,
     components, builds, and deployments.
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   humanURL: https://wso2.com/choreo/docs/
@@ -70,25 +73,14 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: NaftikoCapability
-    url: capabilities/api-management-general.yaml
-  - type: NaftikoCapability
-    url: capabilities/api-management-builds.yaml
-  - type: NaftikoCapability
-    url: capabilities/api-management-components.yaml
-  - type: NaftikoCapability
-    url: capabilities/api-management-deployments.yaml
-  - type: NaftikoCapability
-    url: capabilities/api-management-environments.yaml
-  - type: NaftikoCapability
-    url: capabilities/api-management-organizations.yaml
-  - type: NaftikoCapability
-    url: capabilities/api-management-projects.yaml
+  - url: graphql/choreo-graphql.md
+    type: GraphQL
 - aid: choreo:developer-portal
   name: Choreo Developer Portal API
-  description: The Choreo Developer Portal API enables API consumers to discover, evaluate, subscribe to, and consume APIs
-    hosted on the Choreo platform. It provides access to the API marketplace, application management, subscription management,
-    and credential generation for OAuth 2.0 and API key based authentication.
+  description: >-
+    The Choreo Developer Portal API enables API consumers to discover, evaluate, subscribe to, and consume APIs hosted
+    on the Choreo platform. It provides access to the API marketplace, application management, subscription
+    management, and credential generation for OAuth 2.0 and API key based authentication.
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   humanURL: https://devportal.choreo.dev/
   tags:
@@ -107,21 +99,12 @@ apis:
     url: json-schema/choreo-application.json
   - type: JSONSchema
     url: json-schema/choreo-subscription.json
-  - type: NaftikoCapability
-    url: capabilities/developer-portal-general.yaml
-  - type: NaftikoCapability
-    url: capabilities/developer-portal-application-keys.yaml
-  - type: NaftikoCapability
-    url: capabilities/developer-portal-applications.yaml
-  - type: NaftikoCapability
-    url: capabilities/developer-portal-business-plans.yaml
-  - type: NaftikoCapability
-    url: capabilities/developer-portal-subscriptions.yaml
 - aid: choreo:insights
   name: Choreo Insights API
-  description: The Choreo Insights API provides access to observability, monitoring, and analytics data for APIs and components
-    deployed on the Choreo platform. It enables users to programmatically retrieve usage statistics, latency metrics, error
-    analytics, and operational insights.
+  description: >-
+    The Choreo Insights API provides access to observability, monitoring, and analytics data for APIs and components
+    deployed on the Choreo platform. It enables users to programmatically retrieve usage statistics, latency metrics,
+    error analytics, and operational insights.
   image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
   humanURL: https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
   tags:
@@ -133,19 +116,10 @@ apis:
   - Observability
   properties:
   - type: Documentation
-    url: https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
   - type: OpenAPI
     url: openapi/choreo-insights-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/insights-alerts.yaml
-  - type: NaftikoCapability
-    url: capabilities/insights-errors.yaml
-  - type: NaftikoCapability
-    url: capabilities/insights-latency.yaml
-  - type: NaftikoCapability
-    url: capabilities/insights-logs.yaml
-  - type: NaftikoCapability
-    url: capabilities/insights-usage.yaml
 common:
 - type: LinkedIn
   url: https://www.linkedin.com/company/choreo-advisors
@@ -190,8 +164,6 @@ common:
   url: json-ld/choreo-context.jsonld
 - type: Spectral
   url: spectral/choreo-spectral.yml
-- type: NaftikoCapabilities
-  url: naftiko/choreo-capabilities.yml
 - name: Features
   type: Features
   data:
