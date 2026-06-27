@@ -135,7 +135,7 @@ common:
 - type: Login
   name: Choreo Console Login
   url: https://console.choreo.dev/login
-- type: SignUp
+- type: Signup
   name: Choreo Console Signup
   url: https://console.choreo.dev/signup
 - type: Pricing
