@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/choreo-api-management-openapi.yml, openapi/choreo-developer-portal-openapi.yml,
+  openapi/choreo-insights-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://console.choreo.dev/oauth2/authorize
+    tokenUrl: https://console.choreo.dev/oauth2/token
+    scopes: 2
+  sources:
+  - openapi/choreo-api-management-openapi.yml
+  - openapi/choreo-developer-portal-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/choreo-api-management-openapi.yml
+  - openapi/choreo-developer-portal-openapi.yml
+  - openapi/choreo-insights-openapi.yml
