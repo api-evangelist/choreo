@@ -121,6 +121,8 @@ apis:
   - type: OpenAPI
     url: openapi/choreo-insights-openapi.yml
 common:
+- type: AgenticAccess
+  url: agentic-access/choreo-agentic-access.yml
 - type: TrustCenter
   url: security/choreo-trust-center.yml
 - type: VulnerabilityDisclosure
