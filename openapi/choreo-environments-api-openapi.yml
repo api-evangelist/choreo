@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Environments API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Environments
+  description: Manage deployment environments.
+paths:
+  /organizations/{orgId}/environments:
+    get:
+      operationId: listEnvironments
+      summary: Choreo List environments
+      description: Retrieve a list of environments configured for the organization (e.g., Development, Staging, Production).
+      tags:
+      - Environments
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Organization identifier.
+      responses:
+        '200':
+          description: Successful response with list of environments.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Environment'
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    Environment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the environment.
+        name:
+          type: string
+          description: Name of the environment.
+        type:
+          type: string
+          enum:
+          - Development
+          - Staging
+          - Production
+          description: Type of environment.
+        isDefault:
+          type: boolean
+        orgId:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

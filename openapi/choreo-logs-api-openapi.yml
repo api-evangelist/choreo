@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Logs API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Logs
+  description: Component log querying and monitoring.
+paths:
+  /logs:
+    get:
+      operationId: queryLogs
+      summary: Choreo Query component logs
+      description: Query logs for a specific component, useful for debugging and monitoring component behavior.
+      tags:
+      - Logs
+      parameters:
+      - name: orgId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Organization identifier.
+      - name: componentId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Component identifier.
+      - name: environmentId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Environment identifier.
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: query
+        in: query
+        schema:
+          type: string
+        description: Log search query.
+      - name: level
+        in: query
+        schema:
+          type: string
+          enum:
+          - ERROR
+          - WARN
+          - INFO
+          - DEBUG
+        description: Filter by log level.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: Successful response with log entries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LogEntry'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    LogEntry:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        level:
+          type: string
+          enum:
+          - ERROR
+          - WARN
+          - INFO
+          - DEBUG
+        message:
+          type: string
+        componentId:
+          type: string
+        environmentId:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

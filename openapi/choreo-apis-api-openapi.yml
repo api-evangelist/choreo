@@ -1,0 +1,256 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Apis API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Apis
+paths:
+  /apis:
+    get:
+      operationId: listPublishedAPIs
+      summary: Choreo List published APIs
+      description: Retrieve a list of published APIs available in the developer portal. Supports filtering by name, tags, and type.
+      tags:
+      - Apis
+      parameters:
+      - name: query
+        in: query
+        schema:
+          type: string
+        description: Search query to filter APIs by name or description.
+      - name: tag
+        in: query
+        schema:
+          type: string
+        description: Filter APIs by tag.
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum:
+          - REST
+          - GraphQL
+          - gRPC
+          - WebSocket
+        description: Filter APIs by type.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 25
+        description: Maximum number of results.
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Number of results to skip.
+      responses:
+        '200':
+          description: Successful response with list of published APIs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PublishedAPI'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+  /apis/{apiId}:
+    get:
+      operationId: getPublishedAPI
+      summary: Choreo Get a published API
+      description: Retrieve details of a specific published API including its documentation and endpoints.
+      tags:
+      - Apis
+      parameters:
+      - name: apiId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: API identifier.
+      responses:
+        '200':
+          description: Successful response with API details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishedAPI'
+        '404':
+          description: API not found.
+  /apis/{apiId}/definition:
+    get:
+      operationId: getAPIDefinition
+      summary: Choreo Get API definition
+      description: Retrieve the OpenAPI or other specification definition for a published API.
+      tags:
+      - Apis
+      parameters:
+      - name: apiId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: API identifier.
+      responses:
+        '200':
+          description: Successful response with API definition.
+          content:
+            application/json:
+              schema:
+                type: object
+            application/yaml:
+              schema:
+                type: string
+        '404':
+          description: API not found.
+  /apis/{apiId}/documents:
+    get:
+      operationId: listAPIDocuments
+      summary: Choreo List API documents
+      description: Retrieve documentation associated with a published API.
+      tags:
+      - Apis
+      parameters:
+      - name: apiId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: API identifier.
+      responses:
+        '200':
+          description: Successful response with list of documents.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Document'
+components:
+  schemas:
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Document identifier.
+        name:
+          type: string
+          description: Document name.
+        type:
+          type: string
+          enum:
+          - HOWTO
+          - SAMPLES
+          - PUBLIC_FORUM
+          - SUPPORT_FORUM
+          - API_MESSAGE_FORMAT
+          - OTHER
+          description: Document type.
+        summary:
+          type: string
+          description: Brief summary of the document.
+        sourceType:
+          type: string
+          enum:
+          - INLINE
+          - URL
+          - FILE
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
+    PublishedAPI:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the API.
+        name:
+          type: string
+          description: Name of the API.
+        description:
+          type: string
+          description: Description of the API.
+        version:
+          type: string
+          description: Version of the API.
+        context:
+          type: string
+          description: Context path of the API.
+        type:
+          type: string
+          enum:
+          - REST
+          - GraphQL
+          - gRPC
+          - WebSocket
+          description: Type of the API.
+        provider:
+          type: string
+          description: Provider of the API.
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags associated with the API.
+        endpointUrl:
+          type: string
+          description: Gateway endpoint URL for the API.
+        authType:
+          type: string
+          enum:
+          - OAuth2
+          - APIKey
+          - None
+          description: Authentication type.
+        businessPlans:
+          type: array
+          items:
+            type: string
+          description: Available business plans.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

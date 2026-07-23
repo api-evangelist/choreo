@@ -1,0 +1,142 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Alerts
+  description: Monitoring alerts for APIs and components.
+paths:
+  /alerts:
+    get:
+      operationId: listAlerts
+      summary: Choreo List alerts
+      description: Retrieve a list of alerts triggered for APIs and components.
+      tags:
+      - Alerts
+      parameters:
+      - name: orgId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Organization identifier.
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - Active
+          - Resolved
+          - Acknowledged
+        description: Filter by alert status.
+      - name: severity
+        in: query
+        schema:
+          type: string
+          enum:
+          - Critical
+          - Warning
+          - Info
+        description: Filter by severity.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 25
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response with list of alerts.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+    Alert:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the alert.
+        name:
+          type: string
+          description: Alert name.
+        description:
+          type: string
+          description: Alert description.
+        severity:
+          type: string
+          enum:
+          - Critical
+          - Warning
+          - Info
+        status:
+          type: string
+          enum:
+          - Active
+          - Resolved
+          - Acknowledged
+        apiId:
+          type: string
+        componentId:
+          type: string
+        triggeredAt:
+          type: string
+          format: date-time
+        resolvedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

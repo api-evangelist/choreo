@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Latency API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Latency
+  description: API latency and performance metrics.
+paths:
+  /latency:
+    get:
+      operationId: getAPILatency
+      summary: Choreo Get API latency metrics
+      description: Retrieve latency metrics for APIs including average, median, P95, and P99 latencies over a given time range.
+      tags:
+      - Latency
+      parameters:
+      - name: orgId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Organization identifier.
+      - name: apiId
+        in: query
+        schema:
+          type: string
+        description: Filter by specific API identifier.
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: granularity
+        in: query
+        schema:
+          type: string
+          enum:
+          - 1m
+          - 5m
+          - 1h
+          - 1d
+          default: 1h
+      responses:
+        '200':
+          description: Successful response with latency metrics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatencyResponse'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    LatencyResponse:
+      type: object
+      properties:
+        averageLatency:
+          type: number
+          format: float
+          description: Average latency in milliseconds.
+        medianLatency:
+          type: number
+          format: float
+          description: Median (P50) latency in milliseconds.
+        p95Latency:
+          type: number
+          format: float
+          description: 95th percentile latency in milliseconds.
+        p99Latency:
+          type: number
+          format: float
+          description: 99th percentile latency in milliseconds.
+        timeSeries:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              averageLatency:
+                type: number
+                format: float
+              p95Latency:
+                type: number
+                format: float
+              p99Latency:
+                type: number
+                format: float
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

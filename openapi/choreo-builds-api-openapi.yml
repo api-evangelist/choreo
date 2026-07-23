@@ -1,0 +1,153 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Builds API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Builds
+  description: Manage builds for components.
+paths:
+  /organizations/{orgId}/projects/{projectId}/components/{componentId}/builds:
+    get:
+      operationId: listBuilds
+      summary: Choreo List builds
+      description: Retrieve a list of builds for a component.
+      tags:
+      - Builds
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: componentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with list of builds.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Build'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createBuild
+      summary: Choreo Trigger a build
+      description: Trigger a new build for a component.
+      tags:
+      - Builds
+      parameters:
+      - name: orgId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: componentId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuildCreate'
+      responses:
+        '201':
+          description: Build triggered successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Build'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    BuildCreate:
+      type: object
+      properties:
+        branch:
+          type: string
+          description: Git branch to build from.
+        commitHash:
+          type: string
+          description: Specific commit hash to build.
+    Build:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the build.
+        componentId:
+          type: string
+        status:
+          type: string
+          enum:
+          - Pending
+          - InProgress
+          - Success
+          - Failed
+          - Cancelled
+        commitHash:
+          type: string
+          description: Git commit hash.
+        branch:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

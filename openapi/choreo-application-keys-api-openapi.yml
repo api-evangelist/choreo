@@ -1,0 +1,163 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Application Keys API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Application Keys
+  description: Generate OAuth 2.0 and API key credentials.
+paths:
+  /applications/{applicationId}/keys:
+    post:
+      operationId: generateKeys
+      summary: Choreo Generate application keys
+      description: Generate OAuth 2.0 consumer key and consumer secret for an application. The consumer key acts as the unique identifier for the application and is used for authentication.
+      tags:
+      - Application Keys
+      parameters:
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeyGenerateRequest'
+      responses:
+        '200':
+          description: Keys generated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationKeys'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /applications/{applicationId}/api-keys:
+    post:
+      operationId: generateAPIKey
+      summary: Choreo Generate an API key
+      description: Generate an API key for an application to access subscribed APIs.
+      tags:
+      - Application Keys
+      parameters:
+      - name: applicationId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APIKeyGenerateRequest'
+      responses:
+        '200':
+          description: API key generated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIKey'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    KeyGenerateRequest:
+      type: object
+      required:
+      - keyType
+      - grantTypes
+      properties:
+        keyType:
+          type: string
+          enum:
+          - PRODUCTION
+          - SANDBOX
+          description: The type of key.
+        grantTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - client_credentials
+            - authorization_code
+            - refresh_token
+            - password
+          description: Supported grant types.
+        callbackUrl:
+          type: string
+          description: Callback URL for authorization code grant.
+        validityTime:
+          type: integer
+          description: Validity time of the access token in seconds.
+    ApplicationKeys:
+      type: object
+      properties:
+        consumerKey:
+          type: string
+          description: Consumer key (client ID).
+        consumerSecret:
+          type: string
+          description: Consumer secret (client secret).
+        keyType:
+          type: string
+          enum:
+          - PRODUCTION
+          - SANDBOX
+        supportedGrantTypes:
+          type: array
+          items:
+            type: string
+    APIKeyGenerateRequest:
+      type: object
+      properties:
+        validityPeriod:
+          type: integer
+          description: Validity period of the API key in seconds.
+          default: 3600
+    APIKey:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: Generated API key value.
+        validityTime:
+          type: integer
+          description: Validity time in seconds.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

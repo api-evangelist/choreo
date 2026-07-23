@@ -1,0 +1,179 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Subscriptions API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Subscriptions
+  description: Manage API subscriptions.
+paths:
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      summary: Choreo List subscriptions
+      description: Retrieve a list of subscriptions. Can be filtered by application or API.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: applicationId
+        in: query
+        schema:
+          type: string
+        description: Filter by application identifier.
+      - name: apiId
+        in: query
+        schema:
+          type: string
+        description: Filter by API identifier.
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 25
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Successful response with list of subscriptions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          description: Unauthorized.
+    post:
+      operationId: createSubscription
+      summary: Choreo Subscribe to an API
+      description: Create a new subscription to an API through an application. A business plan must be selected which determines the rate limit.
+      tags:
+      - Subscriptions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionCreate'
+      responses:
+        '201':
+          description: Subscription created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+  /subscriptions/{subscriptionId}:
+    delete:
+      operationId: deleteSubscription
+      summary: Choreo Unsubscribe from an API
+      description: Remove a subscription to an API.
+      tags:
+      - Subscriptions
+      parameters:
+      - name: subscriptionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Subscription removed successfully.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Subscription not found.
+components:
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
+    SubscriptionCreate:
+      type: object
+      required:
+      - applicationId
+      - apiId
+      - businessPlan
+      properties:
+        applicationId:
+          type: string
+          description: Application identifier.
+        apiId:
+          type: string
+          description: API identifier.
+        businessPlan:
+          type: string
+          description: Business plan to subscribe under. Determines rate limit for the subscription.
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the subscription.
+        applicationId:
+          type: string
+          description: Application identifier.
+        apiId:
+          type: string
+          description: API identifier.
+        businessPlan:
+          type: string
+          description: Business plan for the subscription.
+        status:
+          type: string
+          enum:
+          - UNBLOCKED
+          - BLOCKED
+          - PROD_ONLY_BLOCKED
+          description: Status of the subscription.
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

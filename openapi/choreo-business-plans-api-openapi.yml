@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Business Plans API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Business Plans
+  description: View available business plans for API subscriptions.
+paths:
+  /business-plans:
+    get:
+      operationId: listBusinessPlans
+      summary: Choreo List business plans
+      description: Retrieve a list of available business plans that determine rate limits for API subscriptions.
+      tags:
+      - Business Plans
+      parameters:
+      - name: apiId
+        in: query
+        schema:
+          type: string
+        description: Filter business plans available for a specific API.
+      responses:
+        '200':
+          description: Successful response with list of business plans.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BusinessPlan'
+components:
+  schemas:
+    BusinessPlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Plan identifier.
+        name:
+          type: string
+          description: Name of the business plan.
+        description:
+          type: string
+          description: Description of the plan.
+        requestsPerMinute:
+          type: integer
+          description: Number of requests allowed per minute.
+        isDefault:
+          type: boolean
+          description: Whether this is the default plan.
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

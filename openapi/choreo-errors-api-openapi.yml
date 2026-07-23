@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: Choreo API Management Alerts Errors API
+  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  version: 1.0.0
+  contact:
+    name: WSO2 Choreo
+    url: https://choreo.dev/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  x-provider-slug: choreo
+  x-api-slug: api-management
+servers:
+- url: https://console.choreo.dev/api/v1
+  description: Choreo Console API
+security:
+- bearerAuth: []
+- oauth2:
+  - read
+  - write
+tags:
+- name: Errors
+  description: API error analytics and diagnostics.
+paths:
+  /errors:
+    get:
+      operationId: getAPIErrors
+      summary: Choreo Get API error analytics
+      description: Retrieve error analytics including error counts by status code, error categories, and error trends over time.
+      tags:
+      - Errors
+      parameters:
+      - name: orgId
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Organization identifier.
+      - name: apiId
+        in: query
+        schema:
+          type: string
+        description: Filter by specific API identifier.
+      - name: from
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date-time
+      - name: granularity
+        in: query
+        schema:
+          type: string
+          enum:
+          - 1m
+          - 5m
+          - 1h
+          - 1d
+          default: 1h
+      responses:
+        '200':
+          description: Successful response with error analytics.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '400':
+          description: Bad request.
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        totalErrors:
+          type: integer
+          description: Total number of errors.
+        errorsByStatusCode:
+          type: array
+          items:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+              count:
+                type: integer
+          description: Error breakdown by HTTP status code.
+        errorsByCategory:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+                enum:
+                - Authentication
+                - Throttling
+                - Backend
+                - Gateway
+                - Other
+              count:
+                type: integer
+          description: Error breakdown by category.
+        timeSeries:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: string
+                format: date-time
+              errors:
+                type: integer
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://console.choreo.dev/oauth2/authorize
+          tokenUrl: https://console.choreo.dev/oauth2/token
+          scopes:
+            read: Read access
+            write: Write access
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
