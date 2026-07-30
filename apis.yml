@@ -12,9 +12,22 @@ description: >-
   developer portal/marketplace consumption, and observability insights.
 url: https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/apis.yml
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/choreo.png
 tags:
 - AI Apps
 - API Management
@@ -38,27 +51,17 @@ created: '2025-06-05'
 modified: '2026-05-19'
 specificationVersion: '0.20'
 apis:
-- aid: choreo:api-management
-  name: Choreo API Management API
-  description: >-
-    The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo
-    platform. It allows API creators to create, publish, version, and manage APIs, manage organizations, projects,
-    components, builds, and deployments.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: choreo:choreo-alerts-api
+  name: Choreo Alerts API
+  description: Monitoring alerts for APIs and components.
   humanURL: https://wso2.com/choreo/docs/
   tags:
-  - API Management
-  - Builds
-  - Components
-  - Deployments
-  - Lifecycle
-  - Organizations
-  - Projects
+  - Alerts
   properties:
+  - type: OpenAPI
+    url: openapi/choreo-alerts-api-openapi.yml
   - type: Documentation
     url: https://wso2.com/choreo/docs/
-  - type: OpenAPI
-    url: openapi/choreo-api-management-openapi.yml
   - type: JSONSchema
     url: json-schema/choreo-organization.json
   - type: JSONSchema
@@ -73,54 +76,560 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - url: graphql/choreo-graphql.md
-    type: GraphQL
-- aid: choreo:developer-portal
-  name: Choreo Developer Portal API
-  description: >-
-    The Choreo Developer Portal API enables API consumers to discover, evaluate, subscribe to, and consume APIs hosted
-    on the Choreo platform. It provides access to the API marketplace, application management, subscription
-    management, and credential generation for OAuth 2.0 and API key based authentication.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://devportal.choreo.dev/
-  tags:
-  - API Keys
-  - API Marketplace
-  - Applications
-  - Developer Portal
-  - OAuth
-  - Subscriptions
-  properties:
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
-  - type: OpenAPI
-    url: openapi/choreo-developer-portal-openapi.yml
   - type: JSONSchema
     url: json-schema/choreo-application.json
   - type: JSONSchema
     url: json-schema/choreo-subscription.json
-- aid: choreo:insights
-  name: Choreo Insights API
-  description: >-
-    The Choreo Insights API provides access to observability, monitoring, and analytics data for APIs and components
-    deployed on the Choreo platform. It enables users to programmatically retrieve usage statistics, latency metrics,
-    error analytics, and operational insights.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
-  tags:
-  - Alerts
-  - Analytics
-  - Logs
-  - Metrics
-  - Monitoring
-  - Observability
-  properties:
   - type: Documentation
     url: >-
       https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-apis-api
+  name: Choreo Apis API
+  description: The Apis API from Choreo — 4 operation(s) for apis.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Apis
+  properties:
   - type: OpenAPI
-    url: openapi/choreo-insights-openapi.yml
+    url: openapi/choreo-apis-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-application-keys-api
+  name: Choreo Application Keys API
+  description: Generate OAuth 2.0 and API key credentials.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Application Keys
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-application-keys-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-applications-api
+  name: Choreo Applications API
+  description: Manage applications for API consumption.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Applications
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-applications-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-builds-api
+  name: Choreo Builds API
+  description: Manage builds for components.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Builds
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-builds-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-business-plans-api
+  name: Choreo Business Plans API
+  description: View available business plans for API subscriptions.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Business Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-business-plans-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-components-api
+  name: Choreo Components API
+  description: Manage components (services, APIs, web apps, jobs) within projects.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Components
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-components-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-deployments-api
+  name: Choreo Deployments API
+  description: Manage deployments to environments.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-deployments-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-environments-api
+  name: Choreo Environments API
+  description: Manage deployment environments.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Environments
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-environments-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-errors-api
+  name: Choreo Errors API
+  description: API error analytics and diagnostics.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Errors
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-errors-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-latency-api
+  name: Choreo Latency API
+  description: API latency and performance metrics.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Latency
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-latency-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-logs-api
+  name: Choreo Logs API
+  description: Component log querying and monitoring.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-logs-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-organizations-api
+  name: Choreo Organizations API
+  description: Manage organizations.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-projects-api
+  name: Choreo Projects API
+  description: Manage projects within organizations.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-projects-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-subscriptions-api
+  name: Choreo Subscriptions API
+  description: Manage API subscriptions.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-usage-api
+  name: Choreo Usage API
+  description: API usage statistics and request metrics.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Usage
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-usage-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/choreo/overview
 - type: AgenticAccess
   url: agentic-access/choreo-agentic-access.yml
 - type: TrustCenter
