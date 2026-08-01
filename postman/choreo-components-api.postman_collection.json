@@ -1,0 +1,936 @@
+{
+  "info": {
+    "_postman_id": "df7e9ed1-55de-4750-911c-97f04adaa894",
+    "name": "Choreo API Management Alerts Components API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:34.000Z",
+    "updatedAt": "2026-07-28T01:20:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-df7e9ed1-55de-4750-911c-97f04adaa894"
+  },
+  "item": [
+    {
+      "name": "organizations",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "projects",
+              "item": [
+                {
+                  "name": "{projectId}",
+                  "item": [
+                    {
+                      "name": "components",
+                      "item": [
+                        {
+                          "name": "{componentId}",
+                          "item": [
+                            {
+                              "name": "Choreo Get a component",
+                              "id": "9a6773fe-4e60-44e4-bfaf-88315663ef7e",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components",
+                                    ":componentId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "121f13f4-42fe-4fda-902e-cb97b7a28d09",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "eaf5c485-edad-4bb8-80df-1419d7a0a581",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "3bc11fd2-3454-4489-ba50-1fa5479ba521",
+                                      "key": "componentId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Retrieve details of a specific component."
+                              },
+                              "response": [
+                                {
+                                  "id": "304bf616-b646-45b3-8a23-d829af8959f9",
+                                  "name": "Successful response with component details.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "componentId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"GraphQL API Proxy\",\n  \"description\": \"<string>\",\n  \"repoUrl\": \"<string>\",\n  \"branch\": \"<string>\",\n  \"buildpackId\": \"<string>\",\n  \"projectId\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"status\": \"Inactive\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                                  "createdAt": "2026-07-28T01:20:35.000Z",
+                                  "updatedAt": "2026-07-28T01:20:35.000Z",
+                                  "uid": "35240-304bf616-b646-45b3-8a23-d829af8959f9"
+                                },
+                                {
+                                  "id": "59c27471-153d-4927-b714-a44c4caf99f5",
+                                  "name": "Unauthorized.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "componentId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:20:35.000Z",
+                                  "updatedAt": "2026-07-28T01:20:35.000Z",
+                                  "uid": "35240-59c27471-153d-4927-b714-a44c4caf99f5"
+                                },
+                                {
+                                  "id": "4a07fc4d-98b4-4aee-b9bb-41a54e445948",
+                                  "name": "Component not found.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "componentId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:20:35.000Z",
+                                  "updatedAt": "2026-07-28T01:20:35.000Z",
+                                  "uid": "35240-4a07fc4d-98b4-4aee-b9bb-41a54e445948"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-9a6773fe-4e60-44e4-bfaf-88315663ef7e"
+                            },
+                            {
+                              "name": "Choreo Delete a component",
+                              "id": "3bb0f7c7-e46e-4572-b5c8-7c6f71c9f176",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "DELETE",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components",
+                                    ":componentId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "235df69e-bb3a-4a17-bd40-d28b60900f95",
+                                      "key": "orgId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "228f40f2-c46f-4bb9-b631-ff9055843d71",
+                                      "key": "projectId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "cf79ae62-de8e-4654-93ae-5218d02444c3",
+                                      "key": "componentId",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Delete a specific component from a project."
+                              },
+                              "response": [
+                                {
+                                  "id": "4797603c-2529-466a-9d12-2b58dab5a33e",
+                                  "name": "Component deleted successfully.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "componentId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "No Content",
+                                  "code": 204,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:20:35.000Z",
+                                  "updatedAt": "2026-07-28T01:20:35.000Z",
+                                  "uid": "35240-4797603c-2529-466a-9d12-2b58dab5a33e"
+                                },
+                                {
+                                  "id": "b8af38ab-2812-4425-b769-939be3bd1fd5",
+                                  "name": "Unauthorized.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "componentId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:20:35.000Z",
+                                  "updatedAt": "2026-07-28T01:20:35.000Z",
+                                  "uid": "35240-b8af38ab-2812-4425-b769-939be3bd1fd5"
+                                },
+                                {
+                                  "id": "edac1223-0e21-4c35-a040-453dc757bc5a",
+                                  "name": "Component not found.",
+                                  "originalRequest": {
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "orgId"
+                                        },
+                                        {
+                                          "key": "projectId"
+                                        },
+                                        {
+                                          "key": "componentId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-07-28T01:20:35.000Z",
+                                  "updatedAt": "2026-07-28T01:20:35.000Z",
+                                  "uid": "35240-edac1223-0e21-4c35-a040-453dc757bc5a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-3bb0f7c7-e46e-4572-b5c8-7c6f71c9f176"
+                            }
+                          ],
+                          "id": "d8ac3da5-8799-4e35-b08c-d0ea03de23bb",
+                          "createdAt": "2026-07-28T01:20:35.000Z",
+                          "updatedAt": "2026-07-28T01:20:35.000Z",
+                          "uid": "35240-d8ac3da5-8799-4e35-b08c-d0ea03de23bb"
+                        },
+                        {
+                          "name": "Choreo List components",
+                          "id": "de2051f8-ab30-454a-b42e-4b0318b2231c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizations",
+                                ":orgId",
+                                "projects",
+                                ":projectId",
+                                "components"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "32bbe5d8-1f53-462f-b67f-af5db2bbb1af",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization identifier."
+                                },
+                                {
+                                  "id": "c477c9f5-f427-49ed-a73a-75be680e7703",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) Project identifier."
+                                }
+                              ]
+                            },
+                            "description": "Retrieve a list of components within a project. Components represent services, APIs, web apps, jobs, and other deployable units."
+                          },
+                          "response": [
+                            {
+                              "id": "8b0c83b5-8930-4f4e-addb-73ccb930b5aa",
+                              "name": "Successful response with list of components.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "projectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"Webhook\",\n      \"description\": \"<string>\",\n      \"repoUrl\": \"<string>\",\n      \"branch\": \"<string>\",\n      \"buildpackId\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"status\": \"Active\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"Webhook\",\n      \"description\": \"<string>\",\n      \"repoUrl\": \"<string>\",\n      \"branch\": \"<string>\",\n      \"buildpackId\": \"<string>\",\n      \"projectId\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"status\": \"Active\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-8b0c83b5-8930-4f4e-addb-73ccb930b5aa"
+                            },
+                            {
+                              "id": "dc63dbb3-3b08-4e33-83ee-1ca8fec8873d",
+                              "name": "Unauthorized.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "projectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-dc63dbb3-3b08-4e33-83ee-1ca8fec8873d"
+                            },
+                            {
+                              "id": "7e24d456-eb75-48dd-8cc4-02a6b8653f49",
+                              "name": "Project not found.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "projectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-7e24d456-eb75-48dd-8cc4-02a6b8653f49"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:20:35.000Z",
+                          "updatedAt": "2026-07-28T01:20:35.000Z",
+                          "uid": "35240-de2051f8-ab30-454a-b42e-4b0318b2231c"
+                        },
+                        {
+                          "name": "Choreo Create a component",
+                          "id": "0134a061-32cb-4f12-9154-8b01ac3f1576",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"Event Handler\",\n  \"repoUrl\": \"<string>\",\n  \"description\": \"<string>\",\n  \"branch\": \"main\",\n  \"buildpackId\": \"<string>\",\n  \"subPath\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizations",
+                                ":orgId",
+                                "projects",
+                                ":projectId",
+                                "components"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "2cc95dca-71c4-43f3-98e6-5a12d41137db",
+                                  "key": "orgId",
+                                  "value": "<string>",
+                                  "description": "(Required) Organization identifier."
+                                },
+                                {
+                                  "id": "7c6bfef4-9b87-46a4-be79-cf4a870a2297",
+                                  "key": "projectId",
+                                  "value": "<string>",
+                                  "description": "(Required) Project identifier."
+                                }
+                              ]
+                            },
+                            "description": "Create a new component within a project. A component can be a service, API proxy, web application, scheduled job, manual trigger, or event handler."
+                          },
+                          "response": [
+                            {
+                              "id": "85cc72c4-4492-43f7-b8fa-b22fcfa8561b",
+                              "name": "Component created successfully.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"Event Handler\",\n  \"repoUrl\": \"<string>\",\n  \"description\": \"<string>\",\n  \"branch\": \"main\",\n  \"buildpackId\": \"<string>\",\n  \"subPath\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "projectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"GraphQL API Proxy\",\n  \"description\": \"<string>\",\n  \"repoUrl\": \"<string>\",\n  \"branch\": \"<string>\",\n  \"buildpackId\": \"<string>\",\n  \"projectId\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"status\": \"Inactive\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-85cc72c4-4492-43f7-b8fa-b22fcfa8561b"
+                            },
+                            {
+                              "id": "f7734f66-6b88-4d82-822b-e5fee3cd298c",
+                              "name": "Bad request.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"Event Handler\",\n  \"repoUrl\": \"<string>\",\n  \"description\": \"<string>\",\n  \"branch\": \"main\",\n  \"buildpackId\": \"<string>\",\n  \"subPath\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "projectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-f7734f66-6b88-4d82-822b-e5fee3cd298c"
+                            },
+                            {
+                              "id": "543370ba-a6d5-4a94-95e5-01aff6fbafe9",
+                              "name": "Unauthorized.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"Event Handler\",\n  \"repoUrl\": \"<string>\",\n  \"description\": \"<string>\",\n  \"branch\": \"main\",\n  \"buildpackId\": \"<string>\",\n  \"subPath\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "organizations",
+                                    ":orgId",
+                                    "projects",
+                                    ":projectId",
+                                    "components"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "orgId"
+                                    },
+                                    {
+                                      "key": "projectId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:20:35.000Z",
+                              "updatedAt": "2026-07-28T01:20:35.000Z",
+                              "uid": "35240-543370ba-a6d5-4a94-95e5-01aff6fbafe9"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:20:35.000Z",
+                          "updatedAt": "2026-07-28T01:20:35.000Z",
+                          "uid": "35240-0134a061-32cb-4f12-9154-8b01ac3f1576"
+                        }
+                      ],
+                      "id": "0b442258-a302-49c2-9459-65f458b89213",
+                      "createdAt": "2026-07-28T01:20:35.000Z",
+                      "updatedAt": "2026-07-28T01:20:35.000Z",
+                      "uid": "35240-0b442258-a302-49c2-9459-65f458b89213"
+                    }
+                  ],
+                  "id": "08910a8c-fc8e-48e4-b1ec-6fe2b1811d60",
+                  "createdAt": "2026-07-28T01:20:35.000Z",
+                  "updatedAt": "2026-07-28T01:20:35.000Z",
+                  "uid": "35240-08910a8c-fc8e-48e4-b1ec-6fe2b1811d60"
+                }
+              ],
+              "id": "0a3a8517-db1f-472e-baff-df75ecfc373c",
+              "createdAt": "2026-07-28T01:20:35.000Z",
+              "updatedAt": "2026-07-28T01:20:35.000Z",
+              "uid": "35240-0a3a8517-db1f-472e-baff-df75ecfc373c"
+            }
+          ],
+          "id": "86a841b7-3db1-4ae8-a3e7-e9f1a4e07d7f",
+          "createdAt": "2026-07-28T01:20:35.000Z",
+          "updatedAt": "2026-07-28T01:20:35.000Z",
+          "uid": "35240-86a841b7-3db1-4ae8-a3e7-e9f1a4e07d7f"
+        }
+      ],
+      "id": "4fbed2ee-015d-49cf-9057-728a9060076f",
+      "createdAt": "2026-07-28T01:20:35.000Z",
+      "updatedAt": "2026-07-28T01:20:35.000Z",
+      "uid": "35240-4fbed2ee-015d-49cf-9057-728a9060076f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

@@ -1,0 +1,561 @@
+{
+  "info": {
+    "_postman_id": "2516eb68-12a8-4e27-8e64-55c918d4097e",
+    "name": "Choreo API Management Alerts Subscriptions API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:56.000Z",
+    "updatedAt": "2026-07-28T01:20:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2516eb68-12a8-4e27-8e64-55c918d4097e"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "{subscriptionId}",
+          "item": [
+            {
+              "name": "Choreo Unsubscribe from an API",
+              "id": "c407af7a-29b3-4f37-b4ab-e8e884d6d8ee",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions",
+                    ":subscriptionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "72183ff7-18fc-49eb-8c32-50195e33115b",
+                      "key": "subscriptionId",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Remove a subscription to an API."
+              },
+              "response": [
+                {
+                  "id": "7b1403fb-3915-458e-b1e2-0663d613e4e1",
+                  "name": "Subscription removed successfully.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "subscriptionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:20:56.000Z",
+                  "updatedAt": "2026-07-28T01:20:56.000Z",
+                  "uid": "35240-7b1403fb-3915-458e-b1e2-0663d613e4e1"
+                },
+                {
+                  "id": "494d3d65-a8e2-4e98-bd85-f8b62fe4da3e",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "subscriptionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:20:56.000Z",
+                  "updatedAt": "2026-07-28T01:20:56.000Z",
+                  "uid": "35240-494d3d65-a8e2-4e98-bd85-f8b62fe4da3e"
+                },
+                {
+                  "id": "4d353033-fe72-40cd-89f2-3ae70d925b81",
+                  "name": "Subscription not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/subscriptions/:subscriptionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "subscriptions",
+                        ":subscriptionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "subscriptionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:20:56.000Z",
+                  "updatedAt": "2026-07-28T01:20:56.000Z",
+                  "uid": "35240-4d353033-fe72-40cd-89f2-3ae70d925b81"
+                }
+              ],
+              "createdAt": "2026-07-28T01:20:56.000Z",
+              "updatedAt": "2026-07-28T01:20:56.000Z",
+              "uid": "35240-c407af7a-29b3-4f37-b4ab-e8e884d6d8ee"
+            }
+          ],
+          "id": "824b7fde-c0f3-41ea-996d-cca4e49e74d1",
+          "createdAt": "2026-07-28T01:20:56.000Z",
+          "updatedAt": "2026-07-28T01:20:56.000Z",
+          "uid": "35240-824b7fde-c0f3-41ea-996d-cca4e49e74d1"
+        },
+        {
+          "name": "Choreo List subscriptions",
+          "id": "6b6cd16b-ec72-4087-9a9b-9ab8685ecb15",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions?applicationId=<string>&apiId=<string>&limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ],
+              "query": [
+                {
+                  "description": "Filter by application identifier.",
+                  "key": "applicationId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by API identifier.",
+                  "key": "apiId",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of subscriptions. Can be filtered by application or API."
+          },
+          "response": [
+            {
+              "id": "a6321386-e12b-4cc9-9770-a521f575e0fc",
+              "name": "Successful response with list of subscriptions.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?applicationId=<string>&apiId=<string>&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by application identifier.",
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by API identifier.",
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"applicationId\": \"<string>\",\n      \"apiId\": \"<string>\",\n      \"businessPlan\": \"<string>\",\n      \"status\": \"PROD_ONLY_BLOCKED\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"applicationId\": \"<string>\",\n      \"apiId\": \"<string>\",\n      \"businessPlan\": \"<string>\",\n      \"status\": \"BLOCKED\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:56.000Z",
+              "updatedAt": "2026-07-28T01:20:56.000Z",
+              "uid": "35240-a6321386-e12b-4cc9-9770-a521f575e0fc"
+            },
+            {
+              "id": "15b2e704-1bb2-4888-b819-61ff650e1a24",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?applicationId=<string>&apiId=<string>&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by application identifier.",
+                      "key": "applicationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by API identifier.",
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:56.000Z",
+              "updatedAt": "2026-07-28T01:20:56.000Z",
+              "uid": "35240-15b2e704-1bb2-4888-b819-61ff650e1a24"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:56.000Z",
+          "updatedAt": "2026-07-28T01:20:56.000Z",
+          "uid": "35240-6b6cd16b-ec72-4087-9a9b-9ab8685ecb15"
+        },
+        {
+          "name": "Choreo Subscribe to an API",
+          "id": "68a2e0b4-7d02-4bf4-a90e-1d4fefa50f3c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationId\": \"<string>\",\n  \"apiId\": \"<string>\",\n  \"businessPlan\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ]
+            },
+            "description": "Create a new subscription to an API through an application. A business plan must be selected which determines the rate limit."
+          },
+          "response": [
+            {
+              "id": "4683fab8-c1f8-4316-9316-1c41e1c8b3d1",
+              "name": "Subscription created successfully.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<string>\",\n  \"apiId\": \"<string>\",\n  \"businessPlan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"applicationId\": \"<string>\",\n  \"apiId\": \"<string>\",\n  \"businessPlan\": \"<string>\",\n  \"status\": \"UNBLOCKED\",\n  \"createdAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T01:20:56.000Z",
+              "updatedAt": "2026-07-28T01:20:56.000Z",
+              "uid": "35240-4683fab8-c1f8-4316-9316-1c41e1c8b3d1"
+            },
+            {
+              "id": "53f5a4a2-41d3-43e3-9f68-bac58678d1e7",
+              "name": "Bad request.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<string>\",\n  \"apiId\": \"<string>\",\n  \"businessPlan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:56.000Z",
+              "updatedAt": "2026-07-28T01:20:56.000Z",
+              "uid": "35240-53f5a4a2-41d3-43e3-9f68-bac58678d1e7"
+            },
+            {
+              "id": "0123172d-5784-496b-9957-b775d8aaf632",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationId\": \"<string>\",\n  \"apiId\": \"<string>\",\n  \"businessPlan\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:56.000Z",
+              "updatedAt": "2026-07-28T01:20:56.000Z",
+              "uid": "35240-0123172d-5784-496b-9957-b775d8aaf632"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:56.000Z",
+          "updatedAt": "2026-07-28T01:20:56.000Z",
+          "uid": "35240-68a2e0b4-7d02-4bf4-a90e-1d4fefa50f3c"
+        }
+      ],
+      "id": "caaa0d3a-1682-4dba-be78-5d805e7be8ce",
+      "createdAt": "2026-07-28T01:20:56.000Z",
+      "updatedAt": "2026-07-28T01:20:56.000Z",
+      "uid": "35240-caaa0d3a-1682-4dba-be78-5d805e7be8ce"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

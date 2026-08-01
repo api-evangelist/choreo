@@ -1,0 +1,540 @@
+{
+  "info": {
+    "_postman_id": "64f0b59f-9d91-437f-ae02-11b3f15a09c2",
+    "name": "Choreo API Management Alerts Apis API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:14.000Z",
+    "updatedAt": "2026-07-28T01:20:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-64f0b59f-9d91-437f-ae02-11b3f15a09c2"
+  },
+  "item": [
+    {
+      "name": "apis",
+      "item": [
+        {
+          "name": "{apiId}",
+          "item": [
+            {
+              "name": "definition",
+              "item": [
+                {
+                  "name": "Choreo Get API definition",
+                  "id": "6b385c8e-9fa5-410d-b120-9513307a9f74",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apis/:apiId/definition",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apis",
+                        ":apiId",
+                        "definition"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f2c8269e-e93b-4646-932c-d35e20e49dc3",
+                          "key": "apiId",
+                          "value": "<string>",
+                          "description": "(Required) API identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the OpenAPI or other specification definition for a published API."
+                  },
+                  "response": [
+                    {
+                      "id": "d15d5096-65b5-40ab-87c1-2b24abcfad8e",
+                      "name": "Successful response with API definition.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apis/:apiId/definition",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apis",
+                            ":apiId",
+                            "definition"
+                          ],
+                          "variable": [
+                            {
+                              "key": "apiId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T01:20:14.000Z",
+                      "updatedAt": "2026-07-28T01:20:14.000Z",
+                      "uid": "35240-d15d5096-65b5-40ab-87c1-2b24abcfad8e"
+                    },
+                    {
+                      "id": "58fa7626-1a70-4fca-a47e-f3ab01bc0099",
+                      "name": "API not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apis/:apiId/definition",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apis",
+                            ":apiId",
+                            "definition"
+                          ],
+                          "variable": [
+                            {
+                              "key": "apiId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:14.000Z",
+                      "updatedAt": "2026-07-28T01:20:14.000Z",
+                      "uid": "35240-58fa7626-1a70-4fca-a47e-f3ab01bc0099"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:14.000Z",
+                  "updatedAt": "2026-07-28T01:20:14.000Z",
+                  "uid": "35240-6b385c8e-9fa5-410d-b120-9513307a9f74"
+                }
+              ],
+              "id": "00c3308f-c8a4-4700-a287-5a9894ec7114",
+              "createdAt": "2026-07-28T01:20:14.000Z",
+              "updatedAt": "2026-07-28T01:20:14.000Z",
+              "uid": "35240-00c3308f-c8a4-4700-a287-5a9894ec7114"
+            },
+            {
+              "name": "documents",
+              "item": [
+                {
+                  "name": "Choreo List API documents",
+                  "id": "2c64456a-1e88-4a8f-bfa7-6ab6341694d8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apis/:apiId/documents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apis",
+                        ":apiId",
+                        "documents"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d361fc1f-b700-4c64-a399-59b8bf65a69d",
+                          "key": "apiId",
+                          "value": "<string>",
+                          "description": "(Required) API identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve documentation associated with a published API."
+                  },
+                  "response": [
+                    {
+                      "id": "8ef2ba77-d3a2-4617-9352-2f3cd79544e1",
+                      "name": "Successful response with list of documents.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/apis/:apiId/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "apis",
+                            ":apiId",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "apiId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"SUPPORT_FORUM\",\n      \"summary\": \"<string>\",\n      \"sourceType\": \"URL\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"SUPPORT_FORUM\",\n      \"summary\": \"<string>\",\n      \"sourceType\": \"FILE\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:20:14.000Z",
+                      "updatedAt": "2026-07-28T01:20:14.000Z",
+                      "uid": "35240-8ef2ba77-d3a2-4617-9352-2f3cd79544e1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:14.000Z",
+                  "updatedAt": "2026-07-28T01:20:14.000Z",
+                  "uid": "35240-2c64456a-1e88-4a8f-bfa7-6ab6341694d8"
+                }
+              ],
+              "id": "ccbad8ae-c608-4250-8322-356af649511d",
+              "createdAt": "2026-07-28T01:20:14.000Z",
+              "updatedAt": "2026-07-28T01:20:14.000Z",
+              "uid": "35240-ccbad8ae-c608-4250-8322-356af649511d"
+            },
+            {
+              "name": "Choreo Get a published API",
+              "id": "39bf6381-4763-4194-8e79-2e5ec424988d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apis/:apiId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apis",
+                    ":apiId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7e1aec68-64ed-42cf-bfc5-443e9dcf6c07",
+                      "key": "apiId",
+                      "value": "<string>",
+                      "description": "(Required) API identifier."
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific published API including its documentation and endpoints."
+              },
+              "response": [
+                {
+                  "id": "8c848116-c48b-4898-800d-dcc6a64a7687",
+                  "name": "Successful response with API details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apis/:apiId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apis",
+                        ":apiId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "apiId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<string>\",\n  \"context\": \"<string>\",\n  \"type\": \"REST\",\n  \"provider\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"endpointUrl\": \"<string>\",\n  \"authType\": \"None\",\n  \"businessPlans\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-07-28T01:20:14.000Z",
+                  "updatedAt": "2026-07-28T01:20:14.000Z",
+                  "uid": "35240-8c848116-c48b-4898-800d-dcc6a64a7687"
+                },
+                {
+                  "id": "e6a420e4-e6d5-4a88-94b7-6c3f85dc6c9b",
+                  "name": "API not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/apis/:apiId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "apis",
+                        ":apiId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "apiId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:20:14.000Z",
+                  "updatedAt": "2026-07-28T01:20:14.000Z",
+                  "uid": "35240-e6a420e4-e6d5-4a88-94b7-6c3f85dc6c9b"
+                }
+              ],
+              "createdAt": "2026-07-28T01:20:14.000Z",
+              "updatedAt": "2026-07-28T01:20:14.000Z",
+              "uid": "35240-39bf6381-4763-4194-8e79-2e5ec424988d"
+            }
+          ],
+          "id": "3a39961b-768b-44fd-b192-267352a97b91",
+          "createdAt": "2026-07-28T01:20:14.000Z",
+          "updatedAt": "2026-07-28T01:20:14.000Z",
+          "uid": "35240-3a39961b-768b-44fd-b192-267352a97b91"
+        },
+        {
+          "name": "Choreo List published APIs",
+          "id": "92ec2458-4400-4395-931a-147d23e21baa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/apis?query=<string>&tag=<string>&type=REST&limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "apis"
+              ],
+              "query": [
+                {
+                  "description": "Search query to filter APIs by name or description.",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter APIs by tag.",
+                  "key": "tag",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter APIs by type.",
+                  "key": "type",
+                  "value": "REST"
+                },
+                {
+                  "description": "Maximum number of results.",
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "description": "Number of results to skip.",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of published APIs available in the developer portal. Supports filtering by name, tags, and type."
+          },
+          "response": [
+            {
+              "id": "58d6b3f5-4bd0-467c-974a-f737fefdc18b",
+              "name": "Successful response with list of published APIs.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/apis?query=<string>&tag=<string>&type=REST&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "apis"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search query to filter APIs by name or description.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter APIs by tag.",
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter APIs by type.",
+                      "key": "type",
+                      "value": "REST"
+                    },
+                    {
+                      "description": "Maximum number of results.",
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "description": "Number of results to skip.",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"version\": \"<string>\",\n      \"context\": \"<string>\",\n      \"type\": \"REST\",\n      \"provider\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"endpointUrl\": \"<string>\",\n      \"authType\": \"APIKey\",\n      \"businessPlans\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"version\": \"<string>\",\n      \"context\": \"<string>\",\n      \"type\": \"GraphQL\",\n      \"provider\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"endpointUrl\": \"<string>\",\n      \"authType\": \"OAuth2\",\n      \"businessPlans\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"pagination\": {\n    \"total\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:14.000Z",
+              "updatedAt": "2026-07-28T01:20:14.000Z",
+              "uid": "35240-58d6b3f5-4bd0-467c-974a-f737fefdc18b"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:14.000Z",
+          "updatedAt": "2026-07-28T01:20:14.000Z",
+          "uid": "35240-92ec2458-4400-4395-931a-147d23e21baa"
+        }
+      ],
+      "id": "de436190-b64c-4ee8-a8b9-19bd88b09d7d",
+      "createdAt": "2026-07-28T01:20:14.000Z",
+      "updatedAt": "2026-07-28T01:20:14.000Z",
+      "uid": "35240-de436190-b64c-4ee8-a8b9-19bd88b09d7d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

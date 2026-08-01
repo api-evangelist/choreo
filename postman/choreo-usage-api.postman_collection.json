@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "d9ce372d-4e9b-496c-94ef-4466964dd6cd",
+    "name": "Choreo API Management Alerts Usage API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:57.000Z",
+    "updatedAt": "2026-07-28T01:20:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d9ce372d-4e9b-496c-94ef-4466964dd6cd"
+  },
+  "item": [
+    {
+      "name": "usage",
+      "item": [
+        {
+          "name": "Choreo Get API usage statistics",
+          "id": "8021aca5-5e98-4523-bea6-11a08ea841c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/usage?orgId=<string>&apiId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&granularity=1h",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usage"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Organization identifier.",
+                  "key": "orgId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by specific API identifier.",
+                  "key": "apiId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by specific component identifier.",
+                  "key": "componentId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by environment identifier.",
+                  "key": "environmentId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Start time for the query range.",
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "(Required) End time for the query range.",
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Time granularity for aggregation.",
+                  "key": "granularity",
+                  "value": "1h"
+                }
+              ]
+            },
+            "description": "Retrieve API usage statistics including request counts, success rates, and error rates for a given time range."
+          },
+          "response": [
+            {
+              "id": "8eb68d23-78ae-447c-95f9-b28b9afa278a",
+              "name": "Successful response with usage statistics.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage?orgId=<string>&apiId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&granularity=1h",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by specific API identifier.",
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by specific component identifier.",
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by environment identifier.",
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Start time for the query range.",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) End time for the query range.",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Time granularity for aggregation.",
+                      "key": "granularity",
+                      "value": "1h"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"totalRequests\": \"<integer>\",\n  \"successCount\": \"<integer>\",\n  \"errorCount\": \"<integer>\",\n  \"successRate\": \"<float>\",\n  \"timeSeries\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"requests\": \"<integer>\",\n      \"successes\": \"<integer>\",\n      \"errors\": \"<integer>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"requests\": \"<integer>\",\n      \"successes\": \"<integer>\",\n      \"errors\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:57.000Z",
+              "updatedAt": "2026-07-28T01:20:57.000Z",
+              "uid": "35240-8eb68d23-78ae-447c-95f9-b28b9afa278a"
+            },
+            {
+              "id": "33efcbe0-2a1a-4beb-8606-7b1e0b912427",
+              "name": "Bad request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage?orgId=<string>&apiId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&granularity=1h",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by specific API identifier.",
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by specific component identifier.",
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by environment identifier.",
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Start time for the query range.",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) End time for the query range.",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Time granularity for aggregation.",
+                      "key": "granularity",
+                      "value": "1h"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:57.000Z",
+              "updatedAt": "2026-07-28T01:20:57.000Z",
+              "uid": "35240-33efcbe0-2a1a-4beb-8606-7b1e0b912427"
+            },
+            {
+              "id": "389666e1-e524-4637-afb6-33e01549b74a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage?orgId=<string>&apiId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&granularity=1h",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by specific API identifier.",
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by specific component identifier.",
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by environment identifier.",
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Start time for the query range.",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) End time for the query range.",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Time granularity for aggregation.",
+                      "key": "granularity",
+                      "value": "1h"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:57.000Z",
+              "updatedAt": "2026-07-28T01:20:57.000Z",
+              "uid": "35240-389666e1-e524-4637-afb6-33e01549b74a"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:57.000Z",
+          "updatedAt": "2026-07-28T01:20:57.000Z",
+          "uid": "35240-8021aca5-5e98-4523-bea6-11a08ea841c0"
+        }
+      ],
+      "id": "dc0a00fd-c95d-466f-b8bf-9d3a0048ffbe",
+      "createdAt": "2026-07-28T01:20:57.000Z",
+      "updatedAt": "2026-07-28T01:20:57.000Z",
+      "uid": "35240-dc0a00fd-c95d-466f-b8bf-9d3a0048ffbe"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

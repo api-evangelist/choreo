@@ -1,0 +1,187 @@
+{
+  "info": {
+    "_postman_id": "d54dec83-e03a-45ef-b6f1-3bb4c479807b",
+    "name": "Choreo API Management Alerts Environments API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:36.000Z",
+    "updatedAt": "2026-07-28T01:20:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d54dec83-e03a-45ef-b6f1-3bb4c479807b"
+  },
+  "item": [
+    {
+      "name": "organizations",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "environments",
+              "item": [
+                {
+                  "name": "Choreo List environments",
+                  "id": "09755764-b1e8-4144-8f85-94b05f72a138",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:orgId/environments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":orgId",
+                        "environments"
+                      ],
+                      "variable": [
+                        {
+                          "id": "62808b18-e629-4a48-9594-4c32674d6cec",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of environments configured for the organization (e.g., Development, Staging, Production)."
+                  },
+                  "response": [
+                    {
+                      "id": "443ad06f-3911-4469-8212-5d81c00b3bf7",
+                      "name": "Successful response with list of environments.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/environments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "environments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"Development\",\n      \"isDefault\": \"<boolean>\",\n      \"orgId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"Production\",\n      \"isDefault\": \"<boolean>\",\n      \"orgId\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:20:37.000Z",
+                      "updatedAt": "2026-07-28T01:20:37.000Z",
+                      "uid": "35240-443ad06f-3911-4469-8212-5d81c00b3bf7"
+                    },
+                    {
+                      "id": "4ea1473a-ce48-408f-8026-754ca65e4556",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/environments",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "environments"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:37.000Z",
+                      "updatedAt": "2026-07-28T01:20:37.000Z",
+                      "uid": "35240-4ea1473a-ce48-408f-8026-754ca65e4556"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:37.000Z",
+                  "updatedAt": "2026-07-28T01:20:37.000Z",
+                  "uid": "35240-09755764-b1e8-4144-8f85-94b05f72a138"
+                }
+              ],
+              "id": "544e63a2-c054-4c9c-9e5e-39fb5a9de3b0",
+              "createdAt": "2026-07-28T01:20:37.000Z",
+              "updatedAt": "2026-07-28T01:20:37.000Z",
+              "uid": "35240-544e63a2-c054-4c9c-9e5e-39fb5a9de3b0"
+            }
+          ],
+          "id": "57c446fa-19a7-4400-9b7e-d0078a8dd415",
+          "createdAt": "2026-07-28T01:20:37.000Z",
+          "updatedAt": "2026-07-28T01:20:37.000Z",
+          "uid": "35240-57c446fa-19a7-4400-9b7e-d0078a8dd415"
+        }
+      ],
+      "id": "9dddafac-0458-4e77-b506-d0c12a6e6045",
+      "createdAt": "2026-07-28T01:20:37.000Z",
+      "updatedAt": "2026-07-28T01:20:37.000Z",
+      "uid": "35240-9dddafac-0458-4e77-b506-d0c12a6e6045"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

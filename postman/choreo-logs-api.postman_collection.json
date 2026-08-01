@@ -1,0 +1,342 @@
+{
+  "info": {
+    "_postman_id": "4b0548c9-a421-4e01-9ee2-d5054c69fdcb",
+    "name": "Choreo API Management Alerts Logs API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:39.000Z",
+    "updatedAt": "2026-07-28T01:20:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4b0548c9-a421-4e01-9ee2-d5054c69fdcb"
+  },
+  "item": [
+    {
+      "name": "logs",
+      "item": [
+        {
+          "name": "Choreo Query component logs",
+          "id": "f9d0e3e4-e790-4ac8-b145-6ebe9261fd09",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/logs?orgId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&query=<string>&level=WARN&limit=100",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "logs"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Organization identifier.",
+                  "key": "orgId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Component identifier.",
+                  "key": "componentId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Environment identifier.",
+                  "key": "environmentId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Log search query.",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by log level.",
+                  "key": "level",
+                  "value": "WARN"
+                },
+                {
+                  "key": "limit",
+                  "value": "100"
+                }
+              ]
+            },
+            "description": "Query logs for a specific component, useful for debugging and monitoring component behavior."
+          },
+          "response": [
+            {
+              "id": "c7b0302f-c21d-48de-b958-520915f76c75",
+              "name": "Successful response with log entries.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/logs?orgId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&query=<string>&level=WARN&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "logs"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Component identifier.",
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Environment identifier.",
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Log search query.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by log level.",
+                      "key": "level",
+                      "value": "WARN"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"entries\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"level\": \"WARN\",\n      \"message\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"environmentId\": \"<string>\",\n      \"metadata\": {\n        \"occaecat_2\": \"<string>\",\n        \"Duisfc\": \"<string>\"\n      }\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"level\": \"ERROR\",\n      \"message\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"environmentId\": \"<string>\",\n      \"metadata\": {\n        \"dolor4\": \"<string>\",\n        \"consequat1d\": \"<string>\",\n        \"culpaeb\": \"<string>\",\n        \"incididunt0\": \"<string>\",\n        \"fugiat_b8c\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:40.000Z",
+              "updatedAt": "2026-07-28T01:20:40.000Z",
+              "uid": "35240-c7b0302f-c21d-48de-b958-520915f76c75"
+            },
+            {
+              "id": "d59e7dc3-bf22-4f2d-89ca-ba1142b8ae35",
+              "name": "Bad request.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/logs?orgId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&query=<string>&level=WARN&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "logs"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Component identifier.",
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Environment identifier.",
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Log search query.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by log level.",
+                      "key": "level",
+                      "value": "WARN"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:40.000Z",
+              "updatedAt": "2026-07-28T01:20:40.000Z",
+              "uid": "35240-d59e7dc3-bf22-4f2d-89ca-ba1142b8ae35"
+            },
+            {
+              "id": "aeb62b0e-effe-4ceb-b886-d9f5dac016bf",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/logs?orgId=<string>&componentId=<string>&environmentId=<string>&from=<dateTime>&to=<dateTime>&query=<string>&level=WARN&limit=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "logs"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Component identifier.",
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Environment identifier.",
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Log search query.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by log level.",
+                      "key": "level",
+                      "value": "WARN"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:40.000Z",
+              "updatedAt": "2026-07-28T01:20:40.000Z",
+              "uid": "35240-aeb62b0e-effe-4ceb-b886-d9f5dac016bf"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:40.000Z",
+          "updatedAt": "2026-07-28T01:20:40.000Z",
+          "uid": "35240-f9d0e3e4-e790-4ac8-b145-6ebe9261fd09"
+        }
+      ],
+      "id": "f15d967f-62a5-4d2e-a3ea-7bcc20c0991f",
+      "createdAt": "2026-07-28T01:20:40.000Z",
+      "updatedAt": "2026-07-28T01:20:40.000Z",
+      "uid": "35240-f15d967f-62a5-4d2e-a3ea-7bcc20c0991f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

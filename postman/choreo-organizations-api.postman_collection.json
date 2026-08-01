@@ -1,0 +1,527 @@
+{
+  "info": {
+    "_postman_id": "830735e7-f279-4c9d-9170-f017fe0e0ec1",
+    "name": "Choreo API Management Alerts Organizations API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:54.000Z",
+    "updatedAt": "2026-07-28T01:20:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-830735e7-f279-4c9d-9170-f017fe0e0ec1"
+  },
+  "item": [
+    {
+      "name": "organizations",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "apis",
+              "item": [
+                {
+                  "name": "{apiId}",
+                  "item": [
+                    {
+                      "name": "Choreo Get API details",
+                      "id": "725b4dc4-7b38-4db4-a986-f8a9a3cfa0e9",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/apis/:apiId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "apis",
+                            ":apiId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "440e2e77-0969-455d-8ea4-93bc991f8d07",
+                              "key": "orgId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            },
+                            {
+                              "id": "1776aba0-5482-4487-90dd-383ae7c45520",
+                              "key": "apiId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve details of a specific managed API."
+                      },
+                      "response": [
+                        {
+                          "id": "02d9f04d-2cb3-42fd-a04d-c23fbf5914fe",
+                          "name": "Successful response with API details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizations/:orgId/apis/:apiId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizations",
+                                ":orgId",
+                                "apis",
+                                ":apiId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                },
+                                {
+                                  "key": "apiId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"context\": \"<string>\",\n  \"type\": \"gRPC\",\n  \"status\": \"Created\",\n  \"visibility\": \"Project\",\n  \"componentId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T01:20:55.000Z",
+                          "updatedAt": "2026-07-28T01:20:55.000Z",
+                          "uid": "35240-02d9f04d-2cb3-42fd-a04d-c23fbf5914fe"
+                        },
+                        {
+                          "id": "a329d1c8-0f99-4664-ae7a-ad2c3218d91d",
+                          "name": "Unauthorized.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizations/:orgId/apis/:apiId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizations",
+                                ":orgId",
+                                "apis",
+                                ":apiId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                },
+                                {
+                                  "key": "apiId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:20:55.000Z",
+                          "updatedAt": "2026-07-28T01:20:55.000Z",
+                          "uid": "35240-a329d1c8-0f99-4664-ae7a-ad2c3218d91d"
+                        },
+                        {
+                          "id": "18dd6890-e565-4874-a7e7-ce609de79dc5",
+                          "name": "API not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/organizations/:orgId/apis/:apiId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "organizations",
+                                ":orgId",
+                                "apis",
+                                ":apiId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orgId"
+                                },
+                                {
+                                  "key": "apiId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:20:55.000Z",
+                          "updatedAt": "2026-07-28T01:20:55.000Z",
+                          "uid": "35240-18dd6890-e565-4874-a7e7-ce609de79dc5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:20:55.000Z",
+                      "updatedAt": "2026-07-28T01:20:55.000Z",
+                      "uid": "35240-725b4dc4-7b38-4db4-a986-f8a9a3cfa0e9"
+                    }
+                  ],
+                  "id": "755c5cd7-3f04-4eb4-bcca-05ed31f8ab93",
+                  "createdAt": "2026-07-28T01:20:55.000Z",
+                  "updatedAt": "2026-07-28T01:20:55.000Z",
+                  "uid": "35240-755c5cd7-3f04-4eb4-bcca-05ed31f8ab93"
+                },
+                {
+                  "name": "Choreo List APIs",
+                  "id": "561c6b6f-a2fd-4e38-a137-e25bf2a1a10f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:orgId/apis?limit=25&offset=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":orgId",
+                        "apis"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of results to return.",
+                          "key": "limit",
+                          "value": "25"
+                        },
+                        {
+                          "description": "Number of results to skip.",
+                          "key": "offset",
+                          "value": "0"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f1f5a41d-604a-4372-a4a1-4615142ed0f8",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of managed APIs within an organization. These are APIs published and managed through the Choreo API gateway."
+                  },
+                  "response": [
+                    {
+                      "id": "82498bd3-6241-4f4a-85d6-b27a877b6590",
+                      "name": "Successful response with list of APIs.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/apis?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "apis"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of results to return.",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of results to skip.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"context\": \"<string>\",\n      \"type\": \"gRPC\",\n      \"status\": \"Published\",\n      \"visibility\": \"Public\",\n      \"componentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"context\": \"<string>\",\n      \"type\": \"REST\",\n      \"status\": \"Created\",\n      \"visibility\": \"Organization\",\n      \"componentId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:20:55.000Z",
+                      "updatedAt": "2026-07-28T01:20:55.000Z",
+                      "uid": "35240-82498bd3-6241-4f4a-85d6-b27a877b6590"
+                    },
+                    {
+                      "id": "15550677-fd0a-4f51-b339-75844e017014",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/apis?limit=25&offset=0",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "apis"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of results to return.",
+                              "key": "limit",
+                              "value": "25"
+                            },
+                            {
+                              "description": "Number of results to skip.",
+                              "key": "offset",
+                              "value": "0"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:55.000Z",
+                      "updatedAt": "2026-07-28T01:20:55.000Z",
+                      "uid": "35240-15550677-fd0a-4f51-b339-75844e017014"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:55.000Z",
+                  "updatedAt": "2026-07-28T01:20:55.000Z",
+                  "uid": "35240-561c6b6f-a2fd-4e38-a137-e25bf2a1a10f"
+                }
+              ],
+              "id": "1909f8e3-c62f-4715-a6d9-dcd24ddcb296",
+              "createdAt": "2026-07-28T01:20:55.000Z",
+              "updatedAt": "2026-07-28T01:20:55.000Z",
+              "uid": "35240-1909f8e3-c62f-4715-a6d9-dcd24ddcb296"
+            }
+          ],
+          "id": "c77f4dd0-123e-40fd-a9fb-742211945e6f",
+          "createdAt": "2026-07-28T01:20:55.000Z",
+          "updatedAt": "2026-07-28T01:20:55.000Z",
+          "uid": "35240-c77f4dd0-123e-40fd-a9fb-742211945e6f"
+        },
+        {
+          "name": "Choreo List organizations",
+          "id": "faefe098-d494-40eb-8726-8f0492efd51f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "organizations"
+              ]
+            },
+            "description": "Retrieve a list of organizations the authenticated user belongs to."
+          },
+          "response": [
+            {
+              "id": "0a1d22be-ff81-40d1-a9a1-e95f27b0ac5f",
+              "name": "Successful response with list of organizations.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"handle\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:20:55.000Z",
+              "updatedAt": "2026-07-28T01:20:55.000Z",
+              "uid": "35240-0a1d22be-ff81-40d1-a9a1-e95f27b0ac5f"
+            },
+            {
+              "id": "94586c50-a4c9-46d5-8af5-9ff998cd5465",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:55.000Z",
+              "updatedAt": "2026-07-28T01:20:55.000Z",
+              "uid": "35240-94586c50-a4c9-46d5-8af5-9ff998cd5465"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:55.000Z",
+          "updatedAt": "2026-07-28T01:20:55.000Z",
+          "uid": "35240-faefe098-d494-40eb-8726-8f0492efd51f"
+        }
+      ],
+      "id": "3580870c-13eb-4850-b9e1-b91b0a43c317",
+      "createdAt": "2026-07-28T01:20:55.000Z",
+      "updatedAt": "2026-07-28T01:20:55.000Z",
+      "uid": "35240-3580870c-13eb-4850-b9e1-b91b0a43c317"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

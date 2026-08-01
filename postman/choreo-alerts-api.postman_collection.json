@@ -1,0 +1,220 @@
+{
+  "info": {
+    "_postman_id": "97b5a3e6-0f8b-4b8b-8b5f-8eda2b9fabd7",
+    "name": "Choreo API Management Alerts API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:13.000Z",
+    "updatedAt": "2026-07-28T01:20:13.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-97b5a3e6-0f8b-4b8b-8b5f-8eda2b9fabd7"
+  },
+  "item": [
+    {
+      "name": "alerts",
+      "item": [
+        {
+          "name": "Choreo List alerts",
+          "id": "f97507ac-c9a2-4b24-b274-a0543bb3bff8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/alerts?orgId=<string>&status=Resolved&severity=Warning&limit=25&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "alerts"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Organization identifier.",
+                  "key": "orgId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by alert status.",
+                  "key": "status",
+                  "value": "Resolved"
+                },
+                {
+                  "description": "Filter by severity.",
+                  "key": "severity",
+                  "value": "Warning"
+                },
+                {
+                  "key": "limit",
+                  "value": "25"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Retrieve a list of alerts triggered for APIs and components."
+          },
+          "response": [
+            {
+              "id": "fa171ace-db16-4df9-9ccc-295bccb6506d",
+              "name": "Successful response with list of alerts.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/alerts?orgId=<string>&status=Resolved&severity=Warning&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by alert status.",
+                      "key": "status",
+                      "value": "Resolved"
+                    },
+                    {
+                      "description": "Filter by severity.",
+                      "key": "severity",
+                      "value": "Warning"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"severity\": \"Warning\",\n      \"status\": \"Resolved\",\n      \"apiId\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"triggeredAt\": \"<dateTime>\",\n      \"resolvedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"severity\": \"Info\",\n      \"status\": \"Active\",\n      \"apiId\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"triggeredAt\": \"<dateTime>\",\n      \"resolvedAt\": \"<dateTime>\"\n    }\n  ],\n  \"pagination\": {\n    \"total\": \"<integer>\",\n    \"limit\": \"<integer>\",\n    \"offset\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:20:14.000Z",
+              "updatedAt": "2026-07-28T01:20:14.000Z",
+              "uid": "35240-fa171ace-db16-4df9-9ccc-295bccb6506d"
+            },
+            {
+              "id": "b7e20d9c-fc2d-49ec-952e-1aeaf7f757ad",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/alerts?orgId=<string>&status=Resolved&severity=Warning&limit=25&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Organization identifier.",
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by alert status.",
+                      "key": "status",
+                      "value": "Resolved"
+                    },
+                    {
+                      "description": "Filter by severity.",
+                      "key": "severity",
+                      "value": "Warning"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:20:14.000Z",
+              "updatedAt": "2026-07-28T01:20:14.000Z",
+              "uid": "35240-b7e20d9c-fc2d-49ec-952e-1aeaf7f757ad"
+            }
+          ],
+          "createdAt": "2026-07-28T01:20:14.000Z",
+          "updatedAt": "2026-07-28T01:20:14.000Z",
+          "uid": "35240-f97507ac-c9a2-4b24-b274-a0543bb3bff8"
+        }
+      ],
+      "id": "98ae750a-2493-405a-8010-5030ebc9232d",
+      "createdAt": "2026-07-28T01:20:14.000Z",
+      "updatedAt": "2026-07-28T01:20:14.000Z",
+      "uid": "35240-98ae750a-2493-405a-8010-5030ebc9232d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

@@ -1,0 +1,453 @@
+{
+  "info": {
+    "_postman_id": "e1e0c193-9366-4368-8467-c8216a6f1f91",
+    "name": "Choreo API Management Alerts Projects API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:55.000Z",
+    "updatedAt": "2026-07-28T01:20:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e1e0c193-9366-4368-8467-c8216a6f1f91"
+  },
+  "item": [
+    {
+      "name": "organizations",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "projects",
+              "item": [
+                {
+                  "name": "Choreo List projects",
+                  "id": "b1d2717c-0200-4295-9b28-72504b53477d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":orgId",
+                        "projects"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d8aa2abd-e30a-4192-9f1c-7c5641c98f18",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization identifier."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of projects within an organization."
+                  },
+                  "response": [
+                    {
+                      "id": "735411c9-3eeb-45c6-a095-1933b539e354",
+                      "name": "Successful response with list of projects.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "projects"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"orgId\": \"<string>\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T01:20:56.000Z",
+                      "updatedAt": "2026-07-28T01:20:56.000Z",
+                      "uid": "35240-735411c9-3eeb-45c6-a095-1933b539e354"
+                    },
+                    {
+                      "id": "b8fe437c-8f76-457d-9053-a5c42f7b5f3c",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "projects"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:56.000Z",
+                      "updatedAt": "2026-07-28T01:20:56.000Z",
+                      "uid": "35240-b8fe437c-8f76-457d-9053-a5c42f7b5f3c"
+                    },
+                    {
+                      "id": "ec96ecc9-d6a9-4dec-9c0e-ed371535a411",
+                      "name": "Organization not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "projects"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:56.000Z",
+                      "updatedAt": "2026-07-28T01:20:56.000Z",
+                      "uid": "35240-ec96ecc9-d6a9-4dec-9c0e-ed371535a411"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:56.000Z",
+                  "updatedAt": "2026-07-28T01:20:56.000Z",
+                  "uid": "35240-b1d2717c-0200-4295-9b28-72504b53477d"
+                },
+                {
+                  "name": "Choreo Create a project",
+                  "id": "477380e7-b191-4da6-96cf-9bb9930b8ca5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":orgId",
+                        "projects"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7c864c62-a0c1-4e50-baec-0495ce7618bc",
+                          "key": "orgId",
+                          "value": "<string>",
+                          "description": "(Required) Organization identifier."
+                        }
+                      ]
+                    },
+                    "description": "Create a new project within an organization."
+                  },
+                  "response": [
+                    {
+                      "id": "e4c2a331-ed4d-40e3-841d-1173a4cd7c35",
+                      "name": "Project created successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "projects"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"orgId\": \"<string>\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:20:56.000Z",
+                      "updatedAt": "2026-07-28T01:20:56.000Z",
+                      "uid": "35240-e4c2a331-ed4d-40e3-841d-1173a4cd7c35"
+                    },
+                    {
+                      "id": "f539e3b4-238c-4e41-99c8-a602b58fdee0",
+                      "name": "Bad request.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "projects"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:56.000Z",
+                      "updatedAt": "2026-07-28T01:20:56.000Z",
+                      "uid": "35240-f539e3b4-238c-4e41-99c8-a602b58fdee0"
+                    },
+                    {
+                      "id": "c49f0b62-344b-4171-ba06-b6587e355f6f",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/organizations/:orgId/projects",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "organizations",
+                            ":orgId",
+                            "projects"
+                          ],
+                          "variable": [
+                            {
+                              "key": "orgId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:20:56.000Z",
+                      "updatedAt": "2026-07-28T01:20:56.000Z",
+                      "uid": "35240-c49f0b62-344b-4171-ba06-b6587e355f6f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:20:56.000Z",
+                  "updatedAt": "2026-07-28T01:20:56.000Z",
+                  "uid": "35240-477380e7-b191-4da6-96cf-9bb9930b8ca5"
+                }
+              ],
+              "id": "304ae808-849a-42af-8bd6-00c4806dbeb5",
+              "createdAt": "2026-07-28T01:20:56.000Z",
+              "updatedAt": "2026-07-28T01:20:56.000Z",
+              "uid": "35240-304ae808-849a-42af-8bd6-00c4806dbeb5"
+            }
+          ],
+          "id": "db4508ee-3597-44e9-a8ba-710e4b4f73af",
+          "createdAt": "2026-07-28T01:20:56.000Z",
+          "updatedAt": "2026-07-28T01:20:56.000Z",
+          "uid": "35240-db4508ee-3597-44e9-a8ba-710e4b4f73af"
+        }
+      ],
+      "id": "0bbe90a7-c468-421a-b568-f229c6f53047",
+      "createdAt": "2026-07-28T01:20:56.000Z",
+      "updatedAt": "2026-07-28T01:20:56.000Z",
+      "uid": "35240-0bbe90a7-c468-421a-b568-f229c6f53047"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}

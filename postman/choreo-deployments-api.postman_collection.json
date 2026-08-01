@@ -1,0 +1,531 @@
+{
+  "info": {
+    "_postman_id": "4bbbe11c-cc84-4643-a057-91c79b4840af",
+    "name": "Choreo API Management Alerts Deployments API",
+    "description": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:20:36.000Z",
+    "updatedAt": "2026-07-28T01:20:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4bbbe11c-cc84-4643-a057-91c79b4840af"
+  },
+  "item": [
+    {
+      "name": "organizations",
+      "item": [
+        {
+          "name": "{orgId}",
+          "item": [
+            {
+              "name": "projects",
+              "item": [
+                {
+                  "name": "{projectId}",
+                  "item": [
+                    {
+                      "name": "components",
+                      "item": [
+                        {
+                          "name": "{componentId}",
+                          "item": [
+                            {
+                              "name": "deployments",
+                              "item": [
+                                {
+                                  "name": "Choreo List deployments",
+                                  "id": "069b7060-9de0-4e13-a652-574015560c5b",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId",
+                                        "deployments"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "357a9878-a10f-4b79-9d44-f60844306522",
+                                          "key": "orgId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "8ca30b71-c29e-4a0d-8671-9423b03a018a",
+                                          "key": "projectId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "95face35-4636-4797-bd81-9d8205807cf8",
+                                          "key": "componentId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Retrieve a list of deployments for a component."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "4e12078f-6ad0-4758-8a19-a2fd4a947570",
+                                      "name": "Successful response with list of deployments.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizations",
+                                            ":orgId",
+                                            "projects",
+                                            ":projectId",
+                                            "components",
+                                            ":componentId",
+                                            "deployments"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "orgId"
+                                            },
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "componentId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"buildId\": \"<string>\",\n      \"environmentId\": \"<string>\",\n      \"status\": \"Pending\",\n      \"createdAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"componentId\": \"<string>\",\n      \"buildId\": \"<string>\",\n      \"environmentId\": \"<string>\",\n      \"status\": \"Active\",\n      \"createdAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                                      "createdAt": "2026-07-28T01:20:36.000Z",
+                                      "updatedAt": "2026-07-28T01:20:36.000Z",
+                                      "uid": "35240-4e12078f-6ad0-4758-8a19-a2fd4a947570"
+                                    },
+                                    {
+                                      "id": "2111de27-d46a-43df-8e70-5f96733b26eb",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizations",
+                                            ":orgId",
+                                            "projects",
+                                            ":projectId",
+                                            "components",
+                                            ":componentId",
+                                            "deployments"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "orgId"
+                                            },
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "componentId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:20:36.000Z",
+                                      "updatedAt": "2026-07-28T01:20:36.000Z",
+                                      "uid": "35240-2111de27-d46a-43df-8e70-5f96733b26eb"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:20:36.000Z",
+                                  "updatedAt": "2026-07-28T01:20:36.000Z",
+                                  "uid": "35240-069b7060-9de0-4e13-a652-574015560c5b"
+                                },
+                                {
+                                  "name": "Choreo Promote a build to an environment",
+                                  "id": "7435252f-e072-498f-a5d7-253f162dee24",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"buildId\": \"<string>\",\n  \"environmentId\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "organizations",
+                                        ":orgId",
+                                        "projects",
+                                        ":projectId",
+                                        "components",
+                                        ":componentId",
+                                        "deployments"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "5f70675a-1ba7-43e1-9830-beb13c5cf404",
+                                          "key": "orgId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "d8d10d84-06a1-4bee-89c3-01effc3e86b9",
+                                          "key": "projectId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "f6296f65-fe95-4106-a9e0-9e456745341c",
+                                          "key": "componentId",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Deploy a build to a specific environment. This promotes the built artifact to the target environment."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "0269be19-8017-4aad-b491-88857b9bac28",
+                                      "name": "Deployment created successfully.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"buildId\": \"<string>\",\n  \"environmentId\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizations",
+                                            ":orgId",
+                                            "projects",
+                                            ":projectId",
+                                            "components",
+                                            ":componentId",
+                                            "deployments"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "orgId"
+                                            },
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "componentId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Created",
+                                      "code": 201,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"id\": \"<string>\",\n  \"componentId\": \"<string>\",\n  \"buildId\": \"<string>\",\n  \"environmentId\": \"<string>\",\n  \"status\": \"Active\",\n  \"createdAt\": \"<dateTime>\"\n}",
+                                      "createdAt": "2026-07-28T01:20:36.000Z",
+                                      "updatedAt": "2026-07-28T01:20:36.000Z",
+                                      "uid": "35240-0269be19-8017-4aad-b491-88857b9bac28"
+                                    },
+                                    {
+                                      "id": "08d2fa4f-7ab3-4d12-a1a9-10b6aa27f28d",
+                                      "name": "Bad request.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"buildId\": \"<string>\",\n  \"environmentId\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizations",
+                                            ":orgId",
+                                            "projects",
+                                            ":projectId",
+                                            "components",
+                                            ":componentId",
+                                            "deployments"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "orgId"
+                                            },
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "componentId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:20:36.000Z",
+                                      "updatedAt": "2026-07-28T01:20:36.000Z",
+                                      "uid": "35240-08d2fa4f-7ab3-4d12-a1a9-10b6aa27f28d"
+                                    },
+                                    {
+                                      "id": "c6812762-caf9-45e8-b146-375d0bf60ad9",
+                                      "name": "Unauthorized.",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: bearer",
+                                            "key": "Authorization",
+                                            "value": "Bearer <token>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"buildId\": \"<string>\",\n  \"environmentId\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "organizations",
+                                            ":orgId",
+                                            "projects",
+                                            ":projectId",
+                                            "components",
+                                            ":componentId",
+                                            "deployments"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "orgId"
+                                            },
+                                            {
+                                              "key": "projectId"
+                                            },
+                                            {
+                                              "key": "componentId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:20:36.000Z",
+                                      "updatedAt": "2026-07-28T01:20:36.000Z",
+                                      "uid": "35240-c6812762-caf9-45e8-b146-375d0bf60ad9"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:20:36.000Z",
+                                  "updatedAt": "2026-07-28T01:20:36.000Z",
+                                  "uid": "35240-7435252f-e072-498f-a5d7-253f162dee24"
+                                }
+                              ],
+                              "id": "0b3189ff-5fc3-425e-b373-d41089e2dc78",
+                              "createdAt": "2026-07-28T01:20:36.000Z",
+                              "updatedAt": "2026-07-28T01:20:36.000Z",
+                              "uid": "35240-0b3189ff-5fc3-425e-b373-d41089e2dc78"
+                            }
+                          ],
+                          "id": "7a4bd19b-7a1c-421b-ba99-e00ed7a92950",
+                          "createdAt": "2026-07-28T01:20:36.000Z",
+                          "updatedAt": "2026-07-28T01:20:36.000Z",
+                          "uid": "35240-7a4bd19b-7a1c-421b-ba99-e00ed7a92950"
+                        }
+                      ],
+                      "id": "aa80c7eb-eced-485e-bec4-8c23c0febf9a",
+                      "createdAt": "2026-07-28T01:20:36.000Z",
+                      "updatedAt": "2026-07-28T01:20:36.000Z",
+                      "uid": "35240-aa80c7eb-eced-485e-bec4-8c23c0febf9a"
+                    }
+                  ],
+                  "id": "01715849-46a8-417f-adc5-1f0d52959a0a",
+                  "createdAt": "2026-07-28T01:20:36.000Z",
+                  "updatedAt": "2026-07-28T01:20:36.000Z",
+                  "uid": "35240-01715849-46a8-417f-adc5-1f0d52959a0a"
+                }
+              ],
+              "id": "2281deb8-9bb0-40c3-afc7-5e566495c052",
+              "createdAt": "2026-07-28T01:20:36.000Z",
+              "updatedAt": "2026-07-28T01:20:36.000Z",
+              "uid": "35240-2281deb8-9bb0-40c3-afc7-5e566495c052"
+            }
+          ],
+          "id": "ed49cadb-b7c8-4a74-a56c-417c796629aa",
+          "createdAt": "2026-07-28T01:20:36.000Z",
+          "updatedAt": "2026-07-28T01:20:36.000Z",
+          "uid": "35240-ed49cadb-b7c8-4a74-a56c-417c796629aa"
+        }
+      ],
+      "id": "088245ec-bad8-4c47-be90-d12f2788b828",
+      "createdAt": "2026-07-28T01:20:36.000Z",
+      "updatedAt": "2026-07-28T01:20:36.000Z",
+      "uid": "35240-088245ec-bad8-4c47-be90-d12f2788b828"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://console.choreo.dev/api/v1"
+    }
+  ]
+}
