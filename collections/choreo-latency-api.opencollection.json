@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Latency API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Latency",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo Get API latency metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/latency",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "query",
+                "description": "Organization identifier."
+              },
+              {
+                "name": "apiId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific API identifier."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "granularity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve latency metrics for APIs including average, median, P95, and P99 latencies over a given time range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

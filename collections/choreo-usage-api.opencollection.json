@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Usage API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo Get API usage statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/usage",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "query",
+                "description": "Organization identifier."
+              },
+              {
+                "name": "apiId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific API identifier."
+              },
+              {
+                "name": "componentId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific component identifier."
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by environment identifier."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Start time for the query range."
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "End time for the query range."
+              },
+              {
+                "name": "granularity",
+                "value": "",
+                "type": "query",
+                "description": "Time granularity for aggregation."
+              }
+            ]
+          },
+          "docs": "Retrieve API usage statistics including request counts, success rates, and error rates for a given time range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

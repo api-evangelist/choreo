@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Organizations API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo List organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/organizations"
+          },
+          "docs": "Retrieve a list of organizations the authenticated user belongs to."
+        },
+        {
+          "info": {
+            "name": "Choreo List APIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/apis",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization identifier."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of managed APIs within an organization. These are APIs published and managed through the Choreo API gateway."
+        },
+        {
+          "info": {
+            "name": "Choreo Get API details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/apis/:apiId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "apiId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific managed API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

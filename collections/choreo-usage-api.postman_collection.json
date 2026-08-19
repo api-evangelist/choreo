@@ -1,0 +1,327 @@
+{
+  "item": [
+    {
+      "id": "4cb8cb54-ffce-4922-afff-0d8e72ab8195",
+      "name": "Usage",
+      "description": {
+        "content": "API usage statistics and request metrics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "426b0238-0c03-4158-a027-f82c5eb81ae7",
+          "name": "Choreo Get API usage statistics",
+          "request": {
+            "name": "Choreo Get API usage statistics",
+            "description": {
+              "content": "Retrieve API usage statistics including request counts, success rates, and error rates for a given time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "orgId",
+                  "value": "<string>",
+                  "description": "(Required) Organization identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "apiId",
+                  "value": "<string>",
+                  "description": "Filter by specific API identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "componentId",
+                  "value": "<string>",
+                  "description": "Filter by specific component identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "environmentId",
+                  "value": "<string>",
+                  "description": "Filter by environment identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>",
+                  "description": "(Required) Start time for the query range."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>",
+                  "description": "(Required) End time for the query range."
+                },
+                {
+                  "disabled": false,
+                  "key": "granularity",
+                  "value": "1h",
+                  "description": "Time granularity for aggregation."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9b527ad-7864-434d-a112-b8b429d9ce44",
+              "name": "Successful response with usage statistics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "1h"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalRequests\": 6661,\n  \"successCount\": 4716,\n  \"errorCount\": 4287,\n  \"successRate\": 8338.01626195167,\n  \"timeSeries\": [\n    {\n      \"timestamp\": \"1964-03-12T19:09:09.733Z\",\n      \"requests\": 8971,\n      \"successes\": 1655,\n      \"errors\": 5469\n    },\n    {\n      \"timestamp\": \"2011-02-03T12:53:00.532Z\",\n      \"requests\": 71,\n      \"successes\": 9492,\n      \"errors\": 2080\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50f3a78b-06c3-4af9-86ba-ddf4332c4c8c",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "1h"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5d5702a-1765-4cd1-90bd-5af87b361743",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "apiId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "componentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environmentId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "granularity",
+                      "value": "1h"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://console.choreo.dev/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8824225e-24fa-46c1-afcd-cb6575a1d83c",
+    "name": "Choreo API Management Alerts Usage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.\n\nContact Support:\n Name: WSO2 Choreo",
+      "type": "text/plain"
+    }
+  }
+}

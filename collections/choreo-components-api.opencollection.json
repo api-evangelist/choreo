@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Components API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo List components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects/:projectId/components",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization identifier."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Project identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of components within a project. Components represent services, APIs, web apps, jobs, and other deployable units."
+        },
+        {
+          "info": {
+            "name": "Choreo Create a component",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects/:projectId/components",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization identifier."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Project identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new component within a project. A component can be a service, API proxy, web application, scheduled job, manual trigger, or event handler."
+        },
+        {
+          "info": {
+            "name": "Choreo Get a component",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects/:projectId/components/:componentId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "componentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific component."
+        },
+        {
+          "info": {
+            "name": "Choreo Delete a component",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects/:projectId/components/:componentId",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "componentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a specific component from a project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

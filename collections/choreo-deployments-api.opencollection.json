@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Deployments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deployments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo List deployments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "componentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of deployments for a component."
+        },
+        {
+          "info": {
+            "name": "Choreo Promote a build to an environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects/:projectId/components/:componentId/deployments",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "componentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deploy a build to a specific environment. This promotes the built artifact to the target environment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Application Keys API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Application Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo Generate application keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://console.choreo.dev/api/v1/applications/:applicationId/keys",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate OAuth 2.0 consumer key and consumer secret for an application. The consumer key acts as the unique identifier for the application and is used for authentication."
+        },
+        {
+          "info": {
+            "name": "Choreo Generate an API key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://console.choreo.dev/api/v1/applications/:applicationId/api-keys",
+            "params": [
+              {
+                "name": "applicationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate an API key for an application to access subscribed APIs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

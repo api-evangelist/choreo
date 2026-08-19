@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Projects API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo List projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a list of projects within an organization."
+        },
+        {
+          "info": {
+            "name": "Choreo Create a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://console.choreo.dev/api/v1/organizations/:orgId/projects",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "path",
+                "description": "Organization identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new project within an organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

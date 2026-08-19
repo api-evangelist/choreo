@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Choreo API Management Alerts Logs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Choreo Query component logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://console.choreo.dev/api/v1/logs",
+            "params": [
+              {
+                "name": "orgId",
+                "value": "",
+                "type": "query",
+                "description": "Organization identifier."
+              },
+              {
+                "name": "componentId",
+                "value": "",
+                "type": "query",
+                "description": "Component identifier."
+              },
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "query",
+                "description": "Environment identifier."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Log search query."
+              },
+              {
+                "name": "level",
+                "value": "",
+                "type": "query",
+                "description": "Filter by log level."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Query logs for a specific component, useful for debugging and monitoring component behavior."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
