@@ -29,6 +29,25 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/choreo.png
 tags:
+- Ai Apps
+- API Management
+- CI/CD
+- Cloud-Native
+- DevOps
+- Developer Portal
+- FinOps
+- IDE
+- Internal Developer Platform
+- Kubernetes
+- Lifecycle
+- Observability
+- Orchestration
+- Platform Engineering
+- Pro-Code-API-Composition
+- Unified
+- WSO2
+- Workflows
+tags_raw:
 - AI Apps
 - API Management
 - CI/CD
@@ -91,7 +110,8 @@ apis:
   name: Choreo Apis API
   description: The Apis API from Choreo — 4 operation(s) for apis.
   humanURL: https://wso2.com/choreo/docs/
-  tags:
+  tags: []
+  tags_raw:
   - Apis
   properties:
   - type: OpenAPI
@@ -164,6 +184,8 @@ apis:
   description: Manage applications for API consumption.
   humanURL: https://wso2.com/choreo/docs/
   tags:
+  - Application
+  tags_raw:
   - Applications
   properties:
   - type: OpenAPI
@@ -308,6 +330,8 @@ apis:
   description: Manage deployments to environments.
   humanURL: https://wso2.com/choreo/docs/
   tags:
+  - Deployment
+  tags_raw:
   - Deployments
   properties:
   - type: OpenAPI
@@ -488,6 +512,8 @@ apis:
   description: Manage organizations.
   humanURL: https://wso2.com/choreo/docs/
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -524,6 +550,8 @@ apis:
   description: Manage projects within organizations.
   humanURL: https://wso2.com/choreo/docs/
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -560,6 +588,8 @@ apis:
   description: Manage API subscriptions.
   humanURL: https://wso2.com/choreo/docs/
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
