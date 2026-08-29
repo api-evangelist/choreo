@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Choreo API Management Alerts Components API
+  title: Choreo API Management Components API
   description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
   version: 1.0.0
   contact:
@@ -160,6 +160,43 @@ paths:
           description: Component not found.
 components:
   schemas:
+    ComponentCreate:
+      type: object
+      required:
+      - name
+      - type
+      - repoUrl
+      properties:
+        name:
+          type: string
+          description: Name of the component.
+        type:
+          type: string
+          enum:
+          - Service
+          - REST API Proxy
+          - GraphQL API Proxy
+          - Web Application
+          - Scheduled Job
+          - Manual Trigger
+          - Event Handler
+          - Webhook
+          description: Type of the component.
+        description:
+          type: string
+        repoUrl:
+          type: string
+          description: Git repository URL.
+        branch:
+          type: string
+          description: Git branch.
+          default: main
+        buildpackId:
+          type: string
+          description: Buildpack identifier.
+        subPath:
+          type: string
+          description: Sub-path within the repository.
     Component:
       type: object
       properties:
@@ -205,43 +242,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    ComponentCreate:
-      type: object
-      required:
-      - name
-      - type
-      - repoUrl
-      properties:
-        name:
-          type: string
-          description: Name of the component.
-        type:
-          type: string
-          enum:
-          - Service
-          - REST API Proxy
-          - GraphQL API Proxy
-          - Web Application
-          - Scheduled Job
-          - Manual Trigger
-          - Event Handler
-          - Webhook
-          description: Type of the component.
-        description:
-          type: string
-        repoUrl:
-          type: string
-          description: Git repository URL.
-        branch:
-          type: string
-          description: Git branch.
-          default: main
-        buildpackId:
-          type: string
-          description: Buildpack identifier.
-        subPath:
-          type: string
-          description: Sub-path within the repository.
   securitySchemes:
     oauth2:
       type: oauth2

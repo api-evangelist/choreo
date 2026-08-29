@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Choreo API Management Alerts Errors API
-  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  title: Choreo Insights Errors API
+  description: The Choreo Insights API provides access to observability, monitoring, and analytics data for APIs and components deployed on the WSO2 Choreo platform. It enables users to programmatically retrieve usage statistics, latency metrics, error analytics, and operational insights for their managed APIs and services.
   version: 1.0.0
   contact:
     name: WSO2 Choreo
@@ -10,15 +10,12 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
   x-provider-slug: choreo
-  x-api-slug: api-management
+  x-api-slug: insights
 servers:
-- url: https://console.choreo.dev/api/v1
-  description: Choreo Console API
+- url: https://console.choreo.dev/insights/api/v1
+  description: Choreo Insights API
 security:
 - bearerAuth: []
-- oauth2:
-  - read
-  - write
 tags:
 - name: Errors
   description: API error analytics and diagnostics.
@@ -120,15 +117,6 @@ components:
               errors:
                 type: integer
   securitySchemes:
-    oauth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://console.choreo.dev/oauth2/authorize
-          tokenUrl: https://console.choreo.dev/oauth2/token
-          scopes:
-            read: Read access
-            write: Write access
     bearerAuth:
       type: http
       scheme: bearer

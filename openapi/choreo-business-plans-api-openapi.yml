@@ -1,7 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Choreo API Management Alerts Business Plans API
-  description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
+  title: Choreo Developer Portal Business Plans API
+  description: The Choreo Developer Portal API enables API consumers to discover, evaluate, subscribe to, and consume APIs hosted on the WSO2 Choreo platform. It provides access to the API marketplace, application management, subscription management, and credential generation for OAuth 2.0 and API key based authentication.
   version: 1.0.0
   contact:
     name: WSO2 Choreo
@@ -10,10 +10,10 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
   x-provider-slug: choreo
-  x-api-slug: api-management
+  x-api-slug: developer-portal
 servers:
-- url: https://console.choreo.dev/api/v1
-  description: Choreo Console API
+- url: https://devportal.choreo.dev/api/v1
+  description: Choreo Developer Portal API
 security:
 - bearerAuth: []
 - oauth2:
@@ -73,8 +73,8 @@ components:
       type: oauth2
       flows:
         authorizationCode:
-          authorizationUrl: https://console.choreo.dev/oauth2/authorize
-          tokenUrl: https://console.choreo.dev/oauth2/token
+          authorizationUrl: https://devportal.choreo.dev/oauth2/authorize
+          tokenUrl: https://devportal.choreo.dev/oauth2/token
           scopes:
             read: Read access
             write: Write access

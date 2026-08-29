@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Choreo API Management Alerts Deployments API
+  title: Choreo API Management Deployments API
   description: The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, configure rate limiting policies, and manage API documentation. Choreo is an AI-native internal developer platform that simplifies building, deploying, and managing cloud-native applications.
   version: 1.0.0
   contact:
@@ -101,18 +101,6 @@ paths:
           description: Unauthorized.
 components:
   schemas:
-    DeploymentCreate:
-      type: object
-      required:
-      - buildId
-      - environmentId
-      properties:
-        buildId:
-          type: string
-          description: Build identifier to deploy.
-        environmentId:
-          type: string
-          description: Target environment identifier.
     Deployment:
       type: object
       properties:
@@ -135,6 +123,18 @@ components:
         createdAt:
           type: string
           format: date-time
+    DeploymentCreate:
+      type: object
+      required:
+      - buildId
+      - environmentId
+      properties:
+        buildId:
+          type: string
+          description: Build identifier to deploy.
+        environmentId:
+          type: string
+          description: Target environment identifier.
   securitySchemes:
     oauth2:
       type: oauth2
