@@ -118,43 +118,6 @@ apis:
   - type: Documentation
     url: >-
       https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
-- aid: choreo:choreo-apis-api
-  name: Choreo Apis API
-  description: The Apis API from Choreo — 4 operation(s) for apis.
-  humanURL: https://wso2.com/choreo/docs/
-  tags: []
-  tags_raw:
-  - Apis
-  properties:
-  - type: OpenAPI
-    url: openapi/choreo-apis-api-openapi.yml
-  - type: Documentation
-    url: https://wso2.com/choreo/docs/
-  - type: JSONSchema
-    url: json-schema/choreo-organization.json
-  - type: JSONSchema
-    url: json-schema/choreo-project.json
-  - type: JSONSchema
-    url: json-schema/choreo-component.json
-  - type: JSONSchema
-    url: json-schema/choreo-api.json
-  - type: JSONSchema
-    url: json-schema/choreo-build.json
-  - type: JSONSchema
-    url: json-schema/choreo-deployment.json
-  - type: JSONSchema
-    url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
-  - type: Documentation
-    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
-  - type: JSONSchema
-    url: json-schema/choreo-application.json
-  - type: JSONSchema
-    url: json-schema/choreo-subscription.json
-  - type: Documentation
-    url: >-
-      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
 - aid: choreo:choreo-application-keys-api
   name: Choreo Application Keys API
   description: Generate OAuth 2.0 and API key credentials.
@@ -642,6 +605,42 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/choreo-usage-api-openapi.yml
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/
+  - type: JSONSchema
+    url: json-schema/choreo-organization.json
+  - type: JSONSchema
+    url: json-schema/choreo-project.json
+  - type: JSONSchema
+    url: json-schema/choreo-component.json
+  - type: JSONSchema
+    url: json-schema/choreo-api.json
+  - type: JSONSchema
+    url: json-schema/choreo-build.json
+  - type: JSONSchema
+    url: json-schema/choreo-deployment.json
+  - type: JSONSchema
+    url: json-schema/choreo-environment.json
+  - type: GraphQL
+    url: graphql/choreo-graphql.md
+  - type: Documentation
+    url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
+  - type: JSONSchema
+    url: json-schema/choreo-application.json
+  - type: JSONSchema
+    url: json-schema/choreo-subscription.json
+  - type: Documentation
+    url: >-
+      https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
+- aid: choreo:choreo-apis-api
+  name: Choreo APIS API
+  description: The Apis API from Choreo — 4 operation(s) for apis.
+  humanURL: https://wso2.com/choreo/docs/
+  tags:
+  - Apis
+  properties:
+  - type: OpenAPI
+    url: openapi/choreo-apis-api-openapi.yml
   - type: Documentation
     url: https://wso2.com/choreo/docs/
   - type: JSONSchema
