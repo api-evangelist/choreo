@@ -343,6 +343,8 @@ apis:
   description: Manage deployment environments.
   humanURL: https://wso2.com/choreo/docs/
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
@@ -636,7 +638,8 @@ apis:
   name: Choreo APIS API
   description: The Apis API from Choreo — 4 operation(s) for apis.
   humanURL: https://wso2.com/choreo/docs/
-  tags:
+  tags: []
+  tags_raw:
   - Apis
   properties:
   - type: OpenAPI
