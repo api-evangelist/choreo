@@ -117,22 +117,6 @@ paths:
           description: API not found.
 components:
   schemas:
-    Organization:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the organization.
-        name:
-          type: string
-          description: Name of the organization.
-        handle:
-          type: string
-          description: URL-friendly handle for the organization.
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp when the organization was created.
     Pagination:
       type: object
       properties:
@@ -185,6 +169,22 @@ components:
         createdAt:
           type: string
           format: date-time
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the organization.
+        name:
+          type: string
+          description: Name of the organization.
+        handle:
+          type: string
+          description: URL-friendly handle for the organization.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the organization was created.
   securitySchemes:
     oauth2:
       type: oauth2

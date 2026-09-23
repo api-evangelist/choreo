@@ -23,7 +23,9 @@
     "choreo-logs-api-openapi.yml",
     "choreo-usage-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -37,11 +39,13 @@
     "choreo-developer-portal-openapi.yml: tagged paths GET /apis/{apiId}/definition -> Apis",
     "choreo-developer-portal-openapi.yml: tagged paths GET /apis/{apiId}/documents -> Apis",
     "choreo-developer-portal-openapi.yml: declared missing tag: Apis",
-    "choreo-insights-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+    "choreo-insights-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: choreo-ap-is-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 16 total)"
   ],
   "skipped": [
     "choreo-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "choreo-apis-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "choreo-ap-is-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "choreo-application-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "choreo-applications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "choreo-builds-api-openapi.yml: previously refined output, superseded by openapi/_original/",

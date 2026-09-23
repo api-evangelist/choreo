@@ -20,7 +20,7 @@ security:
   - read
   - write
 tags:
-- name: Apis
+- name: APIs
 paths:
   /apis:
     get:
@@ -28,7 +28,7 @@ paths:
       summary: Choreo List published APIs
       description: Retrieve a list of published APIs available in the developer portal. Supports filtering by name, tags, and type.
       tags:
-      - Apis
+      - APIs
       parameters:
       - name: query
         in: query
@@ -82,7 +82,7 @@ paths:
       summary: Choreo Get a published API
       description: Retrieve details of a specific published API including its documentation and endpoints.
       tags:
-      - Apis
+      - APIs
       parameters:
       - name: apiId
         in: path
@@ -105,7 +105,7 @@ paths:
       summary: Choreo Get API definition
       description: Retrieve the OpenAPI or other specification definition for a published API.
       tags:
-      - Apis
+      - APIs
       parameters:
       - name: apiId
         in: path
@@ -131,7 +131,7 @@ paths:
       summary: Choreo List API documents
       description: Retrieve documentation associated with a published API.
       tags:
-      - Apis
+      - APIs
       parameters:
       - name: apiId
         in: path
