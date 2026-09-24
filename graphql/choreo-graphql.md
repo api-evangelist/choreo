@@ -1,1 +1,0 @@
-# Choreo GraphQL API

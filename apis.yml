@@ -107,8 +107,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -143,8 +141,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -181,8 +177,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -217,8 +211,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -253,8 +245,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -289,8 +279,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -327,8 +315,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -365,8 +351,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -401,8 +385,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -437,8 +419,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -473,8 +453,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -511,8 +489,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -549,8 +525,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -587,8 +561,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -623,8 +595,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
@@ -660,8 +630,6 @@ apis:
     url: json-schema/choreo-deployment.json
   - type: JSONSchema
     url: json-schema/choreo-environment.json
-  - type: GraphQL
-    url: graphql/choreo-graphql.md
   - type: Documentation
     url: https://wso2.com/choreo/docs/consuming-services/manage-subscription/
   - type: JSONSchema
