@@ -117,16 +117,6 @@ paths:
           description: API not found.
 components:
   schemas:
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of results.
-        limit:
-          type: integer
-        offset:
-          type: integer
     API:
       type: object
       properties:
@@ -185,6 +175,16 @@ components:
           type: string
           format: date-time
           description: Timestamp when the organization was created.
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
   securitySchemes:
     oauth2:
       type: oauth2

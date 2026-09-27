@@ -101,6 +101,18 @@ paths:
           description: Unauthorized.
 components:
   schemas:
+    DeploymentCreate:
+      type: object
+      required:
+      - buildId
+      - environmentId
+      properties:
+        buildId:
+          type: string
+          description: Build identifier to deploy.
+        environmentId:
+          type: string
+          description: Target environment identifier.
     Deployment:
       type: object
       properties:
@@ -123,18 +135,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    DeploymentCreate:
-      type: object
-      required:
-      - buildId
-      - environmentId
-      properties:
-        buildId:
-          type: string
-          description: Build identifier to deploy.
-        environmentId:
-          type: string
-          description: Target environment identifier.
   securitySchemes:
     oauth2:
       type: oauth2

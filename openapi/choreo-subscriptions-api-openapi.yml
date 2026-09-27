@@ -128,16 +128,6 @@ components:
         businessPlan:
           type: string
           description: Business plan to subscribe under. Determines rate limit for the subscription.
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of results.
-        limit:
-          type: integer
-        offset:
-          type: integer
     Subscription:
       type: object
       properties:
@@ -163,6 +153,16 @@ components:
         createdAt:
           type: string
           format: date-time
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
   securitySchemes:
     oauth2:
       type: oauth2

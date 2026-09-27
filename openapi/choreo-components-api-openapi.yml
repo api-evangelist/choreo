@@ -160,43 +160,6 @@ paths:
           description: Component not found.
 components:
   schemas:
-    ComponentCreate:
-      type: object
-      required:
-      - name
-      - type
-      - repoUrl
-      properties:
-        name:
-          type: string
-          description: Name of the component.
-        type:
-          type: string
-          enum:
-          - Service
-          - REST API Proxy
-          - GraphQL API Proxy
-          - Web Application
-          - Scheduled Job
-          - Manual Trigger
-          - Event Handler
-          - Webhook
-          description: Type of the component.
-        description:
-          type: string
-        repoUrl:
-          type: string
-          description: Git repository URL.
-        branch:
-          type: string
-          description: Git branch.
-          default: main
-        buildpackId:
-          type: string
-          description: Buildpack identifier.
-        subPath:
-          type: string
-          description: Sub-path within the repository.
     Component:
       type: object
       properties:
@@ -242,6 +205,43 @@ components:
         createdAt:
           type: string
           format: date-time
+    ComponentCreate:
+      type: object
+      required:
+      - name
+      - type
+      - repoUrl
+      properties:
+        name:
+          type: string
+          description: Name of the component.
+        type:
+          type: string
+          enum:
+          - Service
+          - REST API Proxy
+          - GraphQL API Proxy
+          - Web Application
+          - Scheduled Job
+          - Manual Trigger
+          - Event Handler
+          - Webhook
+          description: Type of the component.
+        description:
+          type: string
+        repoUrl:
+          type: string
+          description: Git repository URL.
+        branch:
+          type: string
+          description: Git branch.
+          default: main
+        buildpackId:
+          type: string
+          description: Buildpack identifier.
+        subPath:
+          type: string
+          description: Sub-path within the repository.
   securitySchemes:
     oauth2:
       type: oauth2

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Choreo Developer Portal APIS API
+  title: Choreo Developer Portal APIs API
   description: The Choreo Developer Portal API enables API consumers to discover, evaluate, subscribe to, and consume APIs hosted on the WSO2 Choreo platform. It provides access to the API marketplace, application management, subscription management, and credential generation for OAuth 2.0 and API key based authentication.
   version: 1.0.0
   contact:

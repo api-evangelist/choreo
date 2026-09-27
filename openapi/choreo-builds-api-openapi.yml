@@ -101,15 +101,6 @@ paths:
           description: Unauthorized.
 components:
   schemas:
-    BuildCreate:
-      type: object
-      properties:
-        branch:
-          type: string
-          description: Git branch to build from.
-        commitHash:
-          type: string
-          description: Specific commit hash to build.
     Build:
       type: object
       properties:
@@ -137,6 +128,15 @@ components:
         completedAt:
           type: string
           format: date-time
+    BuildCreate:
+      type: object
+      properties:
+        branch:
+          type: string
+          description: Git branch to build from.
+        commitHash:
+          type: string
+          description: Specific commit hash to build.
   securitySchemes:
     oauth2:
       type: oauth2
