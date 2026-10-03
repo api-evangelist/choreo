@@ -85,31 +85,6 @@ paths:
           description: Unauthorized.
 components:
   schemas:
-    APIKeyGenerateRequest:
-      type: object
-      properties:
-        validityPeriod:
-          type: integer
-          description: Validity period of the API key in seconds.
-          default: 3600
-    ApplicationKeys:
-      type: object
-      properties:
-        consumerKey:
-          type: string
-          description: Consumer key (client ID).
-        consumerSecret:
-          type: string
-          description: Consumer secret (client secret).
-        keyType:
-          type: string
-          enum:
-          - PRODUCTION
-          - SANDBOX
-        supportedGrantTypes:
-          type: array
-          items:
-            type: string
     APIKey:
       type: object
       properties:
@@ -147,6 +122,31 @@ components:
         validityTime:
           type: integer
           description: Validity time of the access token in seconds.
+    ApplicationKeys:
+      type: object
+      properties:
+        consumerKey:
+          type: string
+          description: Consumer key (client ID).
+        consumerSecret:
+          type: string
+          description: Consumer secret (client secret).
+        keyType:
+          type: string
+          enum:
+          - PRODUCTION
+          - SANDBOX
+        supportedGrantTypes:
+          type: array
+          items:
+            type: string
+    APIKeyGenerateRequest:
+      type: object
+      properties:
+        validityPeriod:
+          type: integer
+          description: Validity period of the API key in seconds.
+          default: 3600
   securitySchemes:
     oauth2:
       type: oauth2

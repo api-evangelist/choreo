@@ -85,17 +85,6 @@ paths:
           description: Unauthorized.
 components:
   schemas:
-    ProjectCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          description: Name of the project.
-        description:
-          type: string
-          description: Description of the project.
     Project:
       type: object
       properties:
@@ -114,6 +103,17 @@ components:
         createdAt:
           type: string
           format: date-time
+    ProjectCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: Name of the project.
+        description:
+          type: string
+          description: Description of the project.
   securitySchemes:
     oauth2:
       type: oauth2

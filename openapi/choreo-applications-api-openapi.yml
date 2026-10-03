@@ -169,6 +169,16 @@ components:
         throttlingPolicy:
           type: string
           description: Throttling policy for the application.
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
     Application:
       type: object
       properties:
@@ -194,16 +204,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of results.
-        limit:
-          type: integer
-        offset:
-          type: integer
   securitySchemes:
     oauth2:
       type: oauth2

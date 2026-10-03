@@ -80,6 +80,15 @@ paths:
           description: Unauthorized.
 components:
   schemas:
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
     Alert:
       type: object
       properties:
@@ -114,15 +123,6 @@ components:
         resolvedAt:
           type: string
           format: date-time
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-        limit:
-          type: integer
-        offset:
-          type: integer
   securitySchemes:
     bearerAuth:
       type: http

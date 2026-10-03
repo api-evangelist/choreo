@@ -112,22 +112,16 @@ paths:
           description: Subscription not found.
 components:
   schemas:
-    SubscriptionCreate:
+    Pagination:
       type: object
-      required:
-      - applicationId
-      - apiId
-      - businessPlan
       properties:
-        applicationId:
-          type: string
-          description: Application identifier.
-        apiId:
-          type: string
-          description: API identifier.
-        businessPlan:
-          type: string
-          description: Business plan to subscribe under. Determines rate limit for the subscription.
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
     Subscription:
       type: object
       properties:
@@ -153,16 +147,22 @@ components:
         createdAt:
           type: string
           format: date-time
-    Pagination:
+    SubscriptionCreate:
       type: object
+      required:
+      - applicationId
+      - apiId
+      - businessPlan
       properties:
-        total:
-          type: integer
-          description: Total number of results.
-        limit:
-          type: integer
-        offset:
-          type: integer
+        applicationId:
+          type: string
+          description: Application identifier.
+        apiId:
+          type: string
+          description: API identifier.
+        businessPlan:
+          type: string
+          description: Business plan to subscribe under. Determines rate limit for the subscription.
   securitySchemes:
     oauth2:
       type: oauth2
