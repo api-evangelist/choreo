@@ -154,31 +154,6 @@ paths:
           description: Application not found.
 components:
   schemas:
-    ApplicationCreate:
-      type: object
-      required:
-      - name
-      - throttlingPolicy
-      properties:
-        name:
-          type: string
-          description: Name of the application.
-        description:
-          type: string
-          description: Description of the application.
-        throttlingPolicy:
-          type: string
-          description: Throttling policy for the application.
-    Pagination:
-      type: object
-      properties:
-        total:
-          type: integer
-          description: Total number of results.
-        limit:
-          type: integer
-        offset:
-          type: integer
     Application:
       type: object
       properties:
@@ -204,6 +179,31 @@ components:
         createdAt:
           type: string
           format: date-time
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of results.
+        limit:
+          type: integer
+        offset:
+          type: integer
+    ApplicationCreate:
+      type: object
+      required:
+      - name
+      - throttlingPolicy
+      properties:
+        name:
+          type: string
+          description: Name of the application.
+        description:
+          type: string
+          description: Description of the application.
+        throttlingPolicy:
+          type: string
+          description: Throttling policy for the application.
   securitySchemes:
     oauth2:
       type: oauth2

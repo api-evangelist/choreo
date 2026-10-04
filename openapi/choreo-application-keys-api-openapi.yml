@@ -85,15 +85,6 @@ paths:
           description: Unauthorized.
 components:
   schemas:
-    APIKey:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: Generated API key value.
-        validityTime:
-          type: integer
-          description: Validity time in seconds.
     KeyGenerateRequest:
       type: object
       required:
@@ -140,6 +131,15 @@ components:
           type: array
           items:
             type: string
+    APIKey:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: Generated API key value.
+        validityTime:
+          type: integer
+          description: Validity time in seconds.
     APIKeyGenerateRequest:
       type: object
       properties:
