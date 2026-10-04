@@ -640,6 +640,9 @@ apis:
     url: >-
       https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/
 common:
+- type: CapabilityMap
+  url: capabilities/choreo-capability-edges.yml
+  name: Choreo Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/choreo/overview
 - type: AgenticAccess

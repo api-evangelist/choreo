@@ -1,0 +1,92 @@
+slug: choreo
+provider: Choreo
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 8
+edges:
+- tag: Builds
+  spec_file: choreo-builds-api-openapi.yml
+  capability_id: BC-4210.10
+  capability_id_l1: BC-4210
+  capability_name: Continuous Integration Management
+  confidence: 0.85
+  evidence: POST /organizations/{orgId}/projects/{projectId}/components/{componentId}/builds  createBuild  Choreo
+    Trigger a build
+  reason: Triggering and listing builds of software components on a CI/CD internal developer platform
+    — continuous integration management.
+- tag: Deployments
+  spec_file: choreo-deployments-api-openapi.yml
+  capability_id: BC-4210.40
+  capability_id_l1: BC-4210
+  capability_name: Deployment Orchestration
+  confidence: 0.85
+  evidence: POST /organizations/{orgId}/projects/{projectId}/components/{componentId}/deployments  createDeployment  Choreo
+    Promote a build to an environment
+  reason: Promoting builds to environments is deployment orchestration within software release & deployment
+    management.
+- tag: Application Keys
+  spec_file: choreo-application-keys-api-openapi.yml
+  capability_id: BC-4270.40
+  capability_id_l1: BC-4270
+  capability_name: Developer Identity & Credential Management
+  confidence: 0.82
+  evidence: POST /applications/{applicationId}/keys  generateKeys ... credential generation for OAuth
+    2.0 and API key based authentication
+  reason: Issuance of OAuth client keys and API keys for developer applications on a developer portal
+    — developer identity and credential management rather than generic enterprise IAM.
+- tag: APIs
+  spec_file: choreo-apis-api-openapi.yml
+  capability_id: BC-4270.30
+  capability_id_l1: BC-4270
+  capability_name: Developer Portal Management
+  confidence: 0.8
+  evidence: The Choreo Developer Portal API enables API consumers to discover, evaluate, subscribe to,
+    and consume APIs ... GET /apis/{apiId}/documents  listAPIDocuments
+  reason: Developer portal discovery of published APIs and their definitions/documents — developer portal
+    management within the Developer Platform & API Ecosystem capability.
+- tag: Errors
+  spec_file: choreo-errors-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.8
+  evidence: GET /errors getAPIErrors Choreo Get API error analytics; "access to observability, monitoring,
+    and analytics data for APIs and components deployed"
+  reason: Error analytics over running services is observability/monitoring of the platform, not business-domain
+    alerting.
+- tag: Latency
+  spec_file: choreo-latency-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.8
+  evidence: GET /latency getAPILatency Choreo Get API latency metrics
+  reason: Latency metrics retrieval is production observability (metrics) for deployed services.
+- tag: Alerts
+  spec_file: choreo-alerts-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.7
+  evidence: The Choreo Insights API provides access to observability, monitoring, and analytics data for
+    APIs and components deployed
+  reason: Alerts listing within an observability/monitoring insights API for running services — observability
+    management. Thin surface (single list operation) so moderate confidence.
+- tag: Environments
+  spec_file: choreo-environments-api-openapi.yml
+  capability_id: BC-4210.20
+  capability_id_l1: BC-4210
+  capability_name: Environment Management
+  confidence: 0.7
+  evidence: GET /organizations/{orgId}/environments  listEnvironments  Choreo List environments
+  reason: Listing deployment environments (dev/staging/prod) on the platform — environment management.
+    Single read operation, so moderate confidence.
