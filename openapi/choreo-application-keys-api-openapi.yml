@@ -113,6 +113,15 @@ components:
         validityTime:
           type: integer
           description: Validity time of the access token in seconds.
+    APIKey:
+      type: object
+      properties:
+        apiKey:
+          type: string
+          description: Generated API key value.
+        validityTime:
+          type: integer
+          description: Validity time in seconds.
     ApplicationKeys:
       type: object
       properties:
@@ -131,15 +140,6 @@ components:
           type: array
           items:
             type: string
-    APIKey:
-      type: object
-      properties:
-        apiKey:
-          type: string
-          description: Generated API key value.
-        validityTime:
-          type: integer
-          description: Validity time in seconds.
     APIKeyGenerateRequest:
       type: object
       properties:

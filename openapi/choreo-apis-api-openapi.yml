@@ -153,6 +153,34 @@ paths:
                       $ref: '#/components/schemas/Document'
 components:
   schemas:
+    Document:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Document identifier.
+        name:
+          type: string
+          description: Document name.
+        type:
+          type: string
+          enum:
+          - HOWTO
+          - SAMPLES
+          - PUBLIC_FORUM
+          - SUPPORT_FORUM
+          - API_MESSAGE_FORMAT
+          - OTHER
+          description: Document type.
+        summary:
+          type: string
+          description: Brief summary of the document.
+        sourceType:
+          type: string
+          enum:
+          - INLINE
+          - URL
+          - FILE
     Pagination:
       type: object
       properties:
@@ -212,34 +240,6 @@ components:
           items:
             type: string
           description: Available business plans.
-    Document:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Document identifier.
-        name:
-          type: string
-          description: Document name.
-        type:
-          type: string
-          enum:
-          - HOWTO
-          - SAMPLES
-          - PUBLIC_FORUM
-          - SUPPORT_FORUM
-          - API_MESSAGE_FORMAT
-          - OTHER
-          description: Document type.
-        summary:
-          type: string
-          description: Brief summary of the document.
-        sourceType:
-          type: string
-          enum:
-          - INLINE
-          - URL
-          - FILE
   securitySchemes:
     oauth2:
       type: oauth2
