@@ -1,4 +1,4 @@
-# Choreo (choreo)
+# Choreo
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,144 +66,199 @@
 
 WSO2 Choreo is an enterprise-grade Internal Developer Platform (IDP) and application orchestration platform that helps organizations build, deploy, manage, and observe APIs, microservices, integrations, and AI applications across multi-cloud Kubernetes infrastructure (AWS, Azure, GCP, Vultr, or upstream Kubernetes). Choreo combines API management, CI/CD, GitOps, observability, FinOps, and platform engineering into a single AI-guided experience. Developers connect Git repos and deploy instantly, while platform teams use Choreo to enforce security, governance, and compliance with PCI DSS and SOC 2 Type 2 certifications. The platform orchestrates CNCF tools including Kubernetes, Argo CD, Cilium, Envoy, Helm, Prometheus, OpenSearch, Flux, and KEDA, and exposes APIs for API management, developer portal/marketplace consumption, and observability insights.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/choreo/refs/heads/main/apis.yml)
+**Areas:** Ai Apps · API Management · CI/CD · Cloud-Native · DevOps · Developer Portal · FinOps · IDE · Internal Developer Platform · Kubernetes · Lifecycle · Observability
 
-## Scope
+## Choreo on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Choreo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/choreo/](https://apis.io/providers/choreo/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (16)
 
-- AI Apps
-- API Management
-- CI/CD
-- Cloud Native
-- DevOps
-- Developer Portal
-- FinOps
-- IDE
-- Internal Developer Platform
-- Kubernetes
-- Lifecycle
-- Observability
-- Orchestration
-- Platform Engineering
-- Pro-Code API Composition
-- Unified
-- WSO2
-- Workflows
+- [Choreo Alerts API](https://apis.io/apis/choreo/choreo-alerts-api/) — Monitoring alerts for APIs and components.
+- [Choreo Application Keys API](https://apis.io/apis/choreo/choreo-application-keys-api/) — Generate OAuth 2.0 and API key credentials.
+- [Choreo Applications API](https://apis.io/apis/choreo/choreo-applications-api/) — Manage applications for API consumption.
+- [Choreo Builds API](https://apis.io/apis/choreo/choreo-builds-api/) — Manage builds for components.
+- [Choreo Business Plans API](https://apis.io/apis/choreo/choreo-business-plans-api/) — View available business plans for API subscriptions.
+- [Choreo Components API](https://apis.io/apis/choreo/choreo-components-api/) — Manage components (services, APIs, web apps, jobs) within projects.
+- [Choreo Deployments API](https://apis.io/apis/choreo/choreo-deployments-api/) — Manage deployments to environments.
+- [Choreo Environments API](https://apis.io/apis/choreo/choreo-environments-api/) — Manage deployment environments.
+- [Choreo Errors API](https://apis.io/apis/choreo/choreo-errors-api/) — API error analytics and diagnostics.
+- [Choreo Latency API](https://apis.io/apis/choreo/choreo-latency-api/) — API latency and performance metrics.
+- [Choreo Logs API](https://apis.io/apis/choreo/choreo-logs-api/) — Component log querying and monitoring.
+- [Choreo Organizations API](https://apis.io/apis/choreo/choreo-organizations-api/) — Manage organizations.
+- [Choreo Projects API](https://apis.io/apis/choreo/choreo-projects-api/) — Manage projects within organizations.
+- [Choreo Subscriptions API](https://apis.io/apis/choreo/choreo-subscriptions-api/) — Manage API subscriptions.
+- [Choreo Usage API](https://apis.io/apis/choreo/choreo-usage-api/) — API usage statistics and request metrics.
+- [Choreo APIS API](https://apis.io/apis/choreo/choreo-apis-api/) — The Apis API from Choreo — 4 operation(s) for apis.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-06-05
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Choreo API Management API
+GraphQL schemas.
 
-The Choreo API Management API provides programmatic access to manage the full lifecycle of APIs on the WSO2 Choreo platform. It allows API creators to create, publish, version, and manage APIs, manage organizations, projects, components, builds, and deployments.
+- [Moved to /providers/choreo/](https://apis.io/graphqls/choreo/choreo-graphql/)
 
-- **Human URL:** [https://wso2.com/choreo/docs/](https://wso2.com/choreo/docs/)
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- API Management
-- Builds
-- Components
-- Deployments
-- Lifecycle
-- Organizations
-- Projects
+- [Choreo Agentic Access](https://apis.io/agentic-access/choreo/choreo-agentic-access/)
 
-#### Properties
+#### JSON Schema (9)
 
-- [Documentation](https://wso2.com/choreo/docs/)
-- [OpenAPI](openapi/choreo-api-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/choreo-api-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/choreo-api-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/choreo-organization.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/choreo-project.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/choreo-component.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/choreo-api.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/choreo-build.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/choreo-deployment.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/choreo-environment.json) — [JSON Schema](https://json-schema.org/specification)
+The data models the API reads and writes.
 
-### Choreo Developer Portal API
+- [Choreo API](https://apis.io/schemas/choreo/choreo-api/)
+- [Choreo Application](https://apis.io/schemas/choreo/choreo-application/)
+- [Choreo Build](https://apis.io/schemas/choreo/choreo-build/)
+- [Choreo Component](https://apis.io/schemas/choreo/choreo-component/)
+- [Choreo Deployment](https://apis.io/schemas/choreo/choreo-deployment/)
+- [Choreo Environment](https://apis.io/schemas/choreo/choreo-environment/)
+- [Choreo Organization](https://apis.io/schemas/choreo/choreo-organization/)
+- [Choreo Project](https://apis.io/schemas/choreo/choreo-project/)
+- [Choreo Subscription](https://apis.io/schemas/choreo/choreo-subscription/)
 
-The Choreo Developer Portal API enables API consumers to discover, evaluate, subscribe to, and consume APIs hosted on the Choreo platform. It provides access to the API marketplace, application management, subscription management, and credential generation for OAuth 2.0 and API key based authentication.
+#### JSON-LD (1)
 
-- **Human URL:** [https://devportal.choreo.dev/](https://devportal.choreo.dev/)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Choreo Context](https://apis.io/jsonld/choreo/choreo-context/)
 
-- API Keys
-- API Marketplace
-- Applications
-- Developer Portal
-- OAuth
-- Subscriptions
+#### Collections (35)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://wso2.com/choreo/docs/consuming-services/manage-subscription/)
-- [OpenAPI](openapi/choreo-developer-portal-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/choreo-developer-portal.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/choreo-developer-portal.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/choreo-application.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/choreo-subscription.json) — [JSON Schema](https://json-schema.org/specification)
+- [Choreo API Management Alerts API](https://apis.io/collections/choreo/open-choreo-alerts-api/)
+- [Choreo API Management API](https://apis.io/collections/choreo/open-choreo-api-management/)
+- [Choreo API Management Alerts Apis API](https://apis.io/collections/choreo/open-choreo-apis-api/)
+- [Choreo API Management Alerts Application Keys API](https://apis.io/collections/choreo/open-choreo-application-keys-api/)
+- [Choreo API Management Alerts Applications API](https://apis.io/collections/choreo/open-choreo-applications-api/)
+- [Choreo API Management Alerts Builds API](https://apis.io/collections/choreo/open-choreo-builds-api/)
+- [Choreo API Management Alerts Business Plans API](https://apis.io/collections/choreo/open-choreo-business-plans-api/)
+- [Choreo API Management Alerts Components API](https://apis.io/collections/choreo/open-choreo-components-api/)
+- [Choreo API Management Alerts Deployments API](https://apis.io/collections/choreo/open-choreo-deployments-api/)
+- [Choreo Developer Portal API](https://apis.io/collections/choreo/open-choreo-developer-portal/)
+- [Choreo API Management Alerts Environments API](https://apis.io/collections/choreo/open-choreo-environments-api/)
+- [Choreo API Management Alerts Errors API](https://apis.io/collections/choreo/open-choreo-errors-api/)
+- [Choreo Insights API](https://apis.io/collections/choreo/open-choreo-insights/)
+- [Choreo API Management Alerts Latency API](https://apis.io/collections/choreo/open-choreo-latency-api/)
+- [Choreo API Management Alerts Logs API](https://apis.io/collections/choreo/open-choreo-logs-api/)
+- [Choreo API Management Alerts Organizations API](https://apis.io/collections/choreo/open-choreo-organizations-api/)
+- [Choreo API Management Alerts Projects API](https://apis.io/collections/choreo/open-choreo-projects-api/)
+- [Choreo API Management Alerts Subscriptions API](https://apis.io/collections/choreo/open-choreo-subscriptions-api/)
+- [Choreo API Management Alerts Usage API](https://apis.io/collections/choreo/open-choreo-usage-api/)
+- [Choreo API Management Alerts API](https://apis.io/collections/choreo/postman-choreo-alerts-api/)
+- [Choreo API Management Alerts Apis API](https://apis.io/collections/choreo/postman-choreo-apis-api/)
+- [Choreo API Management Alerts Application Keys API](https://apis.io/collections/choreo/postman-choreo-application-keys-api/)
+- [Choreo API Management Alerts Applications API](https://apis.io/collections/choreo/postman-choreo-applications-api/)
+- [Choreo API Management Alerts Builds API](https://apis.io/collections/choreo/postman-choreo-builds-api/)
+- [Choreo API Management Alerts Business Plans API](https://apis.io/collections/choreo/postman-choreo-business-plans-api/)
+- …and 10 more published on APIs.io
 
-### Choreo Insights API
+#### Governance rules (1)
 
-The Choreo Insights API provides access to observability, monitoring, and analytics data for APIs and components deployed on the Choreo platform. It enables users to programmatically retrieve usage statistics, latency metrics, error analytics, and operational insights.
+Spectral rulesets for the provider's contracts.
 
-- **Human URL:** [https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/](https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/)
+- [Choreo — jsonschema rules](https://apis.io/rules/choreo/choreo-jsonschema-spectral-rules/)
 
-#### Tags
+#### Security (4)
 
-- Alerts
-- Analytics
-- Logs
-- Metrics
-- Monitoring
-- Observability
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Choreo Authentication](https://apis.io/security/choreo/choreo-authentication/)
+- [Choreo Domain Security](https://apis.io/security/choreo/choreo-domain-security/)
+- [Choreo Trust Center](https://apis.io/security/choreo/choreo-trust-center/)
+- [Choreo Vulnerability Disclosure](https://apis.io/security/choreo/choreo-vulnerability-disclosure/)
 
-- [Documentation](https://wso2.com/choreo/docs/monitoring-and-insights/work-with-choreo-insights-api/access-the-choreo-insights-api/)
-- [OpenAPI](openapi/choreo-insights-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/choreo-insights.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/choreo-insights.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### OAuth scopes (1)
 
-## Common Properties
+The permissions the API asks for.
 
-- [LinkedIn](https://www.linkedin.com/company/choreo-advisors)
+- [Choreo Scopes](https://apis.io/scopes/choreo/choreo-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Choreo Plans Pricing](https://apis.io/plans/choreo/choreo-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Choreo Rate Limits](https://apis.io/rate-limits/choreo/choreo-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Choreo Finops](https://apis.io/finops/choreo/choreo-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://wso2.com/choreo/)
-- [Developer Portal](https://devportal.choreo.dev/)
-- [Console](https://console.choreo.dev/)
 - [Documentation](https://wso2.com/choreo/docs/)
-- [Login](https://console.choreo.dev/login)
-- [Sign Up](https://console.choreo.dev/signup)
 - [Pricing](https://wso2.com/choreo/pricing/)
 - [Blog](https://medium.com/choreo-tech-blog)
-- [Blog R S S](https://medium.com/feed/choreo-tech-blog)
-- [Discord](https://discord.com/invite/wso2)
-- [Parent Company](https://wso2.com)
-- [A W S Marketplace](https://aws.amazon.com/marketplace/seller-profile?id=ec25fa2f-b833-43d8-9d4c-de13ade0eee7)
-- [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wso2.choreo)
-- [G C P Marketplace](https://console.cloud.google.com/marketplace/product/wso2-public/choreo)
-- [Terms of Service](https://wso2.com/terms-of-use/)
-- [Privacy Policy](https://wso2.com/privacy-policy/)
-- [J S O N L D Context](json-ld/choreo-context.jsonld)
-- [Spectral Rules](spectral/choreo-spectral.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Standards](undefined)
+- [Terms of service](https://wso2.com/terms-of-use/)
+- [Privacy policy](https://wso2.com/privacy-policy/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 50.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 68.3 |
+| Contract governance | 9.8 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 36.9 |
+| Access clarity | 60.5 |
+
+**Agent readiness 21.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 45.1** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/choreo/](https://apis.io/providers/choreo/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Choreo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/choreo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
